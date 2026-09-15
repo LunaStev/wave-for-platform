@@ -21,7 +21,6 @@ jvm_library(
     visibility = ["//visibility:public"],
     deps = [
         # do not sort,
-        "//plugins/repository-search/completion",
         "//platform/core-api:core",
         "//platform/core-impl",
         "//platform/platform-api:ide",
@@ -67,7 +66,6 @@ jvm_library(
     runtime_deps = [
         # do not sort,
         ":scripting.main.kts",
-        "//plugins/repository-search/completion:completion_test_lib",
         "//platform/core-api:core_test_lib",
         "//platform/core-impl:core-impl_test_lib",
         "//platform/platform-api:ide_test_lib",
@@ -146,8 +144,6 @@ jvm_library(
         "//plugins/kotlin/base/scripting/scripting.k2:kotlin-base-scripting_test_lib",
         "//plugins/kotlin/base/scripting/scripting.shared",
         "//plugins/kotlin/base/scripting/scripting.shared:scripting.shared_test_lib",
-        "//plugins/repository-search/completion",
-        "//plugins/repository-search/completion:completion_test_lib",
         "//platform/core-api:core",
         "//platform/core-api:core_test_lib",
         "//platform/core-impl",

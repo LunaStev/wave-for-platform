@@ -13,19 +13,11 @@ object JavaPluginLayout {
 
       spec.withModule("intellij.platform.jps.build.launcher", "jps-launcher.jar")
 
-      spec.withModuleLibrary("debugger-agent", "intellij.java.debugger.agent.holder", "rt")
-
       spec.withProjectLibrary("netty-codec-protobuf", "netty-codec-protobuf.jar")
 
       spec.withProjectLibrary("Eclipse", "ecj")
       spec.withProjectLibrary("jps-javac-extension")
       spec.withProjectLibrary("kotlin-metadata")
-      // gpl-cpe license - do not use uber jar
-      spec.withProjectLibrary("jb-jdi")
-
-      spec.withModuleLibrary("debugger-memory-agent", "intellij.java.debugger.memory.agent", "")
-      // explicitly pack and sa-jdwp as a separate JARs
-      spec.withModuleLibrary("sa-jdwp", "intellij.java.debugger.impl", "sa-jdwp.jar")
 
       spec.withResourceArchive("../jdkAnnotations", "lib/resources/jdkAnnotations.jar")
 

@@ -1487,9 +1487,7 @@ private suspend fun publishTestDiscovery(messages: BuildMessages, file: String?)
 }
 
 private val COMMUNITY_AGGREGATOR_BAZEL_MIGRATED_MODULES = listOf(
-  "intellij.maven.server.eventListener.tests",
   "intellij.agent.workbench.chat.tests",
-  "intellij.ant.tests",
   "intellij.commander.tests",
   "intellij.completionMlRanking.tests",
   "intellij.completionMlRankingModels.tests",
@@ -1497,20 +1495,13 @@ private val COMMUNITY_AGGREGATOR_BAZEL_MIGRATED_MODULES = listOf(
   "intellij.configurationScript.test.java",
   "intellij.copyright.tests",
   "intellij.devkit.apiDump.lang.tests",
-  "intellij.devkit.debugger.tests",
-  "intellij.devkit.gradle.tests",
-  "intellij.devkit.i18n.tests",
   "intellij.devkit.testFramework",
   "intellij.devkit.workspaceModel.tests",
-  "intellij.eclipse.tests",
   "intellij.editorconfig.backend.tests",
   "intellij.evaluationPlugin.languages.java.tests",
   "intellij.evaluationPlugin.languages.kotlin.tests",
   "intellij.evaluationPlugin.tests",
   "intellij.execution.process.mediator.client.tests",
   "intellij.execution.process.mediator.common.tests",
-  "intellij.featuresTrainer.tests",
   "intellij.findUsagesMl.tests",
-  "intellij.gradle.completion.tests",
-  "intellij.gradle.java.maven.tests",
 )

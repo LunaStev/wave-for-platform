@@ -1,7 +1,6 @@
 <idea-plugin package="org.jetbrains.kotlin.idea.codeInsight.inspections" visibility="internal">
   <!-- region Generated dependencies - run `Generate Product Layouts` to regenerate -->
   <dependencies>
-    <module name="intellij.kotlin.base.externalSystem"/>
     <module name="intellij.kotlin.codeInsight.intentions"/>
     <module name="intellij.java.frontback.psi"/>
     <module name="intellij.java.psi"/>
@@ -135,7 +134,6 @@
                      level="WEAK WARNING"
                      language="kotlin"
                      key="inspection.can.convert.to.multi.dollar.string.display.name" bundle="messages.KotlinBundle"/>
-
 
     <localInspection implementationClass="org.jetbrains.kotlin.idea.codeInsight.inspections.KotlinInternalInJavaInspection"
                      groupPath="Kotlin"
@@ -460,7 +458,6 @@
                      language="kotlin"
                      key="inspection.convert.reference.to.lambda.display.name" bundle="messages.KotlinBundle"/>
 
-
     <localInspection implementationClass="org.jetbrains.kotlin.idea.codeInsight.inspections.CascadeIfInspection"
                      groupPath="Kotlin"
                      groupBundle="messages.KotlinBundle" groupKey="group.names.style.issues"
@@ -648,7 +645,6 @@
                      suppressId="unused" alternativeId="UNUSED_PARAMETER" editorAttributes="NOT_USED_ELEMENT_ATTRIBUTES"
                      key="inspection.unused.symbol.display.name" bundle="messages.KotlinBundle"/>
 
-
     <localInspection implementationClass="org.jetbrains.kotlin.idea.codeInsight.inspections.java.UseNamedGetterInspection"
                      groupPath="Kotlin"
                      groupBundle="messages.KotlinBundle" groupKey="group.names.other.problems"
@@ -786,7 +782,6 @@
                      level="WEAK WARNING"
                      language="kotlin"
                      key="inspection.convert.try.finally.to.use.call.display.name" bundle="messages.KotlinBundle"/>
-
 
     <localInspection implementationClass="org.jetbrains.kotlin.idea.codeInsight.inspections.collections.UselessCallOnNotNullInspection"
                      groupPath="Kotlin"
@@ -931,7 +926,6 @@
                      level="WEAK WARNING"
                      language="kotlin"
                      key="inspection.public.api.implicit.type.display.name" bundle="messages.KotlinBundle"/>
-
 
     <localInspection implementationClass="org.jetbrains.kotlin.idea.codeInsight.inspections.RedundantExplicitTypeInspection"
                      groupPath="Kotlin"
@@ -1637,7 +1631,6 @@
                      level="WEAK WARNING"
                      language="kotlin"
                      key="variable.declaration.could.be.moved.into.when" bundle="messages.KotlinBundle"/>
-
 
     <localInspection implementationClass="org.jetbrains.kotlin.idea.codeInsight.inspections.AmbiguousNonLocalJumpInspection"
                      groupPath="Kotlin"

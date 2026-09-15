@@ -1,13 +1,11 @@
 <idea-plugin visibility="internal" package="org.jetbrains.kotlin.idea.jvm.shared">
   <!-- region Generated dependencies - run `Generate Product Layouts` to regenerate -->
   <dependencies>
-    <module name="intellij.java.execution.impl"/>
     <module name="intellij.java.psi"/>
     <module name="intellij.java.psi.impl"/>
     <module name="intellij.java.ui"/>
     <module name="intellij.kotlin.base.scripting.shared"/>
     <module name="intellij.kotlin.codeInsight.shared"/>
-    <module name="intellij.kotlin.runConfigurations.jvm"/>
     <module name="intellij.kotlin.highlighting"/>
   </dependencies>
   <!-- endregion -->
@@ -49,13 +47,9 @@
 
     <compilableFileTypesProvider implementation="org.jetbrains.kotlin.idea.jvm.shared.compiler.KotlinCompilableFileTypesProvider"/>
 
-    <consoleFilterProvider implementation="org.jetbrains.kotlin.idea.run.KotlinConsoleFilterProvider"/>
-
     <compiler.task execute="BEFORE" implementation="org.jetbrains.kotlin.idea.jvm.shared.internal.makeBackup.MakeBackupCompileTask"/>
 
     <externalSystemTaskNotificationListener implementation="org.jetbrains.kotlin.idea.configuration.KotlinExternalSystemSyncListener"/>
-
-    <editorNotificationProvider implementation="org.jetbrains.kotlin.idea.versions.UnsupportedAbiVersionNotificationPanelProvider"/>
 
     <postStartupActivity implementation="org.jetbrains.kotlin.idea.configuration.ui.KotlinConfigurationCheckerStartupActivity"/>
 

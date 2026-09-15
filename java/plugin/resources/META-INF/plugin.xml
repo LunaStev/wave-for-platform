@@ -31,15 +31,10 @@
     <module name="intellij.java.compiler" required-if-available="intellij.platform.backend"/>
     <module name="intellij.java.analysis" required-if-available="intellij.platform.backend"/>
     <module name="intellij.java" required-if-available="intellij.platform.backend"/>
-    <module name="intellij.java.execution" required-if-available="intellij.platform.backend"/>
-    <module name="intellij.java.remoteServers" loading="optional"/>
     <module name="intellij.jvm.analysis" required-if-available="intellij.platform.backend"/>
-    <module name="intellij.jsp" required-if-available="intellij.platform.backend"/>
-    <module name="intellij.java.debugger" required-if-available="intellij.platform.backend"/>
     <module name="intellij.java.codeserver.core" required-if-available="intellij.platform.backend"/>
     <module name="intellij.java.codeserver.highlighting" required-if-available="intellij.platform.backend"/>
 
-    <module name="intellij.jsp.spi" required-if-available="intellij.platform.backend"/>
     <module name="intellij.java.indexing.impl" required-if-available="intellij.platform.backend"/>
     <module name="intellij.java.analysis.impl" required-if-available="intellij.platform.backend"/>
     <module name="intellij.java.structureView" required-if-available="intellij.platform.backend"/>
@@ -56,10 +51,6 @@
     <module name="intellij.uiDesigner" required-if-available="intellij.platform.backend"/>
     <module name="intellij.java.manifest" required-if-available="intellij.platform.backend"/>
     <module name="intellij.java.ui" required-if-available="intellij.platform.backend"/>
-    <module name="intellij.java.execution.impl"/>
-    <module name="intellij.java.debugger.impl"/>
-    <module name="intellij.java.debugger.memory.agent" required-if-available="intellij.platform.backend"/>
-    <module name="intellij.java.remoteServers.impl" loading="optional"/>
     <module name="intellij.java.uast.ide" required-if-available="intellij.platform.backend"/>
 
     <module name="intellij.platform.jps.build" required-if-available="intellij.platform.backend"/>
@@ -77,21 +68,9 @@
 
     <module name="intellij.java.backend.split"/>
 
-    <module name="intellij.java.debugger.impl.shared" loading="embedded"/>
-    <module name="intellij.java.execution.impl.shared" loading="embedded"/>
     <module name="intellij.java.structuralSearch"/>
-    <module name="intellij.java.featuresTrainer"/>
-    <module name="intellij.java.performancePlugin" loading="optional"/>
-    <module name="intellij.java.unscramble"/>
     <module name="intellij.java.vcs"/>
-    <module name="intellij.java.terminal.shared" loading="optional"/>
-    <module name="intellij.java.terminal.backend" loading="optional"/>
-    <module name="intellij.java.terminal.frontend" loading="optional"/>
     <module name="intellij.jvm.analysis.impl"/>
-    <module name="intellij.java.debugger.impl.frontend"/>
-    <module name="intellij.java.debugger.impl.backend"/>
-    <module name="intellij.java.execution.impl.frontend"/>
-    <module name="intellij.java.execution.impl.backend"/>
     <module name="intellij.java.ultimate.icons" loading="optional"/>
     <module name="intellij.java.langInjection"/>
     <module name="intellij.java.langInjection.jps"/>
@@ -109,7 +88,6 @@
     <module name="intellij.debugger.jvm.advanced.java.logpoints"/>
     <module name="intellij.debugger.logpoints.java"/>
     <module name="intellij.java.copyright"/>
-    <module name="intellij.java.promo"/>
   </content>
   <content>
     <module name="intellij.libraries.test.discovery" loading="embedded"/>

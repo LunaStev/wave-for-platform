@@ -24,7 +24,6 @@ jvm_library(
     ),
     module_name = "intellij.kotlin.base.testFramework",
     visibility = ["//visibility:public"],
-    exports = ["//plugins/junit_rt:junit-rt"],
     deps = [
         # do not sort,
         "@lib//:kotlin-stdlib",
@@ -45,7 +44,6 @@ jvm_library(
         "//platform/util:util-ui",
         "//plugins/kotlin/base/plugin",
         "//java/testFramework",
-        "//plugins/junit_rt:junit-rt",
         "@lib//:slf4j-api",
         "//java/java-runtime:rt",
         "//platform/code-style-api:codeStyle",
@@ -64,11 +62,6 @@ jvm_library(
     ),
     module_name = "intellij.kotlin.base.testFramework",
     visibility = ["//visibility:public"],
-    exports = [
-        # do not sort,
-        "//plugins/junit_rt:junit-rt",
-        "//plugins/junit_rt:junit-rt_test_lib",
-    ],
     runtime_deps = [
         # do not sort,
         ":testFramework",
@@ -85,7 +78,6 @@ jvm_library(
         "//platform/util:util-ui_test_lib",
         "//plugins/kotlin/base/plugin:plugin_test_lib",
         "//java/testFramework:testFramework_test_lib",
-        "//plugins/junit_rt:junit-rt_test_lib",
         "//java/java-runtime:rt_test_lib",
         "//platform/code-style-api:codeStyle_test_lib",
         "//plugins/kotlin/formatter/minimal:minimal_test_lib",

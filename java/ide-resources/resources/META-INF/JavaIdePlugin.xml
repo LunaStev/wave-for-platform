@@ -3,7 +3,6 @@
     <applicationService serviceInterface="com.intellij.openapi.application.IdeUrlTrackingParametersProvider"
                         serviceImplementation="com.intellij.ide.customization.UtmIdeUrlTrackingParametersProvider"
                         overrides="true"/>
-    <ide.newUiOnboarding ideHelpName="idea"/>
     <tipAndTrick file="CommandCompletion.html"/>
   </extensions>
 </idea-plugin>

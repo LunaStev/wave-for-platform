@@ -139,11 +139,6 @@ intellij_dev_binary_community(
     platform_prefix = "community",
 )
 
-intellij_dev_binary_community(
-    name = "android_studio",
-    platform_prefix = "AndroidStudio",
-)
-
 ### auto-generated section `build intellij.idea.community.build` start
 
 jvm_library(

@@ -13,7 +13,5 @@
     <orderEntry type="module" module-name="intellij.java.psi" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.java.psi.impl" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.java.frontback.impl" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.java.debugger.impl.shared" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.java.execution.impl.shared" scope="RUNTIME" />
   </component>
 </module>

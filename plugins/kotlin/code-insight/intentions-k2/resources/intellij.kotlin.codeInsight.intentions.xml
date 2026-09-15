@@ -1,7 +1,6 @@
 <idea-plugin visibility="internal" package="org.jetbrains.kotlin.idea.codeinsight.intentions">
   <!-- region Generated dependencies - run `Generate Product Layouts` to regenerate -->
   <dependencies>
-    <module name="intellij.java.execution.impl"/>
     <module name="intellij.java.psi"/>
     <module name="intellij.kotlin.codeInsight"/>
     <module name="intellij.kotlin.codeInsight.shared"/>
@@ -363,7 +362,6 @@
       <categoryKey>group.names.kotlin</categoryKey>
     </intentionAction>
 
-
     <intentionAction>
       <language>kotlin</language>
       <className>org.jetbrains.kotlin.idea.codeinsight.intentions.InvertIfConditionIntention</className>
@@ -482,7 +480,6 @@
       <bundleName>messages.KotlinBundle</bundleName>
       <categoryKey>group.names.kotlin</categoryKey>
     </intentionAction>
-
 
     <intentionAction>
       <language>kotlin</language>

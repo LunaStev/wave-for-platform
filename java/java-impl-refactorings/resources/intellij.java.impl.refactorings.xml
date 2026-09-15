@@ -11,7 +11,6 @@
     <module name="intellij.java.impl"/>
     <module name="intellij.java.indexing"/>
     <module name="intellij.java.syntax"/>
-    <module name="intellij.jsp"/>
     <module name="intellij.platform.structureView"/>
   </dependencies>
   <!-- endregion -->

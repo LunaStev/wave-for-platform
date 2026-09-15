@@ -119,7 +119,6 @@ class RuntimeModuleRepositoryChecker private constructor(
           val pluginModule = repository.findModuleHeader(includedModule.moduleId) ?: continue
 
           //todo: remove when PY-89477 is fixed (`intellij.pycharm.community` module contains two classes and some resources only, adding it to two classpaths shouldn't cause problems)
-          if (pluginModule.moduleId.name == "intellij.pycharm.community") continue
 
           for (resourcePath in pluginModule.ownClasspath) {
             val corePluginModules = corePluginResourceRoots[resourcePath]
@@ -158,7 +157,6 @@ class RuntimeModuleRepositoryChecker private constructor(
     }
     return corePluginForFrontendHeader
   }
-
 
   private fun checkIntegrityOfEmbeddedFrontend(productModulesModule: String, softly: SoftAssertions) {
     val productModules = loadProductModules(productModulesModule, this@RuntimeModuleRepositoryChecker.moduleOutputProvider)

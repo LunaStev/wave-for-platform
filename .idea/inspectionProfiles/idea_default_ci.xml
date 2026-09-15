@@ -3373,14 +3373,9 @@
           <module name="intellij.java.compiler.impl" />
           <module name="intellij.java.compiler.instrumentationUtil" />
           <module name="intellij.java.compiler.instrumentationUtil.java8" />
-          <module name="intellij.java.debugger" />
-          <module name="intellij.java.debugger.impl" />
-          <module name="intellij.java.debugger.memory.agent" />
           <module name="intellij.java.duplicates" />
           <module name="intellij.java.duplicates.analysis" />
           <module name="intellij.java.duplicatesDetection" />
-          <module name="intellij.java.execution" />
-          <module name="intellij.java.execution.impl" />
           <module name="intellij.java.guiForms.compiler" />
           <module name="intellij.java.guiForms.rt" />
           <module name="intellij.java.impl" />
@@ -3388,12 +3383,9 @@
           <module name="intellij.java.indexing.impl" />
           <module name="intellij.java.jam" />
           <module name="intellij.java.jam.impl" />
-          <module name="intellij.java.jshell.protocol" />
           <module name="intellij.java.manifest" />
           <module name="intellij.java.psi" />
           <module name="intellij.java.psi.impl" />
-          <module name="intellij.java.remoteServers" />
-          <module name="intellij.java.remoteServers.impl" />
           <module name="intellij.java.rt" />
           <module name="intellij.java.structuralSearch" />
           <module name="intellij.java.structureView" />
@@ -3401,9 +3393,6 @@
           <module name="intellij.java.typeMigration" />
           <module name="intellij.java.uast" />
           <module name="intellij.java.ui" />
-          <module name="intellij.jsp" />
-          <module name="intellij.jsp.base" />
-          <module name="intellij.jsp.spi" />
           <module name="intellij.jvm.analysis" />
           <module name="intellij.jvm.analysis.impl" />
           <module name="intellij.platform.jps.build" />
@@ -3417,19 +3406,9 @@
           <module name="intellij.platform.testFramework" />
         </modules-set>
         <modules-set>
-          <module name="intellij.android.core" />
           <module name="intellij.android.adt.branding" />
-          <module name="intellij.android.common" />
-          <module name="intellij.android.apkanalyzer" />
-          <module name="intellij.android.designer" />
         </modules-set>
         <modules-set>
-          <module name="intellij.python.community" />
-          <module name="intellij.python.community.impl" />
-          <module name="intellij.pycharm.community" />
-          <module name="intellij.python.community.plugin" />
-          <module name="intellij.python.psi" />
-          <module name="intellij.python.pydev" />
         </modules-set>
       </option>
     </inspection_tool>

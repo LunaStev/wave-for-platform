@@ -50,8 +50,8 @@ jvm_library(
         # do not sort,
         ":radixTrie",
         "//platform-shared/util/serialization:serialization_test_lib",
-        "//platform-shared/test-runtime",
-        "//platform-shared/test-runtime:test-runtime_test_lib",
+        "//platform-shared/test-runtime:fleet-test-runtime",
+        "//platform-shared/test-runtime:fleet-test-runtime_test_lib",
     ],
 )
 ### auto-generated section `build fleet.radixTrie` end

@@ -45,8 +45,8 @@ jvm_library(
         "//platform-shared/util/codepoints",
         "//platform-shared/util/codepoints:codepoints_test_lib",
         "@lib//:kotlin-stdlib",
-        "//platform-shared/test-runtime",
-        "//platform-shared/test-runtime:test-runtime_test_lib",
+        "//platform-shared/test-runtime:fleet-test-runtime",
+        "//platform-shared/test-runtime:fleet-test-runtime_test_lib",
     ],
 )
 ### auto-generated section `build fleet.util.codepoints.test` end

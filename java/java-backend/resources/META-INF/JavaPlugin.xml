@@ -336,7 +336,6 @@
 
     <applicationService serviceImplementation="com.intellij.ide.util.newProjectWizard.SelectTemplateSettings"/>
 
-
     <selectInTarget implementation="com.intellij.ide.impl.ProjectStructureSelectInTarget"/>
 
     <OrderRootTypeUI key="JAVADOC"
@@ -474,7 +473,6 @@
     <searcher forClass="com.intellij.find.usages.api.UsageSearchParameters"
               implementationClass="com.intellij.codeInsight.todo.TodoSearcher"/>
 
-
     <structureViewBuilder key="CLASS" factoryClass="com.intellij.ide.highlighter.JavaClsStructureViewBuilderProvider"/>
 
     <patterns.patternClass className="com.intellij.patterns.PsiJavaPatterns" alias="java"/>
@@ -486,10 +484,6 @@
 
     <warmupConfigurator implementation="com.intellij.ide.warmup.JdkWarmupConfigurator"/>
     <postStartupActivity implementation="com.intellij.ide.warmup.JdkWarmupProjectActivity"/>
-    <environmentKeyProvider implementation="com.intellij.execution.environment.JvmEnvironmentKeyProvider"/>
-
-    <exceptionFilter implementation="com.intellij.execution.filters.ExceptionBaseFilterFactory"/>
-    <exceptionFilter implementation="com.intellij.execution.filters.ExceptionExFilterFactory"/>
 
     <internalFileTemplate name="Class"/>
     <internalFileTemplate name="Interface"/>
@@ -509,7 +503,6 @@
 
     <projectConfigurable id="jvm.logging" parentId="language" instance="com.intellij.ui.logging.JvmLoggingConfigurable"
                          bundle="messages.JavaBundle" key="jvm.logging.configurable.display.name"/>
-    <jvm.exceptionFilter implementation="com.intellij.execution.filters.NavigateToExceptionClassFilter"/>
 
     <iconLayerProvider implementation="com.intellij.compiler.CompilerIconLayerProvider"/>
     <fileIconPatcher implementation="com.intellij.ide.JavaExcludedFileIconPatcher" order="after javaFileIconPatcher"/>
@@ -540,7 +533,6 @@
                              handlerClass="com.intellij.codeInsight.intention.impl.config.AssignmentTooltipLinkHandler"/>
     <library.javaSourceRootDetector implementation="com.intellij.openapi.roots.ui.configuration.LibraryJavaSourceRootDetector"/>
 
-
     <library.type implementation="com.intellij.jarRepository.RepositoryLibraryType"/>
     <library.type implementation="com.intellij.externalSystem.ImportedLibraryType"/>
     <postStartupActivity implementation="com.intellij.codeInsight.daemon.impl.IdeaLibDependencyNotifier"/>
@@ -548,7 +540,6 @@
     <projectConfigurable groupId="build" instance="com.intellij.jarRepository.settings.RemoteRepositoriesConfigurable"
                          key="configurable.RemoteRepositoriesConfigurable.display.name" bundle="messages.JavaUiBundle"
                          order="last"/>
-
 
     <scratch.creationHelper language="JAVA" implementationClass="com.intellij.ide.actions.JavaScratchFileCreationHelper"/>
 
@@ -1363,8 +1354,6 @@
                         serviceImplementation="org.jetbrains.java.generate.GenerateToStringActionHandlerImpl"/>
     <applicationService serviceInterface="com.intellij.codeInsight.intention.QuickFixFactory"
                         serviceImplementation="com.intellij.codeInsight.intention.impl.config.QuickFixFactoryImpl"/>
-    <projectService serviceInterface="com.intellij.execution.filters.ExceptionAnalysisProvider"
-                    serviceImplementation="com.intellij.slicer.DataflowExceptionAnalysisProvider"/>
     <codeInsight.unresolvedReferenceQuickFixProvider
       implementation="com.intellij.codeInsight.daemon.impl.analysis.JavaFutureKeywordUseFixProvider"/>
     <codeInsight.unresolvedReferenceQuickFixProvider

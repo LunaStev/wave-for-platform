@@ -72,11 +72,9 @@ private val FLEET_MODULES_ALLOWED_FOR_PUBLICATION = setOf(
   "fleet.util.codepoints",
   "fleet.util.datetime",
   "fleet.util.logging.api",
-  "fleet.util.logging.slf4j",
   "fleet.util.multiplatform",
   "fleet.util.serialization",
   "fleet.fastutil",
-  "fleet.lsp.protocol", // Fleet Language Server Protocol modules allowed for publication - https://youtrack.jetbrains.com/issue/IJI-2644
   "fleet.ktor.network.tls",
   // endregion
 )

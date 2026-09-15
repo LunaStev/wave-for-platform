@@ -19,10 +19,6 @@
     <!-- endregion -->
   </dependencies>
 
-  <content namespace="jetbrains">
-    <module name="intellij.java.ide.customization.training"/>
-  </content>
-
   <resource-bundle>messages.ActionsBundle</resource-bundle>
 
   <extensions defaultExtensionNs="com.intellij">

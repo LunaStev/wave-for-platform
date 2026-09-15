@@ -66,36 +66,25 @@
     <orderEntry type="module" module-name="intellij.platform.vcs.impl.shared" />
     <orderEntry type="module" module-name="intellij.platform.editor.ex" />
     <orderEntry type="module" module-name="intellij.idea.community.customization" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.java.execution.impl" />
     <orderEntry type="module" module-name="intellij.platform.diff" />
     <orderEntry type="module" module-name="intellij.platform.usageView" />
-    <orderEntry type="module" module-name="intellij.java.debugger.impl" />
     <orderEntry type="module" module-name="intellij.java.rt" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.ide" />
-    <orderEntry type="module" module-name="intellij.java.i18n" exported="" />
     <orderEntry type="module" module-name="intellij.java.compiler.impl" />
     <orderEntry type="module" module-name="intellij.java.compiler.instrumentationUtil" />
     <orderEntry type="module" module-name="intellij.java.langInjection" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.platform.workspace.storage" scope="TEST" />
     <orderEntry type="module" module-name="intellij.xml.langInjection" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.junit" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.testng" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.java.guiForms.designer" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.eclipse" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.java.execution" />
     <orderEntry type="module" module-name="intellij.platform.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.java.indexing" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.externalSystem" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.externalSystem.impl" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.junit.rt" scope="TEST" />
     <orderEntry type="module" module-name="intellij.properties.psi" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.java.decompiler" scope="TEST" />
     <orderEntry type="module" module-name="intellij.regexp" scope="TEST" />
     <orderEntry type="module" module-name="intellij.spellchecker" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.util.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.smRunner" scope="TEST" />
     <orderEntry type="library" scope="TEST" name="easymock" level="project" />
-    <orderEntry type="module" module-name="intellij.groovy" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.lang.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.ide.internal" scope="TEST" />
     <orderEntry type="module" module-name="intellij.libraries.mockito" scope="TEST" />
@@ -113,7 +102,6 @@
     <orderEntry type="module" module-name="intellij.copyright" scope="TEST" />
     <orderEntry type="module" module-name="intellij.jvm.analysis.impl" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.lvcs.impl" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.java.coverage" exported="" />
     <orderEntry type="module" module-name="intellij.java.backend" exported="" />
     <orderEntry type="module" module-name="intellij.java.frontend" exported="" />
     <orderEntry type="module" module-name="intellij.platform.workspace.jps" scope="TEST" />
@@ -152,10 +140,8 @@
     <orderEntry type="module" module-name="intellij.platform.util.ui" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.util.ex" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.navbar.testFramework" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.java.unscramble" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.threadDumpParser" scope="TEST" />
     <orderEntry type="module" module-name="intellij.libraries.asm" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.gradle" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.todo" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.statistics.testFramework" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.searchEverywhere" scope="TEST" />
@@ -177,7 +163,6 @@
     <orderEntry type="library" scope="TEST" name="jetCheck" level="project" />
     <orderEntry type="module" module-name="intellij.java.guiForms.rt" />
     <orderEntry type="module" module-name="intellij.java.testFramework.backend" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.groovy.live.templates" scope="TEST" />
     <orderEntry type="module" module-name="intellij.java.copyright" scope="TEST" />
     <orderEntry type="module" module-name="intellij.libraries.kotlinx.collections.immutable" scope="TEST" />
     <orderEntry type="module" module-name="intellij.libraries.kotlinx.serialization.core" />
@@ -185,8 +170,6 @@
     <orderEntry type="module" module-name="intellij.platform.locking.impl" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.smRunner.tests" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.testRunner" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.java.featuresTrainer" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.featuresTrainer" scope="TEST" />
     <orderEntry type="module" module-name="intellij.libraries.junit4" scope="TEST" />
     <orderEntry type="module" module-name="intellij.libraries.junit5.params" scope="TEST" />
   </component>

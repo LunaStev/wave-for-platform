@@ -20,7 +20,6 @@ jvm_library(
     visibility = ["//visibility:public"],
     deps = [
         # do not sort,
-        "//java/execution/openapi:java-execution",
         "//platform/core-api:core",
         "//platform/editor-ui-api:editor-ui",
         "//platform/execution",
@@ -47,7 +46,6 @@ jvm_library(
     runtime_deps = [
         # do not sort,
         ":vcs",
-        "//java/execution/openapi:java-execution_test_lib",
         "//platform/core-api:core_test_lib",
         "//platform/editor-ui-api:editor-ui_test_lib",
         "//platform/execution:execution_test_lib",

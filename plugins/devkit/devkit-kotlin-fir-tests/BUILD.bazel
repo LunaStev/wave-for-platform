@@ -112,8 +112,6 @@ jvm_library(
         "//platform/lang-core:lang-core_test_lib",
         "//platform/lang-api:lang",
         "//platform/lang-api:lang_test_lib",
-        "//plugins/java-i18n",
-        "//plugins/java-i18n:java-i18n_test_lib",
         "//plugins/properties/properties-psi-api:psi",
         "//plugins/properties/properties-psi-api:psi_test_lib",
         "//platform/testRunner",

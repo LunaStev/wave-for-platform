@@ -20,13 +20,8 @@
   <xi:include href="searching-base.xml"/>
   <xi:include href="statistics.xml"/>
   <xi:include href="light-classes.xml"/>
-  <xi:include href="parcelize.k2.xml"/>
-  <xi:include href="jvm-debugger.xml"/>
-  <xi:include href="jvm-debugger-evaluation.xml"/>
   <xi:include href="dep-spellchecker.xml"/>
   <xi:include href="scripting-v1.xml"/>
-  <xi:include href="native.xml"/>
-  <xi:include href="native-k2.xml"/>
   <xi:include href="facets-base.xml"/>
   <xi:include href="jvm.xml"/>
   <xi:include href="searching-k2.xml"/>
@@ -65,7 +60,6 @@
 
   <extensions defaultExtensionNs="com.intellij">
     <resolveScopeEnlarger implementation="org.jetbrains.kotlin.idea.base.analysis.builtins.KotlinBuiltInsResolveScopeEnlarger" />
-
 
     <lang.parserDefinition language="kotlin" implementationClass="org.jetbrains.kotlin.idea.base.analysisApiPlatform.IDEKotlinK2KotlinParserDefinition"/>
 
@@ -139,13 +133,11 @@
                     interface="org.jetbrains.kotlin.idea.base.projectStructure.KotlinResolveScopeEnlarger"/>
   </extensionPoints>
 
-
   <extensions defaultExtensionNs="com.intellij">
     <library.type implementation="org.jetbrains.kotlin.idea.base.platforms.library.JSLibraryType"/>
     <library.type implementation="org.jetbrains.kotlin.idea.base.platforms.library.WasmJsLibraryType"/>
     <library.type implementation="org.jetbrains.kotlin.idea.base.platforms.library.WasmWasiLibraryType"/>
   </extensions>
-
 
   <extensions defaultExtensionNs="com.intellij">
     <iconProvider implementation="org.jetbrains.kotlin.idea.FirKotlinIconProvider"/>
@@ -154,7 +146,6 @@
                     serviceImplementation="org.jetbrains.kotlin.idea.vfilefinder.IdeVirtualFileFinderFactory"/>
 
     <postStartupActivity implementation="org.jetbrains.kotlin.idea.PluginStartupActivity"/>
-    <backgroundPostStartupActivity implementation="org.jetbrains.kotlin.idea.update.KotlinPluginUpdateCheckerStartActivity"/>
 
     <projectService serviceImplementation="org.jetbrains.kotlin.idea.migration.KotlinMigrationProjectService"/>
 
@@ -178,9 +169,6 @@
   <extensions defaultExtensionNs="com.intellij">
     <buildProcess.parametersProvider implementation="org.jetbrains.kotlin.idea.jvm.shared.compiler.configuration.KotlinBuildProcessParametersProvider"/>
 
-    <configurationType implementation="org.jetbrains.kotlin.idea.run.KotlinRunConfigurationType"/>
-    <runConfigurationProducer implementation="org.jetbrains.kotlin.idea.run.KotlinRunConfigurationProducer" id="kotlinMain"/>
-
     <localInspection language="kotlin" implementationClass="org.jetbrains.kotlin.idea.configuration.inspections.KaptKotlinCompilerPluginInspection"
                      shortName="KaptKotlinCompilerPlugin"
                      key="kapt.kotlin.compiler.plugin.inspection.problem.display.name"
@@ -190,46 +178,15 @@
 
   <content namespace="jetbrains">
     <module name="intellij.kotlin.base.analysis.platform"/>
-    <module name="intellij.kotlin.base.externalSystem"/>
     <module name="intellij.kotlin.analysis.platform"/>
     <module name="intellij.kotlin.codeInsight.base"/>
     <module name="intellij.kotlin.projectStructure"/>
     <module name="intellij.kotlin.scripting"/>
 
     <module name="intellij.kotlin.copyright"/>
-    <module name="intellij.kotlin.coverage"/>
-    <module name="intellij.kotlin.i18n"/>
     <module name="intellij.kotlin.git"/>
     <module name="intellij.kotlin.grazie"/>
-    <module name="intellij.kotlin.gradle.tooling"/>
-    <module name="intellij.kotlin.lombok"/>
-    <module name="intellij.kotlin.maven"/>
     <module name="intellij.kotlin.completion.ml"/>
-    <module name="intellij.kotlin.runConfigurations.junit"/>
-    <module name="intellij.kotlin.runConfigurations.testng"/>
-    <module name="intellij.kotlin.runConfigurations.jvm"/>
-
-    <module name="intellij.kotlin.gradle.gradle"/>
-    <module name="intellij.kotlin.gradle.codeInsight.common"/>
-    <module name="intellij.kotlin.gradle.codeInsight.groovy"/>
-    <module name="intellij.kotlin.gradle.codeInsight.toml"/>
-    <module name="kotlin.gradle.gradle-java"/>
-    <module name="intellij.kotlin.gradle.java"/>
-    <module name="kotlin.gradle.scripting.shared"/>
-    <module name="intellij.kotlin.gradle.scripting"/>
-
-    <module name="intellij.kotlin.onboarding"/>
-    <module name="intellij.kotlin.onboarding.gradle"/>
-    <module name="intellij.kotlin.onboarding.maven"/>
-
-    <module name="intellij.kotlin.projectWizard.idea"/>
-    <module name="intellij.kotlin.projectWizard.gradle"/>
-    <module name="intellij.kotlin.projectWizard.maven"/>
-    <module name="intellij.kotlin.projectWizard.compose"/>
-
-    <module name="intellij.kotlin.featuresTrainer"/>
-
-    <module name="intellij.kotlin.jvm.decompiler"/>
 
     <module name="kotlin.jvm.shared"/>
     <module name="intellij.kotlin.jvm"/>
@@ -249,8 +206,6 @@
 
     <module name="intellij.kotlin.completion.impl"/>
 
-    <module name="intellij.kotlin.jvm.debugger.evaluation"/>
-
     <module name="intellij.kotlin.searching"/>
     <module name="intellij.kotlin.refactorings"/>
     <module name="intellij.kotlin.refactorings.rename"/>
@@ -263,31 +218,13 @@
 
     <module name="intellij.kotlin.compilerReferenceIndex"/>
 
-    <module name="intellij.kotlin.compilerPlugins.assignment.fixes"/>
     <module name="intellij.kotlin.compilerPlugins.scripting"/>
-    <module name="intellij.kotlin.compilerPlugins.support.gradle"/>
-    <module name="intellij.kotlin.compilerPlugins.support.maven"/>
-    <module name="intellij.kotlin.compilerPlugins.allopen.maven"/>
-    <module name="intellij.kotlin.compilerPlugins.noarg.maven"/>
-    <module name="intellij.kotlin.compilerPlugins.noarg.gradle"/>
-    <module name="intellij.kotlin.compilerPlugins.samWithReceiver.maven"/>
-    <module name="intellij.kotlin.compilerPlugins.kapt"/>
     <module name="intellij.kotlin.compilerPlugins.serialization"/>
-    <module name="intellij.kotlin.compilerPlugins.serialization.gradle"/>
-    <module name="intellij.kotlin.compilerPlugins.serialization.maven"/>
-    <module name="intellij.kotlin.compilerPlugins.dataframe.maven"/>
-    <module name="intellij.kotlin.compilerPlugins.lombok.maven"/>
-    <module name="intellij.kotlin.compilerPlugins.lombok.gradle"/>
-    <module name="intellij.kotlin.compilerPlugins.assignment.maven"/>
-    <module name="intellij.kotlin.compilerPlugins.assignment.gradle"/>
-    <module name="intellij.kotlin.compilerPlugins.powerAssert.gradle"/>
 
     <module name="intellij.kotlin.injection"/>
     <module name="kotlin.base.injection"/>
 
-    <module name="intellij.kotlin.j2k"/>
     <module name="intellij.kotlin.internal"/>
 
-    <module name="intellij.kotlin.performanceExtendedPlugin"/>
   </content>
 </idea-plugin>

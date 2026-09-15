@@ -1,0 +1,100 @@
+load("@community//build:tests-options.bzl", "jps_test")
+load("@rules_jvm//:jvm.bzl", "jvm_library")
+
+### auto-generated section `build intellij.wave` start
+
+jvm_library(
+    name = "wave",
+    srcs = glob(
+        [
+            "src/main/kotlin/**/*.kt",
+            "src/main/kotlin/**/*.java",
+            "src/main/kotlin/**/*.form",
+        ],
+        allow_empty = True,
+    ),
+    module_name = "intellij.wave",
+    resource_strip_prefix = "src/main/resources",
+    resources = glob(
+        ["src/main/resources/**/*"],
+    ),
+    visibility = ["//visibility:public"],
+    deps = [
+        # do not sort,
+        "@lib//:kotlin-stdlib",
+        "//platform/core-api:core",
+        "//platform/core-impl",
+        "//platform/core-ui",
+        "//platform/editor/shared:editor",
+        "//platform/platform-api:ide",
+        "//platform/lang-api:lang",
+        "//platform/lsp",
+        "//platform/execution",
+        "//platform/projectModel-api:projectModel",
+        "//platform/util",
+        "//platform/util:util-ui",
+    ],
+)
+
+jvm_library(
+    name = "wave_test_lib",
+    testonly = True,
+    srcs = glob(
+        [
+            "src/test/kotlin/**/*.kt",
+            "src/test/kotlin/**/*.java",
+            "src/test/kotlin/**/*.form",
+        ],
+        allow_empty = True,
+    ),
+    associates = [":wave"],
+    visibility = ["//visibility:public"],
+    deps = [
+        # do not sort,
+        "@lib//:kotlin-stdlib",
+        "//platform/core-api:core",
+        "//platform/core-api:core_test_lib",
+        "//platform/core-impl",
+        "//platform/core-impl:core-impl_test_lib",
+        "//platform/core-ui",
+        "//platform/core-ui:core-ui_test_lib",
+        "//platform/editor/shared:editor",
+        "//platform/editor/shared:editor_test_lib",
+        "//platform/platform-api:ide",
+        "//platform/platform-api:ide_test_lib",
+        "//platform/lang-api:lang",
+        "//platform/lang-api:lang_test_lib",
+        "//platform/lsp",
+        "//platform/lsp:lsp_test_lib",
+        "//platform/execution",
+        "//platform/execution:execution_test_lib",
+        "//platform/projectModel-api:projectModel",
+        "//platform/projectModel-api:projectModel_test_lib",
+        "//platform/util",
+        "//platform/util:util_test_lib",
+        "//platform/util:util-ui",
+        "//platform/util:util-ui_test_lib",
+        "//libraries/junit5",
+        "//libraries/junit5:junit5_test_lib",
+        "//platform/testFramework",
+        "//platform/testFramework:testFramework_test_lib",
+    ],
+)
+### auto-generated section `build intellij.wave` end
+
+### auto-generated section `iml intellij.wave` start
+exports_files(
+    [
+        "intellij.wave.iml",
+    ],
+    visibility = ["//visibility:public"],
+)
+### auto-generated section `iml intellij.wave` end
+
+### auto-generated section `test intellij.wave` start
+
+jps_test(
+    name = "wave_test",
+    runtime_deps = [":wave_test_lib"],
+)
+### auto-generated section `test intellij.wave` end

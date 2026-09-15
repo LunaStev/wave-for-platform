@@ -23,9 +23,7 @@ val MAVEN_ARTIFACTS_ADDITIONAL_MODULES: PersistentList<String> = persistentListO
   "intellij.platform.vcs.testFramework",
   "intellij.platform.externalSystem.testFramework",
   "intellij.platform.uast.testFramework",
-  "intellij.maven.testFramework",
   "intellij.tools.reproducibleBuilds.diff",
-  "intellij.space.java.jps",
 ) + JewelMavenArtifacts.STANDALONE.keys
 
 internal suspend fun createCommunityBuildContext(
@@ -63,8 +61,6 @@ open class IdeaCommunityProperties(private val communityHomeDir: Path) : JetBrai
     productLayout.buildAllCompatiblePlugins = false
     productLayout.pluginLayouts = CommunityRepositoryModules.COMMUNITY_REPOSITORY_PLUGINS + persistentListOf(
       JavaPluginLayout.javaPlugin(),
-      CommunityRepositoryModules.groovyPlugin(),
-      CommunityRepositoryModules.androidPlugin(allPlatforms = true),
     )
 
     productLayout.skipUnresolvedContentModules = true

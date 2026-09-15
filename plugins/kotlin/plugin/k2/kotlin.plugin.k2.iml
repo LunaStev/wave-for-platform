@@ -17,11 +17,8 @@
     <orderEntry type="module" module-name="intellij.kotlin.base.analysis.platform" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.base.codeInsight" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.base.compilerConfiguration" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.runConfigurations.junit" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.runConfigurations.testng" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.git" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.base.compilerConfiguration.ui" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.base.externalSystem" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.base.facet" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.highlighting" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.base.indices" scope="RUNTIME" />
@@ -43,38 +40,16 @@
     <orderEntry type="module" module-name="kotlin.completion.impl.shared" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.completion.impl" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.copyright" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.coverage" scope="RUNTIME" />
     <orderEntry type="module" module-name="kotlin.fir" scope="RUNTIME" />
     <orderEntry type="module" module-name="kotlin.fir.frontend-independent" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.formatter" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.gradle.codeInsight.common" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.gradle.codeInsight.groovy" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.gradle.codeInsight.toml" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.gradle.gradle" scope="RUNTIME" />
-    <orderEntry type="module" module-name="kotlin.gradle.gradle-java" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.gradle.java" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.gradle.tooling" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.gradle.tooling.impl" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.grazie" scope="RUNTIME" />
     <orderEntry type="module" module-name="kotlin.inspections" scope="RUNTIME" />
-    <orderEntry type="module" module-name="kotlin.j2k.shared" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.j2k" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.lombok" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.maven" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.migration" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.completion.ml" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.native" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.plugin.updater" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.projectWizard.core" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.projectWizard.cli" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.projectWizard.idea" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.projectWizard.gradle" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.projectWizard.maven" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.projectWizard.compose" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.preferences" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.projectConfiguration" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.compilerReferenceIndex" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.runConfigurations.jvm" scope="RUNTIME" />
     <orderEntry type="module" module-name="kotlin.scripting" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.spellchecker" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.uast" scope="RUNTIME" />
@@ -92,10 +67,6 @@
     <orderEntry type="module" module-name="intellij.kotlin.codeInsight.liveTemplates" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.codeInsight.postfixTemplates" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.codeInsight.lineMarkers" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.jvm.debugger.base.util" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.jvm.debugger.core" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.jvm.debugger.coroutines" scope="RUNTIME" />
-    <orderEntry type="module" module-name="kotlin.jvm-debugger.evaluation" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.navigation" scope="TEST" />
     <orderEntry type="module" module-name="intellij.kotlin.refactorings.rename" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.codeInsight" scope="RUNTIME" />
@@ -105,54 +76,24 @@
     <orderEntry type="module" module-name="intellij.kotlin.searching.base" />
     <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.support.bundled" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.support" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.assignment.fixes" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.assignment.gradle" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.assignment.maven" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.serialization" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.parcelize" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.dataframe.maven" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.codeInsight.structuralSearch" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.i18n" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.injection" scope="RUNTIME" />
     <orderEntry type="module" module-name="kotlin.base.injection" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.onboarding" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.onboarding.gradle" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.onboarding.maven" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.base.codeInsight.minimal" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.highlighting.minimal" />
     <orderEntry type="module" module-name="intellij.kotlin.formatter.minimal" />
     <orderEntry type="module" module-name="intellij.kotlin.ide" />
     <orderEntry type="module" module-name="intellij.kotlin.codeInsight.fixes" scope="RUNTIME" />
-    <orderEntry type="module" module-name="kotlin.jsr223" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.performanceExtendedPlugin" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.jvm.debugger.evaluation" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.featuresTrainer" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.internal" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.scripting" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.base.scripting.shared" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.base.serialization" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.allopen.maven" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.kapt" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.lombok.gradle" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.lombok.maven" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.noarg.gradle" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.noarg.maven" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.parcelize.common" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.powerAssert.gradle" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.samWithReceiver.maven" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.scripting" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.serialization.gradle" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.serialization.maven" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.support.gradle" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.support.maven" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.jvm.debugger.eval4j" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.jvm.decompiler" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.uast.base" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.uast.idea.base" scope="RUNTIME" />
     <orderEntry type="module" module-name="kotlin.jvm.shared" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.jvm" scope="RUNTIME" />
-    <orderEntry type="module" module-name="kotlin.gradle.scripting.shared" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.gradle.scripting" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.kotlin.references" scope="RUNTIME" />
   </component>
 </module>

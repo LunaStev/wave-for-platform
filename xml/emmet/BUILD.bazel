@@ -123,7 +123,7 @@ jvm_provided_library(
 )
 
 jvm_provided_library(
-    name = "fleet_rpc_provided",
+    name = "platform-shared_rpc_provided",
     lib = "//platform-shared/rpc",
 )
 
@@ -178,7 +178,7 @@ jvm_library(
         ":platform_remote-topics_rpc-topics_provided",
         ":platform_project_project_provided",
         ":libraries_kotlinx_serialization_core_provided",
-        ":fleet_rpc_provided",
+        ":platform-shared_rpc_provided",
         ":platform_kernel_rpc_provided",
     ],
 )

@@ -16,22 +16,16 @@
     <orderEntry type="module" module-name="intellij.platform.bootstrap" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.java.compiler.impl" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.java.compiler" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.java.debugger.impl" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.java.debugger" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.platform.diff" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.platform.diff.impl" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.xml.dom.impl" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.xml.dom" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.java.execution.impl" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.java.execution" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.platform.extensions" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.java.guiForms.rt" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.platform.icons" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.java.ui" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.java.impl" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.java.rt" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.jsp" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.jsp.spi" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.platform.lang" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.platform.lang.impl" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.platform.lvcs" scope="RUNTIME" />
@@ -45,7 +39,6 @@
     <orderEntry type="module" module-name="intellij.java.ide.resources" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.java.ide.customization" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.spellchecker" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.jsp.base" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.java.testFramework" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.platform.testRunner" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.platform.usageView" scope="RUNTIME" />
@@ -123,18 +116,11 @@
     <orderEntry type="module" module-name="intellij.performanceTesting" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.smart.update" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.html.tools" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.platform.ide.newUiOnboarding" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.platform.ide.newUsersOnboarding" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.kotlin.onboarding.promoter" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.execution.process.elevation" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.vcs.gitlab.yaml" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.yaml" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.platform.compose" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.json" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.java.terminal.tests" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.java.terminal.shared" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.java.terminal.backend" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.java.terminal.frontend" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.jvm.analysis.impl" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.vcs.github.json" scope="RUNTIME" />
     <orderEntry type="module" module-name="intellij.vcs.github.tracker" scope="RUNTIME" />

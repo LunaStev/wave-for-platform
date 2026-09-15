@@ -28,23 +28,14 @@
 
   <content namespace="jetbrains">
     <module name="intellij.devkit.core"/>
-    <module name="intellij.devkit.compose"/>
-    <module name="intellij.devkit.gradle"/>
-    <module name="intellij.devkit.gradle.tooling"/>
-    <module name="intellij.devkit.i18n"/>
-    <module name="intellij.devkit.intelliLang"/>
     <module name="intellij.devkit.themes"/>
-    <module name="intellij.devkit.uiDesigner"/>
     <module name="intellij.devkit.uiDsl"/>
     <module name="intellij.devkit.workspaceModel"/>
     <module name="intellij.devkit.workspaceModel.k2"/>
     <module name="intellij.kotlin.devkit"/>
     <module name="intellij.kotlin.devkit.k2"/>
-    <module name="intellij.devkit.debugger"/>
-    <module name="intellij.devkit.stacktrace"/>
     <module name="intellij.devkit.apiDump"/>
     <module name="intellij.devkit.apiDump.lang"/>
-    <module name="intellij.devkit.scaffolding"/>
     <module name="intellij.devkit.modules"/>
     <module name="intellij.devkit.mcp"/>
     <module name="intellij.devkit.qodana"/>

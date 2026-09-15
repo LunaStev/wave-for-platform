@@ -23,40 +23,22 @@ val IDEA_BUNDLED_PLUGINS: PersistentList<String> = DEFAULT_BUNDLED_PLUGINS + per
   "intellij.json",
   "intellij.yaml",
   "intellij.html.tools",
-  "intellij.repository.search",
-  "intellij.maven.plugin",
-  "intellij.gradle.plugin",
-  "intellij.android.gradle.declarative.lang.ide",
-  "intellij.android.gradle.dsl",
-  "intellij.gradle.java.plugin",
   "intellij.vcs.git",
   "intellij.vcs.git.commit.modal",
   "intellij.vcs.github",
   "intellij.vcs.gitlab",
-  "intellij.groovy.scripting",
-  "intellij.groovy",
-  "intellij.groovy.live.templates",
-  "intellij.junit",
-  "intellij.testng",
-  "intellij.java.i18n",
-  "intellij.java.byteCodeViewer",
-  "intellij.java.coverage",
-  "intellij.java.decompiler",
-  "intellij.eclipse",
   "intellij.sh.plugin",
   "intellij.markdown",
   "intellij.mermaid",
   "intellij.mcpserver",
   "intellij.webp",
   "intellij.grazie",
-  "intellij.featuresTrainer",
   "intellij.toml",
   KotlinPluginBuilder.MAIN_KOTLIN_PLUGIN_MODULE,
   "intellij.keymap.eclipse",
   "intellij.keymap.visualStudio",
   "intellij.keymap.netbeans",
   "intellij.performanceTesting",
-  "intellij.compose.ide.plugin",
 )
 
 val CE_CLASS_VERSIONS: Map<String, String> = mapOf(
@@ -67,25 +49,11 @@ val CE_CLASS_VERSIONS: Map<String, String> = mapOf(
   "lib/util_rt.jar" to "1.8",
   "lib/util-8.jar" to "1.8",
   "lib/external-system-rt.jar" to "1.8",
-  "plugins/java-coverage/lib/java-coverage-rt.jar" to "1.8",
-  "plugins/junit/lib/junit-rt.jar" to "1.8",
-  "plugins/junit/lib/junit5-rt.jar" to "1.8",
-  "plugins/gradle-plugin/lib/gradle-tooling-extension-api.jar" to "1.8",
-  "plugins/gradle-plugin/lib/gradle-tooling-extension-impl.jar" to "1.8",
-  "plugins/maven-plugin/lib/maven-server.jar" to "1.8",
-  "plugins/maven-plugin/lib/intellij.maven.server3/maven3-server-common.jar" to "1.8",
-  "plugins/maven-plugin/lib/intellij.maven.server3/maven3-server.jar" to "1.8",
-  "plugins/maven-plugin/lib/artifact-resolver-m31.jar" to "1.8",
-  "plugins/java/lib/sa-jdwp" to "",  // ignored
-  "plugins/java/lib/rt/debugger-agent.jar" to "1.7",
-  "plugins/Groovy/lib/groovy-rt.jar" to "1.8",
-  "plugins/Groovy/lib/groovy-constants-rt.jar" to "1.8",
 )
 
 fun configurePropertiesForAllEditionsOfIntelliJIdea(properties: JetBrainsProductProperties) {
   properties.productLayout.addPlatformSpec { layout, _ ->
     layout.withModule("intellij.java.ide.resources")
-    layout.withModule("intellij.jsp.base")
 
     //todo currently intellij.platform.testFramework included into idea.jar depends on this jar so it cannot be moved to java plugin
     layout.withModule("intellij.java.rt", "idea_rt.jar")

@@ -7,7 +7,6 @@
     <module name="intellij.platform.debugger.impl"/>
     <module name="intellij.dev.codeInsight"/>
     <module name="intellij.dev.psiViewer"/>
-    <module name="intellij.java.debugger.impl"/>
     <module name="intellij.java.psi"/>
   </dependencies>
   <!-- endregion -->

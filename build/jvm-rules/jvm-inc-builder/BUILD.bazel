@@ -88,3 +88,12 @@ string_list_flag(
 )
 
 ### skip generation section `build intellij.tools.build.bazel.jvmIncBuilder`
+
+string_list_flag(
+    name = "low-memory-jvm_flags",
+    build_setting_default = get_jvm_flags([
+        "-Xmx2g",
+        "-XX:ActiveProcessorCount=2",
+    ]),
+    visibility = ["//visibility:public"],
+)

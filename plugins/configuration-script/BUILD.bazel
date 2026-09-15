@@ -141,8 +141,6 @@ jvm_library(
         # do not sort,
         "//plugins/configuration-script",
         "//plugins/configuration-script:configuration-script_test_lib",
-        "//java/execution/impl",
-        "//java/execution/impl:impl_test_lib",
         "@lib//:kotlin-stdlib",
         "//platform/lang-core",
         "//platform/lang-core:lang-core_test_lib",

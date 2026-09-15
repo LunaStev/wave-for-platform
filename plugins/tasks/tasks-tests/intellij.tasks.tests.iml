@@ -18,7 +18,6 @@
     <orderEntry type="module" module-name="intellij.tasks" />
     <orderEntry type="module" module-name="intellij.tasks.core" scope="TEST" />
     <orderEntry type="module" module-name="intellij.tasks.java" />
-    <orderEntry type="module" module-name="intellij.java.debugger.impl" scope="TEST" />
     <orderEntry type="module" module-name="intellij.tasks.compatibility" />
     <orderEntry type="module" module-name="intellij.platform.vcs" />
     <orderEntry type="library" scope="TEST" name="JUnit4" level="project" />
@@ -29,13 +28,11 @@
     <orderEntry type="module" module-name="intellij.platform.vcs.impl" />
     <orderEntry type="module" module-name="intellij.libraries.xml.rpc" />
     <orderEntry type="module" module-name="intellij.spellchecker" scope="RUNTIME" />
-    <orderEntry type="module" module-name="intellij.java.debugger" />
     <orderEntry type="module" module-name="intellij.platform.debugger.impl" scope="TEST" />
     <orderEntry type="module" module-name="intellij.libraries.gson" />
     <orderEntry type="module" module-name="intellij.tasks.jira" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.testFramework" scope="TEST" />
     <orderEntry type="module" module-name="intellij.vcs.git.backend" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.vcs.hg" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.vcs.testFramework" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.tasks" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.tasks.impl" scope="TEST" />
@@ -57,6 +54,5 @@
     <orderEntry type="module" module-name="intellij.platform.concurrency" scope="TEST" />
     <orderEntry type="module" module-name="intellij.platform.lang.core" scope="TEST" />
     <orderEntry type="module" module-name="intellij.vcs.git.backend.tests" scope="TEST" />
-    <orderEntry type="module" module-name="intellij.vcs.hg.tests" scope="TEST" />
   </component>
 </module>

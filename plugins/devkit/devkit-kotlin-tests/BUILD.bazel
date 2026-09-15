@@ -72,8 +72,6 @@ jvm_library(
         "//plugins/devkit/devkit-java-tests:java-tests_test_lib",
         "//plugins/properties/properties-psi-api:psi",
         "//plugins/properties/properties-psi-api:psi_test_lib",
-        "//plugins/java-i18n",
-        "//plugins/java-i18n:java-i18n_test_lib",
         "//java/openapi:java",
         "//java/openapi:java_test_lib",
         "//java/java-psi-api:psi",

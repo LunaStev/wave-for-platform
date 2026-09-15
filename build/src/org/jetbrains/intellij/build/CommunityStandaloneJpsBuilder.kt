@@ -85,24 +85,10 @@ suspend fun buildCommunityStandaloneJpsBuilder(
   layout.withModule("intellij.java.rt", "idea_rt.jar")
   layout.withModule("intellij.platform.jps.build.javac.rt", "jps-builders-6.jar")
 
-  // layout of groovy jars must be consistent with GroovyBuilder.getGroovyRtRoots method
-  layout.withModule("intellij.libraries.groovy", "groovy.jar")
-  layout.withModule("intellij.groovy.jps", "groovy-jps.jar")
-  layout.withModule("intellij.groovy.rt", "groovy-rt.jar")
-  layout.withModule("intellij.groovy.rt.classLoader", "groovy-rt-class-loader.jar")
-  layout.withModule("intellij.groovy.constants.rt", "groovy-constants-rt.jar")
-  layout.withModule("intellij.java.guiForms.jps", "java-guiForms-jps.jar")
-
-  layout.withModule("intellij.maven.jps", "maven-jps.jar")
   layout.withModule("intellij.java.aetherDependencyResolver", "aether-dependency-resolver.jar")
-  layout.withModule("intellij.gradle.jps", "gradle-jps.jar")
 
-  layout.withModule("intellij.eclipse.jps", "eclipse-jps.jar")
-  layout.withModule("intellij.eclipse.common", "eclipse-common.jar")
   layout.withModule("intellij.devkit.jps", "devkit-jps.jar")
   layout.withModule("intellij.java.langInjection.jps", "java-langInjection-jps.jar")
-
-  layout.withModule("intellij.space.java.jps", "space-java-jps.jar")
 
   for (it in listOf(
     "jna",
@@ -118,8 +104,6 @@ suspend fun buildCommunityStandaloneJpsBuilder(
   )) {
     layout.withProjectLibrary(it, LibraryPackMode.STANDALONE_MERGED)
   }
-
-  layout.withModule("intellij.ant.jps", "ant-jps.jar")
 
   layoutCustomizer(layout)
 

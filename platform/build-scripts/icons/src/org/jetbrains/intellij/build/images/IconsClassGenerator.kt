@@ -92,10 +92,6 @@ internal open class IconsClassGenerator(
     modules.find { it.name == "intellij.platform.jewel.ui" } ?: error("Can't load module 'Jewel UI'")
   }
 
-  private val androidArtworkComposeModule: JpsModule by lazy {
-    modules.find { it.name == "intellij.android.artwork-compose" } ?: error("Can't load module 'android.artwork-compose'")
-  }
-
   internal open fun getIconClassInfo(module: JpsModule, moduleConfig: IntellijIconClassGeneratorModuleConfig?): List<IconClassInfo> {
     when (module.name) {
       "intellij.platform.icons" -> {
@@ -114,32 +110,6 @@ internal open class IconsClassGenerator(
 
         val (allImages, mappings) = imageCollector.mergeImages(images, module)
         return listOf(IconClassInfo(packageName = packageName, className = className, outFile = outFile, jewelOutFile = jewelOutFile, images = allImages, mappings = mappings, jewelPackageName = jewelPackageName))
-      }
-      "intellij.android.artwork" -> {
-        val packageName = "icons"
-
-        val sourceRoot = module.getSourceRoots(JavaSourceRootType.SOURCE).single().file.absolutePath
-        val composeSourceRoot = androidArtworkComposeModule.getSourceRoots(JavaSourceRootType.SOURCE).single().file.absolutePath
-        val resourceRoot = module.getSourceRoots(JavaResourceRootType.RESOURCE).single()
-        // avoid a merge conflict - do not transform StudioIcons to a nested class of AndroidIcons
-        var imageCollector = ImageCollector(projectHome, moduleConfig = moduleConfig)
-        val imagesA = imageCollector.collectSubDir(resourceRoot, "icons", includePhantom = true)
-        imageCollector.printUsedIconRobots()
-
-        imageCollector = ImageCollector(projectHome, moduleConfig = moduleConfig)
-        val imagesS = imageCollector.collectSubDir(resourceRoot, "studio/icons", includePhantom = true)
-        imageCollector.printUsedIconRobots()
-        imageCollector = ImageCollector(projectHome, moduleConfig = moduleConfig)
-        val imagesI = imageCollector.collectSubDir(resourceRoot, "studio/illustrations", includePhantom = true)
-        imageCollector.printUsedIconRobots()
-
-        val (studioImages, studioMappings) = imageCollector.mergeImages(imagesS, module)
-
-        return listOf(
-          IconClassInfo(packageName, "AndroidIcons", Path.of(sourceRoot, "icons/AndroidIcons.java"), Path.of(composeSourceRoot, "icons/AndroidIconsCompose.java"), imagesA),
-          IconClassInfo(packageName, "StudioIcons", Path.of(sourceRoot, "icons/StudioIcons.java"), Path.of(composeSourceRoot, "icons/StudioIconsCompose.java"), studioImages, studioMappings),
-          IconClassInfo(packageName, "StudioIllustrations", Path.of(sourceRoot, "icons/StudioIllustrations.java"), Path.of(composeSourceRoot, "icons/StudioIllustrationsCompose.java"), imagesI),
-        )
       }
       else -> {
         val imageCollector = ImageCollector(projectHome, moduleConfig = moduleConfig)

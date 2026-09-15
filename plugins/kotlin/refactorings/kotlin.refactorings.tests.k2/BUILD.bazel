@@ -148,8 +148,6 @@ jvm_library(
         "//java/openapi:java",
         "//java/openapi:java_test_lib",
         "@lib//:kotlinc-analysis-api-platform-interface",
-        "//plugins/kotlin/base/external-build-system:kotlin-base-externalSystem",
-        "//plugins/kotlin/base/external-build-system:kotlin-base-externalSystem_test_lib",
         "//platform/util/jdom",
         "//platform/util/jdom:jdom_test_lib",
         "//java/java-indexing-api:indexing",

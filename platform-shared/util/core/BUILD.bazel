@@ -12,7 +12,7 @@ create_kotlinc_options(
 )
 
 jvm_provided_library(
-    name = "fleet_util_multiplatform_provided",
+    name = "platform-shared_util_multiplatform_provided",
     lib = "//platform-shared/util/multiplatform",
 )
 
@@ -55,7 +55,7 @@ jvm_library(
         "//platform-shared/reporting/shared",
         "//platform-shared/multiplatform.shims",
         "//platform-shared/util/serialization",
-        ":fleet_util_multiplatform_provided",
+        ":platform-shared_util_multiplatform_provided",
     ],
 )
 

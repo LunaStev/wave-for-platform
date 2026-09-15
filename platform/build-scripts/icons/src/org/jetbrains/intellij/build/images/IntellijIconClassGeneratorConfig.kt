@@ -28,8 +28,6 @@ class IntellijIconClassGeneratorConfig : IconClasses() {
       "intellij.libraries.microba" -> IntellijIconClassGeneratorModuleConfig(
         excludePackages = listOf("com.michaelbaranov.microba.calendar.resource"),
       )
-      // force generating "Groovy" inner class to preserve backward compatiblity
-      "intellij.groovy.psi" -> IntellijIconClassGeneratorModuleConfig(className = "JetgroovyIcons", iconDirectory = "icons")
       "intellij.clouds.docker" -> IntellijIconClassGeneratorModuleConfig(
         className = "DockerIcons",
         packageName = "com.intellij.docker"
@@ -69,34 +67,10 @@ class IntellijIconClassGeneratorConfig : IconClasses() {
         packageName = "com.intellij.spring",
       )
 
-      "intellij.python.parser" -> IntellijIconClassGeneratorModuleConfig(
-        className = "PythonParserIcons",
-        packageName = "com.jetbrains.python.parser.icons",
-        iconDirectory = "icons/com/jetbrains/python/parser",
-      )
-
-      "intellij.python.psi" -> IntellijIconClassGeneratorModuleConfig(
-        className = "PythonPsiApiIcons",
-        packageName = "com.jetbrains.python.psi.icons",
-        iconDirectory = "icons/com/jetbrains/python/psi",
-      )
-
       "intellij.python" -> IntellijIconClassGeneratorModuleConfig(
         className = "PythonUltimateIcons",
         packageName = "com.intellij.python.pro.icons",
         iconDirectory = "icons/com/intellij/python/pro",
-      )
-
-      "intellij.python.community.impl" -> IntellijIconClassGeneratorModuleConfig(
-        className = "PythonIcons",
-        packageName = "com.jetbrains.python.icons",
-        iconDirectory = "icons/com/jetbrains/pythonCore",
-      )
-
-      "intellij.notebooks.jupyter.core" -> IntellijIconClassGeneratorModuleConfig(
-        className = "JupyterCoreIcons",
-        packageName = "com.intellij.notebooks.jupyter.core.icons",
-        iconDirectory = "icons/org.jetbrains.plugins.notebooks.jupyter",
       )
 
       "intellij.spring.mvc.core" -> IntellijIconClassGeneratorModuleConfig(
@@ -198,12 +172,6 @@ class IntellijIconClassGeneratorConfig : IconClasses() {
       "intellij.flyway.core" -> IntellijIconClassGeneratorModuleConfig(
         className = "FlywayIcons",
         packageName = "com.intellij.flyway.core"
-      )
-
-      "intellij.android.ml-api" -> IntellijIconClassGeneratorModuleConfig(
-        className = "AndroidAIPluginIcons",
-        packageName = "com.android.tools.idea.studiobot.icons",
-        iconDirectory = "icons"
       )
 
       "intellij.platform.vcs.dvcs.impl.shared" -> IntellijIconClassGeneratorModuleConfig(

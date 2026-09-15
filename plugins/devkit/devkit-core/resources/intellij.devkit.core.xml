@@ -4,8 +4,6 @@
     <plugin id="com.intellij.properties"/>
     <module name="intellij.java.backend"/>
     <module name="intellij.java.aetherDependencyResolver"/>
-    <module name="intellij.java.debugger.impl"/>
-    <module name="intellij.java.execution.impl"/>
     <module name="intellij.java.psi"/>
     <module name="intellij.java.syntax"/>
     <module name="intellij.java.ui"/>
@@ -49,9 +47,6 @@
     <httpRequestHandler implementation="org.jetbrains.idea.devkit.requestHandlers.HttpDebugListener"/>
     <httpRequestHandler implementation="org.jetbrains.idea.devkit.requestHandlers.BuildHttpRequestHandler"/>
 
-    <junitPatcher implementation="org.jetbrains.idea.devkit.run.JUnitDevKitPatcher"/>
-    <runConfigurationExtension implementation="org.jetbrains.idea.devkit.run.DevKitApplicationPatcher"/>
-    <runConfigurationExtension implementation="org.jetbrains.idea.devkit.run.IdeStarterRunConfigurationExtension"/>
     <compiler.buildTargetScopeProvider implementation="org.jetbrains.idea.devkit.build.PluginModuleBuildScopeProvider"/>
 
     <registryKey key="devkit.generate.intellij.module.repository" defaultValue="true"
@@ -866,7 +861,6 @@
     <projectSettings service="org.jetbrains.idea.devkit.inspections.missingApi.resolve.LibrariesWithIntellijClassesSetting"/>
     <applicationSettings service="org.jetbrains.idea.devkit.actions.updateFromSources.UpdateFromSourcesSettings"/>
 
-    <runConfigurationExtension implementation="org.jetbrains.idea.devkit.dcevm.DevkitDcevmCommandLinePatcher"/>
     <executor implementation="org.jetbrains.idea.devkit.dcevm.DevkitDcevmExecutor"/>
     <programRunner implementation="org.jetbrains.idea.devkit.dcevm.DevkitDcevmRunner"/>
   </extensions>

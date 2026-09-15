@@ -528,10 +528,7 @@ private fun buildImplicitTraversalBlockedSet(
   blockedOrSeen.add("fleet.backend")
   // Module intellij.featuresTrainer contains, so it is a plugin, but plugin must be not included in a platform
   // (chain: [intellij.pycharm.community, intellij.python.featuresTrainer])
-  blockedOrSeen.add("intellij.pycharm.community")
-  blockedOrSeen.add("intellij.python.featuresTrainer")
   blockedOrSeen.add("intellij.pycharm.ds")
-  blockedOrSeen.add("intellij.notebooks.visualization")
   return blockedOrSeen
 }
 

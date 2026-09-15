@@ -51,9 +51,6 @@ jvm_library(
         "//platform/external-system-impl:externalSystem-impl",
         "//platform/util:util-ui",
         "//platform/util/coroutines",
-        "//plugins/gradle",
-        "//plugins/kotlin/gradle/gradle",
-        "//plugins/maven",
     ],
 )
 
@@ -90,9 +87,6 @@ jvm_library(
         "//platform/external-system-impl:externalSystem-impl_test_lib",
         "//platform/util:util-ui_test_lib",
         "//platform/util/coroutines:coroutines_test_lib",
-        "//plugins/gradle:gradle_test_lib",
-        "//plugins/kotlin/gradle/gradle:gradle_test_lib",
-        "//plugins/maven:maven_test_lib",
     ],
 )
 ### auto-generated section `build intellij.kotlin.compilerReferenceIndex` end

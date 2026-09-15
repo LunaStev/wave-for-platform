@@ -1,12 +1,9 @@
 <idea-plugin package="org.jetbrains.kotlin.idea.search.refIndex" visibility="internal">
   <!-- region Generated dependencies - run `Generate Product Layouts` to regenerate -->
   <dependencies>
-    <module name="intellij.gradle"/>
     <module name="intellij.java.frontback.psi"/>
     <module name="intellij.java.psi"/>
-    <module name="intellij.kotlin.gradle.gradle"/>
     <module name="intellij.platform.jps.build"/>
-    <module name="intellij.maven"/>
   </dependencies>
   <!-- endregion -->
   <extensions defaultExtensionNs="com.intellij">
@@ -39,11 +36,6 @@
     <postStartupActivity implementation="org.jetbrains.kotlin.idea.search.refIndex.bta.CriMavenStartupActivity"
                          order="after org.jetbrains.idea.maven.project.MavenProjectsManagerProjectActivity"/>
   </extensions>
-
-  <projectListeners>
-    <listener class="org.jetbrains.kotlin.idea.search.refIndex.bta.CriMavenImportListener"
-              topic="org.jetbrains.idea.maven.project.MavenImportListener"/>
-  </projectListeners>
 
   <extensionPoints>
     <extensionPoint
