@@ -1,0 +1,42 @@
+load("@rules_jvm//:jvm.bzl", "jvm_library")
+
+### auto-generated section `build intellij.platform.jps.build.launcher` start
+
+jvm_library(
+    name = "build-launcher",
+    srcs = glob(
+        [
+            "src/**/*.kt",
+            "src/**/*.java",
+            "src/**/*.form",
+        ],
+        allow_empty = True,
+    ),
+    kotlinc_opts = "@community//:k11",
+    module_name = "intellij.platform.jps.build.launcher",
+    visibility = ["//visibility:public"],
+    deps = ["@lib//:jetbrains-annotations"],
+)
+
+jvm_library(
+    name = "build-launcher_test_lib",
+    testonly = True,
+    srcs = glob(
+        [],
+        allow_empty = True,
+    ),
+    kotlinc_opts = "@community//:k11",
+    module_name = "intellij.platform.jps.build.launcher",
+    visibility = ["//visibility:public"],
+    runtime_deps = [":build-launcher"],
+)
+### auto-generated section `build intellij.platform.jps.build.launcher` end
+
+### auto-generated section `iml intellij.platform.jps.build.launcher` start
+exports_files(
+    [
+        "intellij.platform.jps.build.launcher.iml",
+    ],
+    visibility = ["//visibility:public"],
+)
+### auto-generated section `iml intellij.platform.jps.build.launcher` end

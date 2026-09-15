@@ -1,0 +1,155 @@
+package org.jetbrains.jewel.intui.standalone.styling
+
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.shape.CornerSize
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
+import kotlin.time.Duration.Companion.milliseconds
+import org.jetbrains.jewel.intui.standalone.ScrollbarHelper
+import org.jetbrains.jewel.ui.component.styling.ScrollbarColors
+import org.jetbrains.jewel.ui.component.styling.ScrollbarMetrics
+import org.jetbrains.jewel.ui.component.styling.ScrollbarStyle
+import org.jetbrains.jewel.ui.component.styling.ScrollbarVisibility
+import org.jetbrains.jewel.ui.component.styling.ScrollbarVisibility.AlwaysVisible
+import org.jetbrains.jewel.ui.component.styling.ScrollbarVisibility.WhenScrolling
+import org.jetbrains.jewel.ui.component.styling.TrackClickBehavior
+import org.jetbrains.skiko.hostOs
+
+public fun ScrollbarStyle.Companion.tabStripLight(): ScrollbarStyle =
+    if (hostOs.isMacOS) {
+        ScrollbarStyle.tabStripMacOsLight()
+    } else {
+        ScrollbarStyle.tabStripWindowsAndLinuxLight()
+    }
+
+public fun ScrollbarStyle.Companion.tabStripDark(): ScrollbarStyle =
+    if (hostOs.isMacOS) {
+        ScrollbarStyle.tabStripMacOsDark()
+    } else {
+        ScrollbarStyle.tabStripWindowsAndLinuxDark()
+    }
+
+/**
+ * Creates a [ScrollbarStyle] for a macOS tab strip, using the light color scheme.
+ *
+ * Both [trackClickBehavior] and [scrollbarVisibility] default to the current macOS system preferences, read at call
+ * time via [ScrollbarHelper]. This ensures the scrollbar honors what the user has configured in System Settings
+ * (overlay vs. always-visible style, and scroll-to-here vs. next-page click behavior).
+ *
+ * Regardless of the system-reported visibility type, the returned style applies tab-strip-specific dimensions through
+ * [WhenScrolling.Companion.tabStrip] or [AlwaysVisible.Companion.tabStrip], keeping the scrollbar compact enough for a
+ * tab strip context.
+ */
+public fun ScrollbarStyle.Companion.tabStripMacOsLight(
+    colors: ScrollbarColors = ScrollbarColors.macOsLight(),
+    metrics: ScrollbarMetrics = ScrollbarMetrics.tabStripMacOs(),
+    trackClickBehavior: TrackClickBehavior = ScrollbarHelper.trackClickBehavior,
+    scrollbarVisibility: ScrollbarVisibility = ScrollbarHelper.scrollbarVisibilityStyle,
+): ScrollbarStyle =
+    ScrollbarStyle(
+        colors = colors,
+        metrics = metrics,
+        trackClickBehavior = trackClickBehavior,
+        scrollbarVisibility =
+            when (scrollbarVisibility) {
+                is WhenScrolling -> WhenScrolling.tabStrip()
+                is AlwaysVisible -> AlwaysVisible.tabStrip()
+            },
+    )
+
+/**
+ * Creates a [ScrollbarStyle] for a macOS tab strip, using the dark color scheme.
+ *
+ * Both [trackClickBehavior] and [scrollbarVisibility] default to the current macOS system preferences, read at call
+ * time via [ScrollbarHelper]. This ensures the scrollbar honors what the user has configured in System Settings
+ * (overlay vs. always-visible style, and scroll-to-here vs. next-page click behavior).
+ *
+ * Regardless of the system-reported visibility type, the returned style applies tab-strip-specific dimensions through
+ * [WhenScrolling.Companion.tabStrip] or [AlwaysVisible.Companion.tabStrip], keeping the scrollbar compact enough for a
+ * tab strip context.
+ */
+public fun ScrollbarStyle.Companion.tabStripMacOsDark(
+    colors: ScrollbarColors = ScrollbarColors.macOsDark(),
+    metrics: ScrollbarMetrics = ScrollbarMetrics.tabStripMacOs(),
+    trackClickBehavior: TrackClickBehavior = ScrollbarHelper.trackClickBehavior,
+    scrollbarVisibility: ScrollbarVisibility = ScrollbarHelper.scrollbarVisibilityStyle,
+): ScrollbarStyle =
+    ScrollbarStyle(
+        colors = colors,
+        metrics = metrics,
+        trackClickBehavior = trackClickBehavior,
+        scrollbarVisibility =
+            when (scrollbarVisibility) {
+                is WhenScrolling -> WhenScrolling.tabStrip()
+                is AlwaysVisible -> AlwaysVisible.tabStrip()
+            },
+    )
+
+public fun ScrollbarStyle.Companion.tabStripWindowsAndLinuxLight(
+    colors: ScrollbarColors = ScrollbarColors.windowsAndLinuxLight(),
+    metrics: ScrollbarMetrics = ScrollbarMetrics.tabStripWindowsAndLinux(),
+    trackClickBehavior: TrackClickBehavior = TrackClickBehavior.JumpToSpot,
+    scrollbarVisibility: ScrollbarVisibility = ScrollbarHelper.scrollbarVisibilityStyle,
+): ScrollbarStyle =
+    ScrollbarStyle(
+        colors = colors,
+        metrics = metrics,
+        trackClickBehavior = trackClickBehavior,
+        scrollbarVisibility = scrollbarVisibility,
+    )
+
+public fun ScrollbarStyle.Companion.tabStripWindowsAndLinuxDark(
+    colors: ScrollbarColors = ScrollbarColors.windowsAndLinuxDark(),
+    metrics: ScrollbarMetrics = ScrollbarMetrics.tabStripWindowsAndLinux(),
+    trackClickBehavior: TrackClickBehavior = TrackClickBehavior.JumpToSpot,
+    scrollbarVisibility: ScrollbarVisibility = ScrollbarHelper.scrollbarVisibilityStyle,
+): ScrollbarStyle =
+    ScrollbarStyle(
+        colors = colors,
+        metrics = metrics,
+        trackClickBehavior = trackClickBehavior,
+        scrollbarVisibility = scrollbarVisibility,
+    )
+
+/**
+ * Creates [ScrollbarMetrics] for a macOS tab strip scrollbar.
+ *
+ * Uses a fully rounded thumb ([thumbCornerSize] defaults to 100 % corner radius) to match the macOS overlay scrollbar
+ * appearance.
+ */
+public fun ScrollbarMetrics.Companion.tabStripMacOs(
+    thumbCornerSize: CornerSize = CornerSize(100),
+    minThumbLength: Dp = 20.dp,
+): ScrollbarMetrics = ScrollbarMetrics(thumbCornerSize, minThumbLength)
+
+public fun ScrollbarMetrics.Companion.tabStripWindowsAndLinux(
+    thumbCornerSize: CornerSize = CornerSize(0),
+    minThumbLength: Dp = 20.dp,
+): ScrollbarMetrics = ScrollbarMetrics(thumbCornerSize, minThumbLength)
+
+@Deprecated(
+    "Replace with 'ScrollbarVisibility.tabStrip()' version",
+    ReplaceWith(
+        "ScrollbarVisibility.tabStrip(" +
+            "trackThickness = trackThickness," +
+            "trackPadding = trackPadding," +
+            "trackPaddingWithBorder = trackPaddingWithBorder" +
+            ")"
+    ),
+    level = DeprecationLevel.HIDDEN,
+)
+public fun AlwaysVisible.Companion.tabStrip(
+    trackThickness: Dp = 4.dp,
+    trackPadding: PaddingValues = PaddingValues(),
+    trackPaddingWithBorder: PaddingValues = trackPadding,
+): AlwaysVisible =
+    AlwaysVisible(
+        trackThickness = trackThickness,
+        trackPadding = trackPadding,
+        trackPaddingWithBorder = trackPaddingWithBorder,
+        thumbColorAnimationDuration = 0.milliseconds,
+        trackColorAnimationDuration = 0.milliseconds,
+        scrollbarBackgroundColorLight = Color.Unspecified,
+        scrollbarBackgroundColorDark = Color.Unspecified,
+    )

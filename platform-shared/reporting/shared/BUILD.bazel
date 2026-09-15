@@ -1,0 +1,69 @@
+load("@rules_jvm//:jvm.bzl", "jvm_library")
+load("//build:compiler-options.bzl", "create_kotlinc_options")
+
+### auto-generated section `build fleet.reporting.shared` start
+
+create_kotlinc_options(
+    name = "custom_shared",
+    opt_in = ["kotlinx.coroutines.ExperimentalCoroutinesApi"],
+    x_consistent_data_class_copy_visibility = True,
+    x_context_parameters = True,
+    x_jvm_default = "all-compatibility",
+    x_lambdas = "class",
+)
+
+jvm_library(
+    name = "shared",
+    srcs = glob(
+        [
+            "srcCommonMain/**/*.kt",
+            "srcCommonMain/**/*.java",
+            "srcCommonMain/**/*.form",
+        ],
+        allow_empty = True,
+    ),
+    kotlinc_opts = ":custom_shared",
+    module_name = "fleet.reporting.shared",
+    resource_strip_prefix = "resources",
+    resources = glob(
+        ["resources/**/*"],
+    ),
+    visibility = ["//visibility:public"],
+    deps = [
+        # do not sort,
+        "@lib//:kotlin-stdlib",
+        "@lib//:kotlinx-coroutines-core",
+        "@lib//:kotlinx-serialization-core",
+        "@lib//:kotlinx-serialization-json",
+        "//platform-shared/reporting/api",
+        "//platform-shared/multiplatform.shims",
+    ],
+)
+
+jvm_library(
+    name = "shared_test_lib",
+    testonly = True,
+    srcs = glob(
+        [],
+        allow_empty = True,
+    ),
+    kotlinc_opts = ":custom_shared",
+    module_name = "fleet.reporting.shared",
+    visibility = ["//visibility:public"],
+    runtime_deps = [
+        # do not sort,
+        ":shared",
+        "//platform-shared/reporting/api:api_test_lib",
+        "//platform-shared/multiplatform.shims:multiplatform.shims_test_lib",
+    ],
+)
+### auto-generated section `build fleet.reporting.shared` end
+
+### auto-generated section `iml fleet.reporting.shared` start
+exports_files(
+    [
+        "fleet.reporting.shared.iml",
+    ],
+    visibility = ["//visibility:public"],
+)
+### auto-generated section `iml fleet.reporting.shared` end

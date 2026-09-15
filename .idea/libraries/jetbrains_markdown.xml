@@ -1,0 +1,22 @@
+<component name="libraryTable">
+  <library name="jetbrains.markdown" type="repository">
+    <properties maven-id="org.jetbrains:markdown-jvm:0.7.7">
+      <verification>
+        <artifact url="file://$MAVEN_REPOSITORY$/org/jetbrains/markdown-jvm/0.7.7/markdown-jvm-0.7.7.jar">
+          <sha256sum>df0b88266501c622ffcd0cc174b29aed9e19e73cb93e0d51b4ebca4cee01a82f</sha256sum>
+        </artifact>
+      </verification>
+      <exclude>
+        <dependency maven-id="it.unimi.dsi:fastutil-core" />
+        <dependency maven-id="org.jetbrains.kotlin:kotlin-stdlib" />
+      </exclude>
+    </properties>
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/markdown-jvm/0.7.7/markdown-jvm-0.7.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/markdown-jvm/0.7.7/markdown-jvm-0.7.7-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

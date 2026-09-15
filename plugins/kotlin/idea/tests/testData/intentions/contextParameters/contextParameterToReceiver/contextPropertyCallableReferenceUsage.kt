@@ -1,0 +1,13 @@
+// COMPILER_ARGUMENTS: -Xcontext-parameters
+// K2_AFTER_ERROR: Unresolved reference 'prop'.
+// K2_ERROR: No context argument for '_: Context' found.
+
+interface Context
+
+context(_<caret>: Context)
+val prop: Int
+    get() = 0
+
+fun test() {
+    ::prop
+}

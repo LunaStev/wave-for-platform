@@ -1,0 +1,18 @@
+<idea-plugin package="ru.adelf.idea.dotenv.java">
+  <dependencies>
+    <module name="intellij.java.backend"/>
+    <!-- region Generated dependencies - run `Generate Product Layouts` to regenerate -->
+    <module name="intellij.java.psi"/>
+    <!-- endregion -->
+  </dependencies>
+  <extensions defaultExtensionNs="com.intellij">
+    <completion.contributor language="JAVA" implementationClass="ru.adelf.idea.dotenv.java.JavaEnvCompletionContributor"/>
+    <gotoDeclarationHandler implementation="ru.adelf.idea.dotenv.java.JavaEnvCompletionContributor"/>
+    <completion.confidence language="JAVA" implementationClass="ru.adelf.idea.dotenv.java.JavaCompletionConfidence"
+                           id="envStringCompletionConfidence" order="first"/>
+  </extensions>
+
+  <extensions defaultExtensionNs="ru.adelf.idea.dotenv">
+    <environmentVariablesUsagesProvider implementation="ru.adelf.idea.dotenv.java.JavaEnvironmentVariablesUsagesProvider"/>
+  </extensions>
+</idea-plugin>

@@ -1,0 +1,12 @@
+<idea-plugin>
+  <dependencies>
+    <module name="intellij.platform.frontend"/>
+    <module name="intellij.editorconfig.common"/>
+  </dependencies>
+  <extensions defaultExtensionNs="com.intellij">
+    <annotator language="EditorConfig" implementationClass="com.intellij.editorconfig.frontend.highlighting.EditorConfigAnnotator"/>
+    <colorSettingsPage implementation="com.intellij.editorconfig.frontend.settings.EditorConfigColorSettingsPage"/>
+    <lang.foldingBuilder language="EditorConfig"
+                         implementationClass="com.intellij.editorconfig.frontend.lang.editor.EditorConfigFoldingBuilder"/>
+  </extensions>
+</idea-plugin>

@@ -1,0 +1,87 @@
+load("@rules_jvm//:jvm.bzl", "jvm_library")
+load("//build:compiler-options.bzl", "create_kotlinc_options")
+
+### auto-generated section `build fleet.andel` start
+
+create_kotlinc_options(
+    name = "custom_andel",
+    opt_in = ["kotlin.concurrent.atomics.ExperimentalAtomicApi"],
+    x_consistent_data_class_copy_visibility = True,
+    x_context_parameters = True,
+    x_lambdas = "class",
+)
+
+jvm_library(
+    name = "andel",
+    srcs = glob(
+        [
+            "srcCommonMain/**/*.kt",
+            "srcCommonMain/**/*.java",
+            "srcCommonMain/**/*.form",
+        ],
+        allow_empty = True,
+    ),
+    kotlinc_opts = ":custom_andel",
+    module_name = "fleet.andel",
+    resource_strip_prefix = "resources",
+    resources = glob(
+        ["resources/**/*"],
+    ),
+    visibility = ["//visibility:public"],
+    exports = [
+        # do not sort,
+        "//platform-shared/bifurcan",
+        "//platform-shared/openmap",
+    ],
+    deps = [
+        # do not sort,
+        "@lib//:kotlin-stdlib",
+        "@lib//:kotlinx-collections-immutable",
+        "@lib//:jetbrains-annotations",
+        "//platform-shared/util/core",
+        "@lib//:kotlinx-serialization-core",
+        "@lib//:kotlinx-serialization-json",
+        "//platform-shared/util/codepoints",
+        "//platform-shared/bifurcan",
+        "//platform-shared/fastutil",
+        "//platform-shared/openmap",
+    ],
+)
+
+jvm_library(
+    name = "andel_test_lib",
+    testonly = True,
+    srcs = glob(
+        [],
+        allow_empty = True,
+    ),
+    kotlinc_opts = ":custom_andel",
+    module_name = "fleet.andel",
+    visibility = ["//visibility:public"],
+    exports = [
+        # do not sort,
+        "//platform-shared/bifurcan",
+        "//platform-shared/bifurcan:bifurcan_test_lib",
+        "//platform-shared/openmap",
+        "//platform-shared/openmap:openmap_test_lib",
+    ],
+    runtime_deps = [
+        # do not sort,
+        ":andel",
+        "//platform-shared/util/core:core_test_lib",
+        "//platform-shared/util/codepoints:codepoints_test_lib",
+        "//platform-shared/bifurcan:bifurcan_test_lib",
+        "//platform-shared/fastutil:fastutil_test_lib",
+        "//platform-shared/openmap:openmap_test_lib",
+    ],
+)
+### auto-generated section `build fleet.andel` end
+
+### auto-generated section `iml fleet.andel` start
+exports_files(
+    [
+        "fleet.andel.iml",
+    ],
+    visibility = ["//visibility:public"],
+)
+### auto-generated section `iml fleet.andel` end

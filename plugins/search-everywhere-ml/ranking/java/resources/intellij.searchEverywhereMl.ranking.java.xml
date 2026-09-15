@@ -1,0 +1,14 @@
+<idea-plugin>
+  <dependencies>
+    <module name="intellij.java.backend"/>
+    <!-- region Generated dependencies - run `Generate Product Layouts` to regenerate -->
+    <module name="intellij.java.psi"/>
+    <module name="intellij.searchEverywhereMl.ranking.core"/>
+    <!-- endregion -->
+  </dependencies>
+
+  <extensions defaultExtensionNs="com.intellij.searcheverywhere.ml">
+    <searchEverywhereElementFeaturesProvider
+      implementation="com.intellij.searchEverywhereMl.ranking.java.features.SearchEverywhereJavaPsiElementFeatureProvider"/>
+  </extensions>
+</idea-plugin>

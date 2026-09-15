@@ -1,0 +1,26 @@
+<idea-plugin>
+  <id>dev.wavelang.wave</id>
+  <name>Wave Language</name>
+  <version>0.3.0</version>
+  <vendor url="https://github.com/wavefnd">Wave Foundation</vendor>
+  <description>Support for Wave source files and compiler development files.</description>
+
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.modules.lang</depends>
+  <depends>com.intellij.modules.lsp</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <fileType name="Wave" language="Wave" implementationClass="dev.wavelang.intellij.wave.WaveFileType" extensions="wave"/>
+    <fileType name="Wave Makefile" language="WaveMakefile" implementationClass="dev.wavelang.intellij.wave.make.MakefileFileType"
+              extensions="mk;mak" fileNames="Makefile;GNUmakefile"/>
+    <fileType name="Wave Assembly" language="WaveAssembly" implementationClass="dev.wavelang.intellij.wave.asm.AssemblyFileType"
+              extensions="s;S;asm;nasm;riscv;rvs"/>
+    <fileType name="Wave Linker Script" language="WaveLinkerScript" implementationClass="dev.wavelang.intellij.wave.ld.LinkerScriptFileType"
+              extensions="ld"/>
+    <lang.syntaxHighlighterFactory language="Wave" implementationClass="dev.wavelang.intellij.wave.highlight.WaveSyntaxHighlighterFactory"/>
+    <lang.syntaxHighlighterFactory language="WaveMakefile" implementationClass="dev.wavelang.intellij.wave.make.MakefileSyntaxHighlighterFactory"/>
+    <lang.syntaxHighlighterFactory language="WaveAssembly" implementationClass="dev.wavelang.intellij.wave.asm.AssemblySyntaxHighlighterFactory"/>
+    <lang.syntaxHighlighterFactory language="WaveLinkerScript" implementationClass="dev.wavelang.intellij.wave.ld.LinkerScriptSyntaxHighlighterFactory"/>
+    <platform.lsp.serverSupportProvider implementation="dev.wavelang.intellij.wave.lsp.WaveLspServerSupportProvider"/>
+  </extensions>
+</idea-plugin>

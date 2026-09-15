@@ -1,0 +1,8 @@
+Wave editor support comes from wavefnd/intellij-wave.
+Upstream: https://github.com/wavefnd/intellij-wave
+Commit: 21af4952b338b214ecde3598bfa101c38003d4bf
+License: Mozilla Public License 2.0. See LICENSE.
+
+The integration uses the public IntelliJ LSP API.
+It omits the project generator and project templates.
+It localizes file descriptions and uses the repository build system.

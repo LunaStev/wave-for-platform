@@ -1,0 +1,104 @@
+load("@community//platform-shared/build:fleet.bzl", "fleet_plugin_services_resources")
+load("@rules_jvm//:jvm.bzl", "jvm_library")
+load("//build:compiler-options.bzl", "create_kotlinc_options")
+
+### auto-generated section `build fleet.kernel` start
+
+create_kotlinc_options(
+    name = "custom_kernel",
+    opt_in = [
+        "kotlinx.coroutines.ExperimentalCoroutinesApi",
+        "kotlin.ExperimentalStdlibApi",
+        "kotlin.concurrent.atomics.ExperimentalAtomicApi",
+    ],
+    x_consistent_data_class_copy_visibility = True,
+    x_context_parameters = True,
+    x_jvm_default = "all-compatibility",
+    x_lambdas = "class",
+)
+
+fleet_plugin_services_resources(
+    name = "kernel_fleet_plugin_services_resources",
+    srcs = glob(
+        [
+            "srcCommonMain/**/*.kt",
+            "srcCommonMain/**/*.java",
+            "srcCommonMain/**/*.form",
+        ],
+        allow_empty = True,
+    ),
+    deps = [
+        "//platform-shared/rhizomedb",
+        "//platform-shared/rhizomedb.transactor",
+        "//platform-shared/rhizomedb.transactor.rebase",
+        "@lib//:kotlin-stdlib",
+    ],
+)
+
+jvm_library(
+    name = "kernel",
+    srcs = glob(
+        [
+            "srcCommonMain/**/*.kt",
+            "srcCommonMain/**/*.java",
+            "srcCommonMain/**/*.form",
+        ],
+        allow_empty = True,
+    ),
+    kotlinc_opts = ":custom_kernel",
+    module_name = "fleet.kernel",
+    resource_jars = [":kernel_fleet_plugin_services_resources"],
+    resource_strip_prefix = "resources",
+    resources = glob(
+        ["resources/**/*"],
+    ),
+    visibility = ["//visibility:public"],
+    exports = [
+        # do not sort,
+        "//platform-shared/rhizomedb.transactor",
+        "//platform-shared/rhizomedb.transactor.rebase",
+    ],
+    deps = [
+        # do not sort,
+        "@lib//:kotlin-stdlib",
+        "//platform-shared/rhizomedb.transactor",
+        "//platform-shared/rhizomedb.transactor.rebase",
+        "//platform-shared/rhizomedb",
+    ],
+)
+
+jvm_library(
+    name = "kernel_test_lib",
+    testonly = True,
+    srcs = glob(
+        [],
+        allow_empty = True,
+    ),
+    kotlinc_opts = ":custom_kernel",
+    module_name = "fleet.kernel",
+    visibility = ["//visibility:public"],
+    exports = [
+        # do not sort,
+        "//platform-shared/rhizomedb.transactor",
+        "//platform-shared/rhizomedb.transactor:rhizomedb.transactor_test_lib",
+        "//platform-shared/rhizomedb.transactor.rebase",
+        "//platform-shared/rhizomedb.transactor.rebase:rhizomedb.transactor.rebase_test_lib",
+    ],
+    runtime_deps = [
+        # do not sort,
+        ":kernel",
+        "//platform-shared/rhizomedb.transactor:rhizomedb.transactor_test_lib",
+        "//platform-shared/rhizomedb.transactor.rebase:rhizomedb.transactor.rebase_test_lib",
+        "//platform-shared/rhizomedb:rhizomedb_test_lib",
+    ],
+)
+### auto-generated section `build fleet.kernel` end
+
+### auto-generated section `iml fleet.kernel` start
+exports_files(
+    [
+        "fleet.kernel.iml",
+    ],
+    visibility = ["//visibility:public"],
+)
+### auto-generated section `iml fleet.kernel` end

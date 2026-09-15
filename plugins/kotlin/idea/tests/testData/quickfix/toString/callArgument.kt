@@ -1,0 +1,12 @@
+// "Add 'toString()' call" "true"
+// PRIORITY: LOW
+// K2_ERROR: Argument type mismatch: actual type is 'Any', but 'String' was expected.
+
+fun foo() {
+    bar(Any()<caret>)
+}
+
+fun bar(a: String) {
+}
+// FUS_QUICKFIX_NAME: org.jetbrains.kotlin.idea.quickfix.AddToStringFix
+// FUS_K2_QUICKFIX_NAME: org.jetbrains.kotlin.idea.quickfix.AddToStringFix

@@ -1,0 +1,14 @@
+<idea-plugin>
+  <dependencies>
+    <module name="intellij.platform.frontend"/>
+    <!-- region Generated dependencies - run `Generate Product Layouts` to regenerate -->
+    <module name="intellij.platform.recentFiles.frontend"/>
+    <module name="intellij.platform.structureView.frontend"/>
+    <module name="intellij.platform.structureView"/>
+    <!-- endregion -->
+  </dependencies>
+
+  <extensions defaultExtensionNs="com.jetbrains.performancePlugin">
+    <commandProvider implementation="com.intellij.performanceTesting.frontend.FrontendCommandProvider"/>
+  </extensions>
+</idea-plugin>

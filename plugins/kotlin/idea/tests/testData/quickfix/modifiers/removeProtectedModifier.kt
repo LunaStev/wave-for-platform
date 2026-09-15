@@ -1,0 +1,10 @@
+// "Remove 'protected' modifier" "true"
+// K2_ERROR: Modifier 'private' is incompatible with 'protected'.
+// K2_ERROR: Modifier 'protected' is incompatible with 'private'.
+
+class A private <caret>protected constructor() {
+
+}
+
+// FUS_QUICKFIX_NAME: org.jetbrains.kotlin.idea.quickfix.RemoveModifierFixBase
+// FUS_K2_QUICKFIX_NAME: org.jetbrains.kotlin.idea.quickfix.RemoveModifierFixBase

@@ -1,0 +1,19 @@
+<idea-plugin visibility="public">
+  <dependencies>
+    <module name="intellij.platform.backend"/>
+    <module name="intellij.platform.kernel.backend"/>
+    <module name="intellij.platform.ide.impl.wsl"/>
+  </dependencies>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <platform.rpc.backend.remoteApiProvider implementation="com.intellij.terminal.backend.rpc.TerminalRemoteApiProvider"/>
+    <applicationService
+      serviceInterface="org.jetbrains.plugins.terminal.hyperlinks.menu.BackendHyperlinkInfoService"
+      serviceImplementation="com.intellij.terminal.backend.hyperlinks.BackendHyperlinkInfoServiceImpl"/>
+    <statistics.applicationUsagesCollector implementation="com.intellij.terminal.backend.CliUtilInstallCollector"/>
+  </extensions>
+
+  <extensions defaultExtensionNs="org.jetbrains.plugins.terminal">
+    <shellsDetector implementation="com.intellij.terminal.backend.WslProjectShellsDetector"/>
+  </extensions>
+</idea-plugin>

@@ -1,0 +1,77 @@
+load("@rules_jvm//:jvm.bzl", "jvm_library")
+load("//build:compiler-options.bzl", "create_kotlinc_options")
+
+### auto-generated section `build fleet.rpc.server` start
+
+create_kotlinc_options(
+    name = "custom_rpc.server",
+    x_consistent_data_class_copy_visibility = True,
+    x_context_parameters = True,
+    x_jvm_default = "all-compatibility",
+    x_lambdas = "class",
+)
+
+jvm_library(
+    name = "rpc.server",
+    srcs = glob(
+        [
+            "srcCommonMain/**/*.kt",
+            "srcCommonMain/**/*.java",
+            "srcCommonMain/**/*.form",
+            "srcJvmMain/**/*.kt",
+            "srcJvmMain/**/*.java",
+            "srcJvmMain/**/*.form",
+        ],
+        allow_empty = True,
+    ),
+    kotlinc_opts = ":custom_rpc.server",
+    module_name = "fleet.rpc.server",
+    resource_strip_prefix = "resources",
+    resources = glob(
+        ["resources/**/*"],
+    ),
+    visibility = ["//visibility:public"],
+    deps = [
+        # do not sort,
+        "@lib//:kotlin-stdlib",
+        "@lib//:kotlinx-coroutines-core",
+        "//platform-shared/rpc",
+        "@lib//:kotlinx-serialization-core",
+        "@lib//:kotlinx-serialization-json",
+        "//platform-shared/reporting/api",
+        "//platform-shared/reporting/shared",
+        "//platform-shared/multiplatform.shims",
+        "//platform-shared/util/core",
+    ],
+)
+
+jvm_library(
+    name = "rpc.server_test_lib",
+    testonly = True,
+    srcs = glob(
+        [],
+        allow_empty = True,
+    ),
+    kotlinc_opts = ":custom_rpc.server",
+    module_name = "fleet.rpc.server",
+    visibility = ["//visibility:public"],
+    runtime_deps = [
+        # do not sort,
+        ":rpc.server",
+        "//platform-shared/rpc:rpc_test_lib",
+        "//platform-shared/reporting/api:api_test_lib",
+        "//platform-shared/reporting/shared:shared_test_lib",
+        "//platform-shared/multiplatform.shims:multiplatform.shims_test_lib",
+        "//platform-shared/util/core:core_test_lib",
+    ],
+)
+### auto-generated section `build fleet.rpc.server` end
+
+### auto-generated section `iml fleet.rpc.server` start
+exports_files(
+    [
+        "fleet.rpc.server.iml",
+    ],
+    visibility = ["//visibility:public"],
+)
+### auto-generated section `iml fleet.rpc.server` end
