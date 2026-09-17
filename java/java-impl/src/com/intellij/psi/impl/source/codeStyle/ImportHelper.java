@@ -4,7 +4,6 @@ package com.intellij.psi.impl.source.codeStyle;
 import com.intellij.application.options.CodeStyle;
 import com.intellij.codeInsight.ImportFilter;
 import com.intellij.ide.highlighter.JavaFileType;
-import com.intellij.jsp.JspSpiUtil;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.java.JavaLanguage;
 import com.intellij.openapi.diagnostic.Logger;
@@ -19,7 +18,6 @@ import com.intellij.psi.JavaRecursiveElementVisitor;
 import com.intellij.psi.JavaRecursiveElementWalkingVisitor;
 import com.intellij.psi.JavaResolveResult;
 import com.intellij.psi.JavaTokenType;
-import com.intellij.psi.JspPsiUtil;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiCompiledElement;
 import com.intellij.psi.PsiElement;
@@ -56,12 +54,10 @@ import com.intellij.psi.impl.IncompleteModelUtil;
 import com.intellij.psi.impl.PsiFileFactoryImpl;
 import com.intellij.psi.impl.source.PsiJavaCodeReferenceElementImpl;
 import com.intellij.psi.impl.source.SourceTreeToPsiMap;
-import com.intellij.psi.impl.source.jsp.jspJava.JspxImportStatement;
 import com.intellij.psi.impl.source.resolve.ResolveClassUtil;
 import com.intellij.psi.impl.source.resolve.reference.impl.providers.JavaClassReference;
 import com.intellij.psi.impl.source.tree.ElementType;
 import com.intellij.psi.impl.source.tree.JavaJspElementType;
-import com.intellij.psi.jsp.JspFile;
 import com.intellij.psi.search.GlobalSearchScope;
 import com.intellij.psi.search.LocalSearchScope;
 import com.intellij.psi.search.searches.ReferencesSearch;
@@ -1191,17 +1187,7 @@ public final class ImportHelper extends ImportHelperBase {
   private static @NotNull Collection<Import> collectNamesToImport(@NotNull PsiJavaFile file, @NotNull List<? super PsiElement> comments) {
     Set<Import> imports = new HashSet<>();
 
-    JspFile jspFile = JspPsiUtil.getJspFile(file);
-    collectNamesToImport(imports, comments, file, jspFile);
-    if (jspFile != null) {
-      PsiFile[] files = ArrayUtil.mergeArrays(JspSpiUtil.getIncludingFiles(jspFile), JspSpiUtil.getIncludedFiles(jspFile));
-      for (PsiFile includingFile : files) {
-        PsiFile javaRoot = includingFile.getViewProvider().getPsi(JavaLanguage.INSTANCE);
-        if (javaRoot instanceof PsiJavaFile psiJavaFile && file != javaRoot) {
-          collectNamesToImport(imports, comments, psiJavaFile, jspFile);
-        }
-      }
-    }
+    collectNamesToImport(imports, comments, file);
 
     addUnresolvedImportNames(imports, file);
 
@@ -1210,21 +1196,19 @@ public final class ImportHelper extends ImportHelperBase {
 
   private static void collectNamesToImport(@NotNull Set<? super Import> imports,
                                            @NotNull List<? super PsiElement> comments,
-                                           @NotNull PsiJavaFile file,
-                                           @Nullable PsiFile context) {
+                                           @NotNull PsiJavaFile file) {
     String packageName = file.getPackageName();
 
     List<PsiFile> roots = file.getViewProvider().getAllFiles();
     for (PsiElement root : roots) {
-      addNamesToImport(imports, comments, root, packageName, context);
+      addNamesToImport(imports, comments, root, packageName);
     }
   }
 
   private static void addNamesToImport(@NotNull Set<? super Import> imports,
                                        @NotNull List<? super PsiElement> comments,
                                        @NotNull PsiElement scope,
-                                       @NotNull String thisPackageName,
-                                       @Nullable PsiFile context) {
+                                       @NotNull String thisPackageName) {
     if (scope instanceof PsiImportList) return;
     ImportUtils.ImplicitImportChecker checker =
       scope.getContainingFile() instanceof PsiJavaFile javaFile ? ImportUtils.createImplicitImportChecker(javaFile) : null;
@@ -1277,14 +1261,6 @@ public final class ImportHelper extends ImportHelperBase {
             continue;
           }
         }
-        if (context != null &&
-            refElement != null &&
-            ((currentFileResolveScope != null && !currentFileResolveScope.isValid()) ||
-             currentFileResolveScope instanceof JspxImportStatement jspxImportStatement &&
-             context != jspxImportStatement.getDeclarationFile())) {
-          continue;
-        }
-
         if (refElement == null && referenceElement != null && IncompleteModelUtil.canBeClassReference(referenceElement)) {
           refElement = ResolveClassUtil.resolveClass(referenceElement, referenceElement.getContainingFile()); // might be incomplete code
         }

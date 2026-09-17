@@ -69,8 +69,6 @@ import com.intellij.psi.SyntaxTraverser;
 import com.intellij.psi.codeStyle.JavaCodeStyleSettings;
 import com.intellij.psi.codeStyle.SuggestedNameInfo;
 import com.intellij.psi.impl.PsiDiamondTypeUtil;
-import com.intellij.psi.impl.source.jsp.jspJava.JspCodeBlock;
-import com.intellij.psi.impl.source.jsp.jspJava.JspHolderMethod;
 import com.intellij.psi.impl.source.tree.injected.InjectedLanguageUtil;
 import com.intellij.psi.search.searches.ReferencesSearch;
 import com.intellij.psi.util.JavaPsiPatternUtil;
@@ -425,8 +423,7 @@ public abstract class IntroduceVariableBase extends IntroduceHandlerBase {
           supportProvider != null &&
           editor != null &&
           editor.getSettings().isVariableInplaceRenameEnabled() &&
-          supportProvider.isInplaceIntroduceAvailable(expr, nameSuggestionContext) &&
-          !isInJspHolderMethod(expr);
+          supportProvider.isInplaceIntroduceAvailable(expr, nameSuggestionContext);
 
         if (isInplaceAvailableOnDataContext) {
           final MultiMap<PsiElement, String> conflicts = new MultiMap<>();
@@ -544,17 +541,6 @@ public abstract class IntroduceVariableBase extends IntroduceHandlerBase {
       }
     }
     return new ExpressionOccurrenceManager(expr, lastScope, NotInConstructorCallFilter.INSTANCE);
-  }
-
-  private static boolean isInJspHolderMethod(PsiExpression expr) {
-    final PsiElement parent1 = expr.getParent();
-    if (parent1 == null) {
-      return false;
-    }
-    final PsiElement parent2 = parent1.getParent();
-    if (!(parent2 instanceof JspCodeBlock)) return false;
-    final PsiElement parent3 = parent2.getParent();
-    return parent3 instanceof JspHolderMethod;
   }
 
   static boolean isFinalVariableOnLHS(PsiExpression expr) {

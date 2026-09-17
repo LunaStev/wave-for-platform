@@ -4,8 +4,6 @@ package org.jetbrains.idea.devkit.testAssistant;
 import com.intellij.codeInsight.AnnotationUtil;
 import com.intellij.execution.Location;
 import com.intellij.execution.PsiLocation;
-import com.intellij.execution.junit2.PsiMemberParameterizedLocation;
-import com.intellij.execution.junit2.info.MethodLocation;
 import com.intellij.openapi.project.DumbService;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectFileIndex;
@@ -77,7 +75,6 @@ public final class TestLocationUtil {
               }
             }
 
-            final String fileName = file.getName();
             final String nameWithoutExtension = file.getNameWithoutExtension();
 
 
@@ -85,7 +82,7 @@ public final class TestLocationUtil {
               if (resultFile instanceof PsiClassOwner) {
                 final PsiClass[] classes = ((PsiClassOwner)resultFile).getClasses();
                 if (classes.length > 0) {
-                  ContainerUtil.addIfNotNull(locations, getLocation(project, fileName, nameWithoutExtension, classes[0]));
+                  ContainerUtil.addIfNotNull(locations, getLocation(project, nameWithoutExtension, classes[0]));
                 }
               }
             }
@@ -97,27 +94,21 @@ public final class TestLocationUtil {
   }
 
   private static @Nullable Location getLocation(Project project,
-                                                String fileName,
                                                 String nameWithoutExtension,
                                                 PsiClass aClass) {
     final PsiAnnotation annotation = AnnotationUtil.findAnnotation(aClass, TestFrameworkConstants.TEST_DATA_PATH_ANNOTATION_QUALIFIED_NAME);
     if (annotation != null) {
-      final Location parameterizedLocation =
-        PsiMemberParameterizedLocation.getParameterizedLocation(aClass, "[" + fileName + "]", TestFrameworkConstants.PARAMETERIZED_ANNOTATION_QUALIFIED_NAME);
-      if (parameterizedLocation != null) {
-        return parameterizedLocation;
-      }
       if (StringUtil.isJavaIdentifier(nameWithoutExtension)) {
         final PsiElementFactory elementFactory = JavaPsiFacade.getElementFactory(project);
         PsiMethod method = aClass.findMethodBySignature(elementFactory.createMethod("test" + nameWithoutExtension, PsiTypes.voidType()), true);
         if (method != null) {
-          return MethodLocation.elementInClass(method, aClass);
+          return PsiLocation.fromPsiElement(method);
         }
 
         method = aClass.findMethodBySignature(elementFactory.createMethod("test" + StringUtil.capitalize(nameWithoutExtension),
                                                                           PsiTypes.voidType()), true);
         if (method != null) {
-          return MethodLocation.elementInClass(method, aClass);
+          return PsiLocation.fromPsiElement(method);
         }
       }
       return new PsiLocation<PsiElement>(project, aClass);

@@ -23,7 +23,6 @@ import com.intellij.openapi.application.runReadActionBlocking
 import com.intellij.openapi.components.service
 import com.intellij.openapi.diagnostic.logger
 import com.intellij.openapi.diagnostic.rethrowControlFlowException
-import com.intellij.openapi.externalSystem.service.project.manage.ProjectDataImportListener
 import com.intellij.openapi.fileTypes.FileType
 import com.intellij.openapi.module.Module
 import com.intellij.openapi.module.ModuleManager
@@ -48,7 +47,6 @@ import com.intellij.psi.util.PsiUtilCore
 import com.intellij.util.Processor
 import com.intellij.util.containers.generateRecursiveSequence
 import com.intellij.util.indexing.StorageException
-import kotlinx.coroutines.CoroutineScope
 import org.jetbrains.annotations.ApiStatus
 import org.jetbrains.annotations.TestOnly
 import org.jetbrains.kotlin.asJava.syntheticAccessors
@@ -60,7 +58,6 @@ import org.jetbrains.kotlin.idea.base.util.restrictToKotlinSources
 import org.jetbrains.kotlin.idea.compiler.configuration.KotlinCompilerWorkspaceSettings
 import org.jetbrains.kotlin.idea.search.declarationsSearch.HierarchySearchRequest
 import org.jetbrains.kotlin.idea.search.declarationsSearch.searchInheritors
-import org.jetbrains.kotlin.idea.search.refIndex.bta.BtaFileWatcher
 import org.jetbrains.kotlin.idea.util.application.isUnitTestMode
 import org.jetbrains.kotlin.name.FqName
 import org.jetbrains.kotlin.name.Name
@@ -79,7 +76,6 @@ import org.jetbrains.kotlin.utils.addToStdlib.UnsafeCastFunction
 import org.jetbrains.kotlin.utils.addToStdlib.safeAs
 import java.io.IOException
 import java.util.UUID
-import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.LongAdder
 import java.util.concurrent.locks.ReentrantReadWriteLock
 import kotlin.concurrent.read
@@ -88,12 +84,11 @@ import kotlin.concurrent.write
 /**
  * Based on [com.intellij.compiler.backwardRefs.CompilerReferenceServiceBase] and [com.intellij.compiler.backwardRefs.CompilerReferenceServiceImpl]
  */
-class KotlinCompilerReferenceIndexService(private val project: Project, private val coroutineScope: CoroutineScope) : Disposable, ModificationTracker {
+class KotlinCompilerReferenceIndexService(private val project: Project) : Disposable, ModificationTracker {
     private var initialized: Boolean = false
     private var storage: KotlinCompilerReferenceIndexStorage? = null
     private var activeBuildCount = 0
     private val compilationCounter = LongAdder()
-    private val btaWatcherInstalled = AtomicBoolean(false)
     private val projectFileIndex = ProjectRootManager.getInstance(project).fileIndex
     private val supportedFileTypes: Set<FileType> = setOf(KotlinFileType.INSTANCE, JavaFileType.INSTANCE)
     private val currentBuilderId by lazy { KotlinCompilerReferenceIndexStorage.getBuilderId(project) }
@@ -164,53 +159,6 @@ class KotlinCompilerReferenceIndexService(private val project: Project, private 
                 withWriteLock { closeStorage() }
             }
         })
-
-        // TODO KTIJ-37446 Make Kotlin Compiler Reference Index JPS-agnostic
-        // eager attempt covers reopened projects
-        installBtaFileWatcherIfApplicable()
-        // for first-time project `GradleSettings.linkedProjectsSettings` is still empty,
-        // so we retry once Gradle import registers linked projects
-        connection.subscribe(ProjectDataImportListener.TOPIC, object : ProjectDataImportListener {
-            override fun onImportFinished(projectPath: String?) {
-                installBtaFileWatcherIfApplicable()
-            }
-        })
-    }
-
-    /**
-     * Installs the BTA file watcher if / when it is applicable for this project; idempotent
-     */
-    @ApiStatus.Internal
-    fun installBtaFileWatcherIfApplicable() {
-        if (!BtaFileWatcher.isApplicable(project)) return
-        if (!btaWatcherInstalled.compareAndSet(false, true)) return
-        BtaFileWatcher(project).watchIn(coroutineScope) { updatedModules ->
-            executeOnBuildThread {
-                onExternalCompilationDetected(updatedModules)
-            }
-        }
-    }
-
-    @get:TestOnly
-    @get:ApiStatus.Internal
-    val isBtaFileWatcherInstalled: Boolean
-        get() = btaWatcherInstalled.get()
-
-    private fun onExternalCompilationDetected(compiledModules: Collection<Module>) {
-        val allModules = if (!initialized) allModules() else null
-        compilationCounter.increment()
-        val projectPath = runReadActionBlocking { projectIfNotDisposed?.basePath }
-        withDirtyScopeUnderWriteLock {
-            if (!refreshStorageIncrementally(compiledModules)) {
-                openStorage(projectPath)
-            }
-
-            if (!initialized) {
-                initialize(allModules, compiledModules)
-            } else {
-                compilerActivityFinished(compiledModules.toList())
-            }
-        }
     }
 
     internal class KCRIIsUpToDateConsumer : IsUpToDateCheckConsumer {
@@ -305,17 +253,6 @@ class KotlinCompilerReferenceIndexService(private val project: Project, private 
 
         storage = projectPath?.let {
             KotlinCompilerReferenceIndexStorage.open(project, it)
-        }
-    }
-
-    private fun refreshStorageIncrementally(updatedModules: Collection<Module>): Boolean {
-        val incrementalStorage = storage as? IncrementalKotlinCompilerReferenceIndexStorage ?: return false
-        return try {
-            incrementalStorage.refreshModules(updatedModules)
-        } catch (e: Throwable) {
-            rethrowControlFlowException(e)
-            LOG.error("an exception during incremental KCRI storage refresh", e)
-            false
         }
     }
 

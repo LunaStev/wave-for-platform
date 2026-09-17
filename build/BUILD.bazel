@@ -171,6 +171,7 @@ jvm_library(
         "//platform/build-scripts/downloader",
         "@community//build:zip",
         "//libraries/maven-resolver-provider",
+        "//platform/build-scripts/product-dsl/plugin-graph",
     ],
 )
 
@@ -204,6 +205,7 @@ jvm_library(
         "//platform/build-scripts/downloader:downloader_test_lib",
         "@community//build:zip_test_lib",
         "//libraries/maven-resolver-provider:maven-resolver-provider_test_lib",
+        "//platform/build-scripts/product-dsl/plugin-graph:plugin-graph_test_lib",
     ],
 )
 ### auto-generated section `build intellij.idea.community.build` end

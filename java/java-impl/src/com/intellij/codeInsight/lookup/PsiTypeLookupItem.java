@@ -153,7 +153,7 @@ public final class PsiTypeLookupItem extends LookupItem<Object> implements Typed
       insideTypeElement = position.getParent() instanceof PsiTypeElement ||
                           position.getParent().getParent() instanceof PsiTypeElement;
       int genericsStart = context.getTailOffset();
-      context.getDocument().insertString(genericsStart, JavaCompletionUtil.escapeXmlIfNeeded(context, calcGenerics(position, context)));
+      context.getDocument().insertString(genericsStart, calcGenerics(position, context));
       JavaCompletionUtil.shortenReference(context.getFile(), genericsStart - 1);
     }
 

@@ -3,7 +3,7 @@
 package org.jetbrains.idea.devkit.actions.updateFromSources
 
 import com.intellij.execution.ShortenCommandLine
-import com.intellij.execution.configurations.JavaParameters
+import com.intellij.execution.configurations.SimpleJavaParameters
 import com.intellij.execution.process.OSProcessHandler
 import com.intellij.execution.process.ProcessEvent
 import com.intellij.execution.process.ProcessListener
@@ -36,6 +36,7 @@ import com.intellij.openapi.util.NlsContexts.NotificationContent
 import com.intellij.openapi.util.NlsSafe
 import com.intellij.openapi.util.SystemInfo
 import com.intellij.openapi.vfs.LocalFileSystem
+import com.intellij.openapi.vfs.encoding.EncodingProjectManager
 import com.intellij.task.ProjectTaskManager
 import com.intellij.testFramework.LightVirtualFile
 import com.intellij.util.Restarter
@@ -159,7 +160,7 @@ private fun checkIdeHome(workIdeHome: Path): String? {
 }
 
 private fun runUpdateScript(
-  params: JavaParameters,
+  params: SimpleJavaParameters,
   project: Project,
   workIdeHome: Path,
   deployDir: Path,
@@ -354,7 +355,7 @@ private fun createScriptJavaParameters(
   bundledPluginDirsToSkip: List<String>,
   nonBundledPluginDirsToInclude: List<String>,
   additionalVmOptionsForBuildScripts: String?,
-): JavaParameters? {
+): SimpleJavaParameters? {
   val sdk = ProjectRootManager.getInstance(project).projectSdk
   if (sdk == null) {
     showError(project, DevKitBundle.message("action.UpdateIdeFromSourcesAction.error.no.sdk"))
@@ -363,9 +364,9 @@ private fun createScriptJavaParameters(
 
   val moduleManager = ModuleManager.getInstance(project)
   val ultimate = moduleManager.findModuleByName("intellij.idea.ultimate.main") != null
-  val params = JavaParameters()
+  val params = SimpleJavaParameters()
   params.setShortenCommandLine(ShortenCommandLine.MANIFEST)
-  params.setDefaultCharset(project)
+  params.charset = EncodingProjectManager.getInstance(project).defaultCharset
   params.jdk = sdk
 
   params.mainClass = if (ultimate) "UltimateUpdateFromSourcesBuildTarget" else "OpenSourceCommunityUpdateFromSourcesBuildTarget"

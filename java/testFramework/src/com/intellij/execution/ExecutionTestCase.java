@@ -2,7 +2,7 @@
 package com.intellij.execution;
 
 import com.intellij.debugger.impl.OutputChecker;
-import com.intellij.execution.configurations.JavaParameters;
+import com.intellij.execution.configurations.SimpleJavaParameters;
 import com.intellij.execution.process.ProcessHandler;
 import com.intellij.execution.process.ProcessOutputType;
 import com.intellij.openapi.application.ApplicationManager;
@@ -164,8 +164,8 @@ public abstract class ExecutionTestCase extends JavaProjectTestCase {
     EdtTestUtil.runInEdtAndWait(() -> super.tearDown());
   }
 
-  protected JavaParameters createJavaParameters(String mainClass) {
-    JavaParameters parameters = new JavaParameters();
+  protected SimpleJavaParameters createJavaParameters(String mainClass) {
+    SimpleJavaParameters parameters = new SimpleJavaParameters();
     parameters.getClassPath().add(getAppOutputPath());
     parameters.setMainClass(mainClass);
     parameters.setJdk(JavaAwareProjectJdkTableImpl.getInstanceEx().getInternalJdk());

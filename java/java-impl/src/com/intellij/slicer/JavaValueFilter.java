@@ -2,7 +2,6 @@
 package com.intellij.slicer;
 
 import com.intellij.codeInspection.dataFlow.types.DfType;
-import com.intellij.execution.filters.ExceptionAnalysisProvider;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.search.SearchScope;
@@ -34,7 +33,9 @@ public class JavaValueFilter implements SliceValueFilter {
            (myStackFilter == null || myStackFilter.isAcceptable(element));
   }
 
-  public @NotNull JavaValueFilter withStack(List<ExceptionAnalysisProvider.StackLine> lines) {
+  public record StackFrame(@NotNull String className, @NotNull String methodName, @Nullable String fileName) {}
+
+  public @NotNull JavaValueFilter withStack(List<StackFrame> lines) {
     return new JavaValueFilter(myDfaFilter, StackFilter.from(lines));
   }
 

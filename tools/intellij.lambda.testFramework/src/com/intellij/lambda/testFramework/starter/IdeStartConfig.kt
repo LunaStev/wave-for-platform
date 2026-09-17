@@ -6,10 +6,10 @@ import com.intellij.ide.starter.models.TestCase
 import com.intellij.ide.starter.project.NoProject
 import com.intellij.ide.starter.project.TestCaseTemplate
 import com.intellij.ide.starter.runner.IDERunContext
-import com.intellij.tools.ide.starter.product.idea.ultimate.IdeaUltimate
+import com.intellij.tools.ide.starter.product.idea.community.IdeaCommunity
 
 data class IdeStartConfig(
-  val testCase: TestCase<*> = (object : TestCaseTemplate(IdeInfo.IdeaUltimate) {}).withProject(NoProject),
+  val testCase: TestCase<*> = (object : TestCaseTemplate(IdeInfo.IdeaCommunity) {}).withProject(NoProject),
   val configureTestContext: (IDETestContext.() -> Unit) = defaultTestContextConfig,
   val configureRunContext: (IDERunContext.() -> Unit) = defaultRunContextConfig,
 ) {

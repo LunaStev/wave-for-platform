@@ -106,7 +106,6 @@
     <advancedSetting id="java.suggest.creating.java.sources.in.irrelevant.source.roots" default="false"
                      groupKey="advanced.settings.group.java" bundle="messages.JavaBundle"/>
     <applicationSettings service="com.intellij.codeInsight.hints.AnnotationInlaySettings"/>
-    <projectSettings service="com.intellij.javadoc.JavadocGenerationManager"/>
     <projectSettings service="com.intellij.ui.logging.JvmLoggingSettingsStorage"/>
   </extensions>
 </idea-plugin>

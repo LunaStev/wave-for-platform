@@ -44,7 +44,6 @@
     <psi.referenceContributor language="UAST" implementation="org.jetbrains.idea.devkit.references.EventLogDescriptionReferenceContributor"/>
 
     <automaticRenamerFactory implementation="org.jetbrains.idea.devkit.refactoring.InspectionAutomaticRenamerFactory"/>
-    <httpRequestHandler implementation="org.jetbrains.idea.devkit.requestHandlers.HttpDebugListener"/>
     <httpRequestHandler implementation="org.jetbrains.idea.devkit.requestHandlers.BuildHttpRequestHandler"/>
 
     <compiler.buildTargetScopeProvider implementation="org.jetbrains.idea.devkit.build.PluginModuleBuildScopeProvider"/>
@@ -116,7 +115,6 @@
 
     <properties.implicitPropertyUsageProvider implementation="org.jetbrains.idea.devkit.inspections.RegistryImplicitPropertyUsageProvider"/>
 
-    <configurationType implementation="org.jetbrains.idea.devkit.run.PluginConfigurationType"/>
     <!--suppress PluginXmlValidity -->
     <moduleType id="PLUGIN_MODULE" implementationClass="org.jetbrains.idea.devkit.module.PluginModuleType" classpathProvider="true"/>
     <registryKey key="devkit.web.based.plugin.generator.enabled"
@@ -814,8 +812,6 @@
     <console.folding order="first" implementation="org.jetbrains.idea.devkit.run.FailedTestDebugLogConsoleFolding"/>
 
     <applicationService serviceImplementation="org.jetbrains.idea.devkit.actions.updateFromSources.UpdateFromSourcesSettings"/>
-    <projectService serviceImplementation="org.jetbrains.idea.devkit.run.JUnitDevKitUnitTestingSettings"
-                    configurationSchemaKey="unitTesting"/>
 
     <notificationGroup id="Plugin DevKit Deployment" displayType="BALLOON" bundle="messages.DevKitBundle"
                        key="notification.group.devkit.deployment"/>
@@ -849,8 +845,6 @@
     <consoleFilterProvider implementation="org.jetbrains.idea.devkit.run.ModulePathFilterProvider"/>
     <registryKey key="devkit.module.hyperlink.show.chooser" defaultValue="false"
                  description="Show file chooser when clicking module names in console (iml + descriptor xml)"/>
-    <registryKey key="devkit.ide.starter.run.modes.enabled" defaultValue="true"
-                 description="Show 'Use Installer' / 'Split Mode' toggles in gutter popup and apply env variables for IDE Starter tests"/>
 
     <properties.extendedUseScopeProvider implementation="org.jetbrains.idea.devkit.references.BundleExtendedUseScopeProvider"/>
     <properties.spellcheckerMnemonicsTokenizer implementation="org.jetbrains.idea.devkit.spellchecker.DevKitMnemonicsTokenizer"/>
@@ -861,8 +855,6 @@
     <projectSettings service="org.jetbrains.idea.devkit.inspections.missingApi.resolve.LibrariesWithIntellijClassesSetting"/>
     <applicationSettings service="org.jetbrains.idea.devkit.actions.updateFromSources.UpdateFromSourcesSettings"/>
 
-    <executor implementation="org.jetbrains.idea.devkit.dcevm.DevkitDcevmExecutor"/>
-    <programRunner implementation="org.jetbrains.idea.devkit.dcevm.DevkitDcevmRunner"/>
   </extensions>
 
   <extensions defaultExtensionNs="DevKit.lang">
@@ -1068,14 +1060,5 @@
     </action>
     <action id="UpdateIdeFromSourcesSettings" class="org.jetbrains.idea.devkit.actions.updateFromSources.UpdateIdeFromSourcesSettingsAction"/>
 
-    <group id="IdeStarterRunModeActions">
-      <separator/>
-      <action id="ToggleInstaller"
-              class="org.jetbrains.idea.devkit.run.ToggleInstallerAction"/>
-      <action id="ToggleSplitMode"
-              class="org.jetbrains.idea.devkit.run.ToggleSplitModeAction"/>
-      <separator/>
-      <add-to-group group-id="RunLineMarkerExtraActions" relative-to-action="CreateRunConfiguration" anchor="before"/>
-    </group>
   </actions>
 </idea-plugin>

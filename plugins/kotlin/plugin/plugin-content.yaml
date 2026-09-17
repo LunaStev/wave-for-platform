@@ -202,7 +202,6 @@
   - name: intellij.kotlin.featuresTrainer
   - name: intellij.kotlin.jvm.decompiler
   - name: kotlin.jvm.shared
-  - name: intellij.kotlin.jvm
   - name: intellij.kotlin.base.scripting
   - name: intellij.kotlin.base.scripting.main.kts
   - name: intellij.kotlin.base.scripting.shared
@@ -224,7 +223,6 @@
   - name: intellij.kotlin.highlighting
   - name: intellij.kotlin.compilerReferenceIndex
   - name: intellij.kotlin.compilerPlugins.assignment.fixes
-  - name: intellij.kotlin.compilerPlugins.scripting
   - name: intellij.kotlin.compilerPlugins.support.gradle
   - name: intellij.kotlin.compilerPlugins.support.maven
   - name: intellij.kotlin.compilerPlugins.allopen.maven

@@ -139,7 +139,7 @@ internal object DevKitPatcherHelper {
       when (e) {
         is ClassNotFoundException, is NoSuchMethodException, is IllegalAccessException, is java.lang.reflect.InvocationTargetException -> {
           @Suppress("SpellCheckingInspection")
-          logger<DevKitApplicationPatcher>().warn(
+          LOG.warn(
             "Failed to reflectively load IjentWslFsEnabledByDefaultForProduct from built classes." +
             " Maybe the file didn't exist in this revision, so the ijent WSL FS was disabled.",
             e,
@@ -164,7 +164,7 @@ internal object DevKitPatcherHelper {
       val kotlinCollectionsClassUri = systemClassLoader.getResource("kotlin/collections/CollectionsKt.class")!!.toURI()
 
       if (kotlinCollectionsClassUri.scheme != "jar") {
-        logger<DevKitApplicationPatcher>().warn("Kotlin stdlib is not in a JAR: $kotlinCollectionsClassUri")
+        LOG.warn("Kotlin stdlib is not in a JAR: $kotlinCollectionsClassUri")
         return null
       }
       val osPath = kotlinCollectionsClassUri.schemeSpecificPart
@@ -233,7 +233,7 @@ internal object DevKitPatcherHelper {
     catch (err: Throwable) {
       when (err) {
         is ClassNotFoundException, is NoSuchMethodException, is IllegalAccessException, is java.lang.reflect.InvocationTargetException -> {
-          logger<DevKitApplicationPatcher>().warn(
+          LOG.warn(
             "Failed to reflectively load MULTI_ROUTING_FILE_SYSTEM_VMOPTIONS from built classes." +
             " Options from DevKit plugin loaded class will be used.",
             err,

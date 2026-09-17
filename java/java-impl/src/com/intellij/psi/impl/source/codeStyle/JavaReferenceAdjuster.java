@@ -8,7 +8,6 @@ import com.intellij.codeInspection.StaticImportCanBeUsedInspection;
 import com.intellij.lang.ASTNode;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.JavaPsiFacade;
-import com.intellij.psi.JspPsiUtil;
 import com.intellij.psi.PsiAnnotation;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
@@ -37,14 +36,12 @@ import com.intellij.psi.codeStyle.ReferenceAdjuster;
 import com.intellij.psi.impl.PsiImplUtil;
 import com.intellij.psi.impl.source.PsiJavaCodeReferenceElementImpl;
 import com.intellij.psi.impl.source.SourceJavaCodeReference;
-import com.intellij.psi.impl.source.jsp.jspJava.JspClass;
 import com.intellij.psi.impl.source.tree.CompositeElement;
 import com.intellij.psi.impl.source.tree.JavaDocElementType;
 import com.intellij.psi.impl.source.tree.JavaElementType;
 import com.intellij.psi.impl.source.tree.TreeElement;
 import com.intellij.psi.impl.source.tree.TreeUtil;
 import com.intellij.psi.impl.source.tree.java.PsiReferenceExpressionImpl;
-import com.intellij.psi.jsp.JspFile;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.psi.util.PsiUtil;
@@ -232,17 +229,6 @@ public final class JavaReferenceAdjuster implements ReferenceAdjuster {
     if (parent.getElementType() == JavaElementType.JAVA_CODE_REFERENCE || parent.getElementType() == JavaElementType.REFERENCE_EXPRESSION) {
       array.add(parent);
       return;
-    }
-
-    if (parent.getPsi() instanceof PsiFile) {
-      JspFile jspFile = JspPsiUtil.getJspFile(parent.getPsi());
-      if (jspFile != null) {
-        JspClass jspClass = (JspClass)jspFile.getJavaClass();
-        if (jspClass != null) {
-          addReferencesInRange(array, jspClass.getNode(), startOffset, endOffset);
-        }
-        return;
-      }
     }
 
     addReferencesInRangeForComposite(array, parent, startOffset, endOffset);

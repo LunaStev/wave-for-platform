@@ -35,5 +35,4 @@
   modules:
   - name: intellij.tasks
   - name: intellij.tasks.compatibility
-  - name: intellij.tasks.java
   - name: intellij.tasks.core

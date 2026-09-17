@@ -2,7 +2,6 @@
 package com.intellij.debugger.impl;
 
 import com.intellij.execution.process.ProcessOutputType;
-import com.intellij.ide.plugins.PluginManagerCore;
 import com.intellij.idea.IdeaLogger;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.PathManager;
@@ -222,10 +221,6 @@ public class OutputChecker {
       result = replacePath(result, myAppPath.get(), "!APP_PATH!");
       result = replacePath(result, myOutputPath.get(), "!OUTPUT_PATH!");
       result = replacePath(result, JavaSdkUtil.getIdeaRtJarPath(), "!RT_JAR!");
-      if (PluginManagerCore.isRunningFromSources()) {
-        result = replacePath(result, DebuggerUtilsImpl.getIdeaRtPath(), "!RT_JAR!");
-      }
-
       var junit4JarPaths = StringUtil.join(IntelliJProjectConfiguration.getProjectLibraryClassesRootPaths("JUnit4"), java.io.File.pathSeparator);
       result = replacePath(result, junit4JarPaths, "!JUNIT4_JARS!");
 

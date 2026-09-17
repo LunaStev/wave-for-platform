@@ -69,7 +69,6 @@
     <module name="intellij.java.backend.split"/>
 
     <module name="intellij.java.structuralSearch"/>
-    <module name="intellij.java.vcs"/>
     <module name="intellij.jvm.analysis.impl"/>
     <module name="intellij.java.ultimate.icons" loading="optional"/>
     <module name="intellij.java.langInjection"/>

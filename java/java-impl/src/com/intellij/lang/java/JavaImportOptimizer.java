@@ -23,8 +23,6 @@ import com.intellij.psi.PsiImportList;
 import com.intellij.psi.PsiJavaFile;
 import com.intellij.psi.codeStyle.JavaCodeStyleManager;
 import com.intellij.psi.impl.source.codeStyle.ImportHelper;
-import com.intellij.psi.impl.source.jsp.jspJava.JspxImportList;
-import com.intellij.psi.jsp.JspFile;
 import com.intellij.psi.templateLanguages.TemplateLanguageUtil;
 import com.intellij.psi.util.PsiUtilCore;
 import com.intellij.testFramework.LightVirtualFile;
@@ -79,14 +77,9 @@ public final class JavaImportOptimizer implements ImportOptimizer {
           PsiDocumentManager.getInstance(javaFile.getProject()).commitDocument(javaFile.getFileDocument());
           final PsiImportList oldImportList = javaFile.getImportList();
           assert oldImportList != null;
-          if (oldImportList instanceof JspxImportList) {
-            oldImportList.replace(newImportList);
-          }
-          else {
-            oldImportList.getParent()
-              .addRangeAfter(newImportList.getParent().getFirstChild(), newImportList.getParent().getLastChild(), oldImportList);
-            oldImportList.delete();
-          }
+          oldImportList.getParent()
+            .addRangeAfter(newImportList.getParent().getFirstChild(), newImportList.getParent().getLastChild(), oldImportList);
+          oldImportList.delete();
           return new ImportContext(ImportHelper.getImportsAdded(newImportList), ImportHelper.getImportsRemoved(newImportList));
         }
         catch (IncorrectOperationException e) {
@@ -116,7 +109,7 @@ public final class JavaImportOptimizer implements ImportOptimizer {
 
   @Override
   public boolean supports(@NotNull PsiFile file) {
-    if (file instanceof PsiJavaFile && !(file instanceof JspFile) && !TemplateLanguageUtil.isTemplateDataFile(file)) {
+    if (file instanceof PsiJavaFile && !TemplateLanguageUtil.isTemplateDataFile(file)) {
       VirtualFile virtualFile = PsiUtilCore.getVirtualFile(file);
       return virtualFile != null && (ProjectRootManager.getInstance(file.getProject()).getFileIndex().isInSource(virtualFile) ||
                                      virtualFile instanceof LightVirtualFile ||

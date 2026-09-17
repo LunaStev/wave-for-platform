@@ -91,9 +91,9 @@ string_list_flag(
 
 string_list_flag(
     name = "low-memory-jvm_flags",
-    build_setting_default = get_jvm_flags([
-        "-Xmx2g",
-        "-XX:ActiveProcessorCount=2",
-    ]),
+    build_setting_default = get_jvm_flags(
+        ["-XX:ActiveProcessorCount=2"],
+        max_heap = "4g",
+    ),
     visibility = ["//visibility:public"],
 )

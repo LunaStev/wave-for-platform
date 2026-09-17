@@ -10,7 +10,6 @@ import com.intellij.psi.PsiJavaFile;
 import com.intellij.psi.ServerPageFile;
 import com.intellij.psi.impl.source.tree.JavaDocElementType;
 import com.intellij.psi.impl.source.tree.StdTokenSets;
-import com.intellij.psi.jsp.JspFile;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.tree.TokenSet;
 import com.intellij.psi.xml.XmlTokenType;
@@ -24,7 +23,7 @@ public final class JavaIndexPatternBuilder implements IndexPatternBuilder {
 
   @Override
   public @Nullable Lexer getIndexingLexer(final @NotNull PsiFile file) {
-    if (file instanceof PsiJavaFile && !(file instanceof JspFile)) {
+    if (file instanceof PsiJavaFile) {
       return JavaParserDefinition.createLexer(((PsiJavaFile)file).getLanguageLevel());
     }
     return null;

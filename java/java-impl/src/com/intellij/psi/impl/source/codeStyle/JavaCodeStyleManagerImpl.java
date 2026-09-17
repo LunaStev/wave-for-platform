@@ -73,8 +73,6 @@ import com.intellij.psi.codeStyle.VariableKind;
 import com.intellij.psi.impl.CheckUtil;
 import com.intellij.psi.impl.search.MethodDeepestSuperSearcher;
 import com.intellij.psi.impl.source.SourceTreeToPsiMap;
-import com.intellij.psi.impl.source.jsp.jspJava.JspxImportList;
-import com.intellij.psi.impl.source.jsp.jspJava.JspxImportStatement;
 import com.intellij.psi.statistics.JavaStatisticsManager;
 import com.intellij.psi.util.FileTypeUtils;
 import com.intellij.psi.util.InheritanceUtil;
@@ -178,10 +176,7 @@ public class JavaCodeStyleManagerImpl extends JavaCodeStyleManager {
       PsiImportList newList = prepareOptimizeImportsResult(javaFile);
       if (newList != null) {
         final PsiImportList importList = javaFile.getImportList();
-        if (importList instanceof JspxImportList) {
-          importList.replace(newList);
-        }
-        else if (importList != null) {
+        if (importList != null) {
           importList.getParent().addRangeAfter(newList.getParent().getFirstChild(), newList.getParent().getLastChild(), importList);
           importList.delete();
         }
@@ -237,11 +232,6 @@ public class JavaCodeStyleManagerImpl extends JavaCodeStyleManager {
       redundant = new ReferenceOpenHashSet<>();
       ContainerUtil.addAll(redundant, imports);
       redundant.removeAll(allImports);
-      for (PsiImportStatementBase importStatement : imports) {
-        if (importStatement instanceof JspxImportStatement && importStatement.isForeignFileImport()) {
-          redundant.remove(importStatement);
-        }
-      }
     }
     else {
       redundant = allImports;

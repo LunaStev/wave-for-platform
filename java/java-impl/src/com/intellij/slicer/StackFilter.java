@@ -1,7 +1,6 @@
 // Copyright 2000-2020 JetBrains s.r.o. Use of this source code is governed by the Apache 2.0 license that can be found in the LICENSE file.
 package com.intellij.slicer;
 
-import com.intellij.execution.filters.ExceptionAnalysisProvider;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -172,9 +171,9 @@ final class StackFilter {
     return false;
   }
 
-  static @Nullable StackFilter from(List<ExceptionAnalysisProvider.StackLine> list) {
+  static @Nullable StackFilter from(List<JavaValueFilter.StackFrame> list) {
     return StreamEx.of(list).foldRight(null, (line, prev) ->
-      new StackFilter(0, line.getClassName(), line.getMethodName(), line.getFileName(), prev));
+      new StackFilter(0, line.className(), line.methodName(), line.fileName(), prev));
   }
 
   @Override

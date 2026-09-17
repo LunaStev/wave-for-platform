@@ -71,7 +71,6 @@ java/testFramework
 java/testFramework/backend
 java/testFramework/shared
 java/typeMigration
-java/vcs
 java/xml.dom.impl
 jps/antLayout
 jps/jps-builders
@@ -875,7 +874,6 @@ plugins/kotlin/code-insight/utils
 plugins/kotlin/compiler-plugins/compiler-plugin-support/common
 plugins/kotlin/compiler-plugins/compiler-plugin-support/tests
 plugins/kotlin/compiler-plugins/kotlinx-serialization/k2
-plugins/kotlin/compiler-plugins/scripting
 plugins/kotlin/compiler-reference-index
 plugins/kotlin/compiler-reference-index/tests.k2
 plugins/kotlin/completion/api
@@ -904,7 +902,6 @@ plugins/kotlin/inspections
 plugins/kotlin/intellij.kotlin.base.test
 plugins/kotlin/internal
 plugins/kotlin/jps/graphImplementationTests
-plugins/kotlin/jvm/k2
 plugins/kotlin/jvm/shared
 plugins/kotlin/kotlin-compiler-classpath
 plugins/kotlin/kotlin.ide
@@ -927,7 +924,6 @@ plugins/kotlin/refactorings/kotlin.refactorings.tests.k2
 plugins/kotlin/refactorings/rename.k2
 plugins/kotlin/references
 plugins/kotlin/scripting
-plugins/kotlin/scripting-plugin
 plugins/kotlin/spellchecker
 plugins/kotlin/test-framework
 plugins/kotlin/tests-common
@@ -1027,7 +1023,6 @@ plugins/tasks/tasks-core
 plugins/tasks/tasks-core/bugzilla
 plugins/tasks/tasks-core/jira
 plugins/tasks/tasks-core/trac
-plugins/tasks/tasks-java
 plugins/tasks/tasks-tests
 plugins/terminal
 plugins/terminal/backend

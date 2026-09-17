@@ -54,7 +54,6 @@ public class TestDataNavigationHandler implements GutterIconNavigationHandler<Ps
     if (collectByExistingFiles && (fileNames == null || fileNames.isEmpty())) {
       fileNames = new ArrayList<>();
       fileNames.addAll(TestDataGuessByExistingFilesUtil.collectTestDataByExistingFiles(method, testDataPath));
-      fileNames.addAll(TestDataGuessByTestDiscoveryUtil.collectTestDataByExistingFiles(method));
     }
     return fileNames == null ? Collections.emptyList() : fileNames;
   }

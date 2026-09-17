@@ -17,7 +17,6 @@ package com.intellij.java.slicer;
 
 import com.intellij.analysis.AnalysisScope;
 import com.intellij.codeInsight.daemon.impl.HighlightInfo;
-import com.intellij.execution.filters.ExceptionAnalysisProvider;
 import com.intellij.lang.annotation.HighlightSeverity;
 import com.intellij.openapi.editor.RangeMarker;
 import com.intellij.psi.PsiDocumentManager;
@@ -71,9 +70,9 @@ public class SliceBackwardTest extends SliceTestCase {
     params.dataFlowToThis = true;
     SliceLanguageSupportProvider provider = LanguageSlicing.getProvider(element);
     params.valueFilter = filter.isEmpty() ? JavaValueFilter.ALLOW_EVERYTHING : provider.parseFilter(element, filter);
-    List<ExceptionAnalysisProvider.StackLine> lines = ContainerUtil.map(stack, line -> {
+    List<JavaValueFilter.StackFrame> lines = ContainerUtil.map(stack, line -> {
       String[] parts = line.split(":");
-      return new ExceptionAnalysisProvider.StackLine(parts[0], parts[1], null);
+      return new JavaValueFilter.StackFrame(parts[0], parts[1], null);
     });
     assertTrue(params.valueFilter instanceof JavaValueFilter);
     params.valueFilter = ((JavaValueFilter)params.valueFilter).withStack(lines);

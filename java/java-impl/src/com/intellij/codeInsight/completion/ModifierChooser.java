@@ -19,7 +19,6 @@ import com.intellij.psi.PsiModifierList;
 import com.intellij.psi.PsiTypeElement;
 import com.intellij.psi.PsiVariable;
 import com.intellij.psi.filters.FilterPositionUtil;
-import com.intellij.psi.impl.source.jsp.jspJava.JspClassLevelDeclarationStatement;
 import com.intellij.psi.javadoc.PsiDocComment;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.psi.util.PsiUtil;
@@ -157,9 +156,6 @@ public final class ModifierChooser {
            parent instanceof PsiDeclarationStatement || parent instanceof PsiImportList ||
            parent instanceof PsiDocComment) {
       parent = parent.getParent();
-      if (parent instanceof JspClassLevelDeclarationStatement) {
-        parent = parent.getContext();
-      }
     }
 
     if (parent == null) return false;

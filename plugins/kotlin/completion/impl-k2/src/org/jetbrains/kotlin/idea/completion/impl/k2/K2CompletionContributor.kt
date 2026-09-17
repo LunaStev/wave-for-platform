@@ -13,11 +13,9 @@ import org.jetbrains.annotations.NonNls
 import org.jetbrains.kotlin.analysis.api.KaSession
 import org.jetbrains.kotlin.analysis.api.components.KaCompletionExtensionCandidateChecker
 import org.jetbrains.kotlin.analysis.api.lifetime.withValidityAssertion
-import org.jetbrains.kotlin.analysis.api.types.KaType
 import org.jetbrains.kotlin.idea.base.analysis.api.utils.KtSymbolFromIndexProvider
 import org.jetbrains.kotlin.idea.base.codeInsight.contributorClass
 import org.jetbrains.kotlin.idea.completion.impl.k2.checkers.CompletionVisibilityChecker
-import org.jetbrains.kotlin.idea.completion.impl.k2.contributors.evaluateRuntimeKaType
 import org.jetbrains.kotlin.idea.completion.impl.k2.handlers.KEEP_OLD_ARGUMENT_LIST_ON_TAB_KEY
 import org.jetbrains.kotlin.idea.completion.impl.k2.handlers.SmartCompletionReplaceExistingArgumentHandler
 import org.jetbrains.kotlin.idea.completion.impl.k2.handlers.WrapSingleStringTemplateEntryWithBracesInsertHandler
@@ -31,7 +29,6 @@ import org.jetbrains.kotlin.idea.completion.suppressItemSelectionByCharsOnTyping
 import org.jetbrains.kotlin.idea.completion.impl.k2.weighers.CompletionContributorGroupWeigher.groupPriority
 import org.jetbrains.kotlin.idea.completion.impl.k2.weighers.WeighingContext
 import org.jetbrains.kotlin.idea.util.positionContext.KotlinRawPositionContext
-import org.jetbrains.kotlin.idea.util.positionContext.KotlinSimpleNameReferencePositionContext
 import java.util.Optional
 import kotlin.reflect.KClass
 import kotlin.reflect.KProperty
@@ -80,9 +77,7 @@ internal class K2CompletionSectionContext<out P : KotlinRawPositionContext>(
     companion object {
         // We need these keys because the LazyCompletionSessionProperty in this class are different property instances per context.
         // For extension properties, this will not be relevant and we can use anonymous keys.
-        private val RUNTIME_TYPE_KEY: Key<Optional<KaType?>> = Key.create("RUNTIME_TYPE_KEY")
         private val EXTENSION_CHECKER_KEY: Key<Optional<KaCompletionExtensionCandidateChecker?>> = Key.create("EXTENSION_CHECKER_KEY")
-        private val RUNTIME_EXTENSION_CHECKER_KEY: Key<Optional<KaCompletionExtensionCandidateChecker?>> = Key.create("RUNTIME_EXTENSION_CHECKER_KEY")
     }
 
     val completionContext: K2CompletionContext<P> = commonData.completionContext
@@ -103,12 +98,6 @@ internal class K2CompletionSectionContext<out P : KotlinRawPositionContext>(
 
     val symbolFromIndexProvider: KtSymbolFromIndexProvider = commonData.symbolFromIndexProvider
 
-    val runtimeType: KaType? by LazyCompletionSessionProperty(RUNTIME_TYPE_KEY) {
-        val positionContext = contextOf<K2CompletionSectionContext<P>>().positionContext
-        val receiver = (positionContext as? KotlinSimpleNameReferencePositionContext)?.explicitReceiver
-        receiver?.evaluateRuntimeKaType()
-    }
-
     /**
      * A checker that determines which extensions are applicable
      * at the current completion position based on the static type of the receiver.
@@ -117,20 +106,6 @@ internal class K2CompletionSectionContext<out P : KotlinRawPositionContext>(
         val sectionContext = contextOf<K2CompletionSectionContext<P>>()
 
         createExtensionChecker(sectionContext.positionContext, sectionContext.parameters.originalFile, null)
-    }
-
-    /**
-     * A checker that determines which extensions are applicable
-     * at the current completion position based on the runtime type of the receiver.
-     *
-     * [runtimeTypeExtensionChecker] is kept as another property to be able to compute
-     * runtime type completions separately, ensuring that the potentially slow runtime type evaluation
-     * does not block the display of other completion suggestions.
-     */
-    val runtimeTypeExtensionChecker: KaCompletionExtensionCandidateChecker? by LazyCompletionSessionProperty(RUNTIME_EXTENSION_CHECKER_KEY) {
-        val sectionContext = contextOf<K2CompletionSectionContext<P>>()
-
-        createExtensionChecker(sectionContext.positionContext, sectionContext.parameters.originalFile, sectionContext.runtimeType)
     }
 
     private val session = commonData.session

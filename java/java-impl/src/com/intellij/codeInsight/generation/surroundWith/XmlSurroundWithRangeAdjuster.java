@@ -9,17 +9,13 @@ import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiWhiteSpace;
-import com.intellij.psi.jsp.JspLanguage;
-import com.intellij.psi.jsp.JspxLanguage;
 import com.intellij.psi.xml.XmlFile;
 
 
 public final class XmlSurroundWithRangeAdjuster implements SurroundWithRangeAdjuster {
   private static boolean isLanguageWithWSSignificant(Language lang) {
     return lang == HTMLLanguage.INSTANCE ||
-           lang == XHTMLLanguage.INSTANCE ||
-           lang instanceof JspLanguage ||
-           lang instanceof JspxLanguage;
+           lang == XHTMLLanguage.INSTANCE;
   }
 
   private static Language getLanguage(PsiElement element) {

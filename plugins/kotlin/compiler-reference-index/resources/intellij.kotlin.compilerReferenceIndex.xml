@@ -7,11 +7,6 @@
   </dependencies>
   <!-- endregion -->
   <extensions defaultExtensionNs="com.intellij">
-    <registryKey key="kotlin.cri.bta.support.enabled"
-                 defaultValue="true"
-                 restartRequired="false"
-                 description="Enable Kotlin Compiler Reference Index support for BTA-based builds (Gradle/Maven)"/>
-
     <codeUsageScopeOptimizer implementation="org.jetbrains.kotlin.idea.search.refIndex.KotlinScopeOptimizer"/>
 
     <projectService
@@ -32,9 +27,6 @@
 
     <languageCompilerRefAdapter.directInheritorProvider
             implementation="org.jetbrains.kotlin.idea.search.refIndex.KotlinDirectInheritorProvider"/>
-
-    <postStartupActivity implementation="org.jetbrains.kotlin.idea.search.refIndex.bta.CriMavenStartupActivity"
-                         order="after org.jetbrains.idea.maven.project.MavenProjectsManagerProjectActivity"/>
   </extensions>
 
   <extensionPoints>
@@ -45,10 +37,6 @@
   </extensionPoints>
 
   <extensions defaultExtensionNs="org.jetbrains.kotlin">
-    <kotlinCompilerReferenceIndexStorageProvider
-            implementation="org.jetbrains.kotlin.idea.search.refIndex.bta.BtaKotlinCompilerReferenceIndexStorageProvider"
-            id="BtaKotlinCompilerReferenceIndexStorageProvider"
-            order="before JpsKotlinCompilerReferenceIndexStorageProvider"/>
     <kotlinCompilerReferenceIndexStorageProvider
             implementation="org.jetbrains.kotlin.idea.search.refIndex.jps.JpsKotlinCompilerReferenceIndexStorageProvider"
             id="JpsKotlinCompilerReferenceIndexStorageProvider"

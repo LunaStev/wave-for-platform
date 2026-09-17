@@ -21,7 +21,6 @@ import com.intellij.openapi.editor.RangeMarker;
 import com.intellij.openapi.util.text.StringUtil;
 import com.intellij.pom.java.JavaFeature;
 import com.intellij.psi.JavaPsiFacade;
-import com.intellij.psi.JspPsiUtil;
 import com.intellij.psi.PsiCaseLabelElementList;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiClassType;
@@ -313,7 +312,7 @@ public class VariableLookupItem extends LookupItem<PsiVariable> implements Typed
 
   public static void makeFinalIfNeeded(@NotNull InsertionContext context, @NotNull PsiVariable variable) {
     PsiElement place = context.getFile().findElementAt(context.getTailOffset() - 1);
-    if (place == null || PsiUtil.isAvailable(JavaFeature.EFFECTIVELY_FINAL, place) || JspPsiUtil.isInJspFile(place)) {
+    if (place == null || PsiUtil.isAvailable(JavaFeature.EFFECTIVELY_FINAL, place)) {
       return;
     }
 

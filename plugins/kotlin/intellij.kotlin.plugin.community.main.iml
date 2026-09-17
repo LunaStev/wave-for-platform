@@ -47,7 +47,6 @@
     <orderEntry type="module" module-name="intellij.kotlin.refactorings.rename" exported="" />
     <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.support" exported="" />
     <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.serialization" exported="" />
-    <orderEntry type="module" module-name="intellij.kotlin.compilerPlugins.scripting" exported="" />
     <orderEntry type="module" module-name="intellij.kotlin.completion.api" exported="" />
     <orderEntry type="module" module-name="kotlin.completion.impl.shared" exported="" />
     <orderEntry type="module" module-name="intellij.kotlin.completion.impl" exported="" />
@@ -59,7 +58,6 @@
     <orderEntry type="module" module-name="intellij.kotlin.migration" exported="" />
     <orderEntry type="module" module-name="kotlin.inspections" exported="" />
     <orderEntry type="module" module-name="kotlin.jvm.shared" exported="" />
-    <orderEntry type="module" module-name="intellij.kotlin.jvm" exported="" />
     <orderEntry type="module" module-name="kotlin.base.injection" exported="" />
     <orderEntry type="module" module-name="intellij.kotlin.injection" exported="" />
     <orderEntry type="module" module-name="intellij.kotlin.codeInsight.liveTemplates" exported="" />

@@ -131,7 +131,6 @@ import com.intellij.psi.impl.source.PostprocessReformattingAspect;
 import com.intellij.psi.impl.source.PsiImmediateClassType;
 import com.intellij.psi.impl.source.tree.JavaElementType;
 import com.intellij.psi.javadoc.PsiDocComment;
-import com.intellij.psi.jsp.JspxLanguage;
 import com.intellij.psi.scope.ElementClassHint;
 import com.intellij.psi.scope.NameHint;
 import com.intellij.psi.scope.PsiScopeProcessor;
@@ -1147,12 +1146,12 @@ public final class JavaCompletionUtil {
       return false;
     }
 
-    String open = escapeXmlIfNeeded(context, "<");
+    String open = "<";
     context.getDocument().insertString(offset, open);
     offset += open.length();
     context.getEditor().getCaretModel().moveToOffset(offset);
     if (CodeInsightSettings.getInstance().AUTOINSERT_PAIR_BRACKET) {
-      context.getDocument().insertString(offset, escapeXmlIfNeeded(context, ">"));
+      context.getDocument().insertString(offset, ">");
       context.commitDocument();
 
       TabOutScopesTracker.getInstance().registerEmptyScope(context.getEditor(), offset, getTabOutOffset(context, offset));
@@ -1202,13 +1201,6 @@ public final class JavaCompletionUtil {
         return place;
       }
     };
-  }
-
-  public static @NotNull String escapeXmlIfNeeded(InsertionContext context, @NotNull String generics) {
-    if (context.getFile().getViewProvider().getBaseLanguage() instanceof JspxLanguage) {
-      return StringUtil.escapeXmlEntities(generics);
-    }
-    return generics;
   }
 
   public static boolean isEffectivelyDeprecated(PsiDocCommentOwner member) {

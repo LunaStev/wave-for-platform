@@ -67,7 +67,6 @@ public class TestDataReferenceCollector {
     if (collectByExistingFiles && result.isEmpty()) {
       result = new ArrayList<>();
       result.addAll(TestDataGuessByExistingFilesUtil.collectTestDataByExistingFiles(method, myTestDataPath));
-      result.addAll(TestDataGuessByTestDiscoveryUtil.collectTestDataByExistingFiles(method));
     }
     return result;
   }

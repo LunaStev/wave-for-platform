@@ -52,11 +52,9 @@ abstract class KotlinPluginBuilder(val kind : KotlinPluginKind = System.getPrope
       "intellij.kotlin.ide",
       "kotlin.fir.frontend-independent",
       "kotlin.jvm.shared",
-      "intellij.kotlin.jvm",
       "intellij.kotlin.compilerReferenceIndex",
       "intellij.kotlin.compilerPlugins.support",
       "intellij.kotlin.compilerPlugins.serialization",
-      "intellij.kotlin.compilerPlugins.scripting",
       "intellij.kotlin.completion.api",
       "kotlin.completion.impl.shared",
       "intellij.kotlin.completion.impl",
@@ -249,19 +247,6 @@ abstract class KotlinPluginBuilder(val kind : KotlinPluginKind = System.getPrope
     }
   }
 
-  fun kotlinScriptingPlugin(addition: ((PluginLayout.PluginLayoutSpec) -> Unit)? = null): PluginLayout {
-    val mainModuleName = "kotlin.scripting-plugin"
-    return PluginLayout.pluginAutoWithCustomDirName(mainModuleName) { spec ->
-      spec.directoryName = "KotlinScripting"
-      spec.mainJarName = "kotlin-scripting-plugin.jar"
-
-      withKotlincKotlinCompilerCommonLibrary(spec, mainModuleName)
-      spec.withProjectLibrary("kotlinc.kotlin-compiler-fe10")
-      withKotlincInPluginDirectory(spec = spec)
-
-      addition?.invoke(spec)
-    }
-  }
 }
 
 private fun withKotlincKotlinCompilerCommonLibrary(spec: PluginLayout.PluginLayoutSpec, mainPluginModule: String) {

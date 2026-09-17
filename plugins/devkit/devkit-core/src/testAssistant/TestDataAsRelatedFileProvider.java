@@ -24,7 +24,7 @@ final class TestDataAsRelatedFileProvider extends GotoRelatedProvider {
     if (editor == null || element == null || project == null) return Collections.emptyList();
 
     UMethod uMethod = UastContextKt.getUastParentOfType(element, UMethod.class);
-    PsiElement ctxElement = uMethod == null ? NavigateToTestDataAction.findParametrizedClass(context) : uMethod.getSourcePsi();
+    PsiElement ctxElement = uMethod == null ? null : uMethod.getSourcePsi();
     if (ctxElement == null) return Collections.emptyList();
 
     List<TestDataFile> testDataFiles = NavigateToTestDataAction.findTestDataFiles(context, project, false);

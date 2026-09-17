@@ -252,9 +252,6 @@
 - name: lib/modules/intellij.java.unscramble.jar
   contentModules:
   - name: intellij.java.unscramble
-- name: lib/modules/intellij.java.vcs.jar
-  contentModules:
-  - name: intellij.java.vcs
 - name: lib/modules/intellij.java.xml.dom.impl.jar
   contentModules:
   - name: intellij.java.xml.dom.impl

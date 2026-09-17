@@ -66,7 +66,6 @@ object CommunityRepositoryModules {
       spec.directoryName = "tasks"
       spec.withModule("intellij.tasks")
       spec.withModule("intellij.tasks.compatibility")
-      spec.withModule("intellij.tasks.java")
     },
     pluginAuto(listOf("intellij.devkit")) { spec ->
       spec.withModule("intellij.devkit.jps")

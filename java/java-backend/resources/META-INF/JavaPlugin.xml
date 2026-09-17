@@ -405,7 +405,6 @@
 
     <lang.smartEnterProcessor language="JSPX" implementationClass="com.intellij.codeInsight.completion.XmlSmartEnterProcessor"/>
 
-    <stacktrace.fold.line.modifier implementation="com.intellij.execution.JavaModuleNameStacktraceModifier"/>
     <stacktrace.fold substring="at java.awt.EventDispatchThread"/>
     <stacktrace.fold substring="at java.awt.Window.dispatchEventImpl("/>
     <stacktrace.fold substring="at java.awt.Container.dispatchEventImpl("/>
@@ -481,9 +480,6 @@
       implementation="com.intellij.openapi.externalSystem.service.project.PackagingModifiableModelProvider"/>
     <configuration.ModuleStructureExtension
       implementation="com.intellij.openapi.externalSystem.service.project.ExternalModuleStructureExtension"/>
-
-    <warmupConfigurator implementation="com.intellij.ide.warmup.JdkWarmupConfigurator"/>
-    <postStartupActivity implementation="com.intellij.ide.warmup.JdkWarmupProjectActivity"/>
 
     <internalFileTemplate name="Class"/>
     <internalFileTemplate name="Interface"/>
@@ -729,7 +725,6 @@
     <targetElementUtilExtender implementation="com.intellij.codeInsight.JavaTargetElementEvaluator"/>
     <indexPatternBuilder implementation="com.intellij.psi.impl.search.JavaIndexPatternBuilder"/>
     <printOption implementation="com.intellij.codeEditor.printing.HyperlinksToClassesOption"/>
-    <macro implementation="com.intellij.ide.macro.JavaDocPathMacro"/>
     <macro implementation="com.intellij.ide.macro.FilePackageMacro"/>
     <macro implementation="com.intellij.ide.macro.FileFQPackage"/>
     <macro implementation="com.intellij.ide.macro.FileClassMacro"/>

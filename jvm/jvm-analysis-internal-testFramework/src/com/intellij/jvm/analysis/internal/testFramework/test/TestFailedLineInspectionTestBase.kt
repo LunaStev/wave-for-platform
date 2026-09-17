@@ -2,7 +2,7 @@ package com.intellij.jvm.analysis.internal.testFramework.test
 
 import com.intellij.codeInspection.test.TestFailedLineInspection
 import com.intellij.execution.TestStateStorage
-import com.intellij.execution.testframework.JavaTestLocator
+import com.intellij.execution.testframework.sm.runner.SMTestLocator
 import com.intellij.execution.testframework.sm.runner.states.TestStateInfo
 import com.intellij.execution.testframework.sm.runner.ui.TestStackTraceParser
 import com.intellij.jvm.analysis.testFramework.JvmInspectionTestBase
@@ -38,7 +38,9 @@ abstract class TestFailedLineInspectionTestBase : JvmInspectionTestBase() {
     stackTrace: String,
     errorMessage: String,
   ) {
-    val pair = TestStackTraceParser(url, stackTrace, errorMessage, JavaTestLocator.INSTANCE, project)
+    // These tests check failure highlighting, not navigation through a JVM test runner.
+    val locator = SMTestLocator { _, _, _, _ -> emptyList() }
+    val pair = TestStackTraceParser(url, stackTrace, errorMessage, locator, project)
     val record = TestStateStorage.Record(
       TestStateInfo.Magnitude.FAILED_INDEX.value, Date(), 0,
       pair.failedLine, pair.failedMethodName, pair.errorMessage, pair.topLocationLine

@@ -10,7 +10,6 @@ import com.intellij.codeInsight.documentation.DocumentationManagerUtil;
 import com.intellij.codeInsight.javadoc.markdown.JavaDocMarkdownFlavourDescriptor;
 import com.intellij.java.JavaBundle;
 import com.intellij.java.syntax.parser.JavaKeywords;
-import com.intellij.javadoc.JavadocGeneratorRunProfile;
 import com.intellij.lang.ASTNode;
 import com.intellij.lang.Language;
 import com.intellij.lang.documentation.DocumentationMarkup;
@@ -36,6 +35,7 @@ import com.intellij.openapi.project.Project;
 import com.intellij.openapi.projectRoots.JavaSdk;
 import com.intellij.openapi.projectRoots.JavaSdkVersion;
 import com.intellij.openapi.projectRoots.Sdk;
+import com.intellij.openapi.projectRoots.ex.PathUtilEx;
 import com.intellij.openapi.roots.ProjectFileIndex;
 import com.intellij.openapi.util.Couple;
 import com.intellij.openapi.util.JDOMUtil;
@@ -336,7 +336,7 @@ public class JavaDocInfoGenerator {
     myDoSemanticHighlightingOfLinks = doSemanticHighlightingOfLinks;
     myHighlightingSaturation = highlightingSaturationFactor;
 
-    Sdk jdk = JavadocGeneratorRunProfile.getSdk(myProject);
+    Sdk jdk = PathUtilEx.getAnyJdk(myProject);
     mySdkVersion = jdk == null ? null : JavaSdk.getInstance().getVersion(jdk);
   }
 
