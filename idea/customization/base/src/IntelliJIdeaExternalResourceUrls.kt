@@ -1,42 +1,27 @@
 // Copyright 2000-2023 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license.
 package com.intellij.idea.customization.base
 
-import com.intellij.openapi.util.SystemInfoRt
-import com.intellij.platform.ide.impl.customization.BaseJetBrainsExternalProductResourceUrls
+import com.intellij.platform.ide.customization.ExternalProductResourceUrls
 import com.intellij.util.Url
 import com.intellij.util.Urls
 
-internal class IntelliJIdeaExternalResourceUrls : BaseJetBrainsExternalProductResourceUrls() {
-  override val basePatchDownloadUrl: Url
-    get() = Urls.newFromEncoded("https://download.jetbrains.com/idea/")
+internal class IntelliJIdeaExternalResourceUrls : ExternalProductResourceUrls {
+  // WfP does not publish an update feed or patches yet; use the interface's null defaults.
+  override val bugReportUrl: (String) -> Url
+    get() = { Urls.newFromEncoded("https://github.com/wavefnd/wave-for-platform/issues/new") }
 
-  override val productPageUrl: Url
-    get() = baseWebSiteUrl.resolve("idea/")
+  override val technicalSupportUrl: (String) -> Url
+    get() = { Urls.newFromEncoded("https://github.com/wavefnd/wave-for-platform/issues") }
 
-  override val youtrackProjectId: String
-    get() = "IDEA"
+  override val downloadPageUrl: Url
+    get() = Urls.newFromEncoded("https://github.com/wavefnd/wave-for-platform/releases")
 
-  override val shortProductNameUsedInForms: String
-    get() = "IDEA"
-
-  override val useInIdeGeneralFeedback: Boolean
-    get() = true
-
-  override val useInIdeEvaluationFeedback: Boolean
-    get() = true
-
-  override val youTubeChannelUrl: Url
-    get() = Urls.newFromEncoded("https://www.youtube.com/user/intellijideavideo")
-
-  override val keyboardShortcutsPdfUrl: Url
-    get() {
-      val suffix = if (SystemInfoRt.isMac) "_Mac" else ""
-      return baseWebSiteUrl.resolve("idea/docs/IntelliJIDEA_ReferenceCard$suffix.pdf")
-    }
+  override val whatIsNewPageUrl: Url
+    get() = downloadPageUrl
 
   override val gettingStartedPageUrl: Url
-    get() = baseWebSiteUrl.resolve("idea/resources/")
+    get() = Urls.newFromEncoded("https://github.com/wavefnd/wave-for-platform#readme")
 
-  override val baseWebHelpUrl: Url
-    get() = baseWebSiteUrl.resolve("help/idea/")
+  override val helpPageUrl: (String) -> Url
+    get() = { gettingStartedPageUrl }
 }

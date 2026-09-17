@@ -6,6 +6,10 @@
   "editorScheme": "Islands Dark",
 
   "colors": {
+    "WaveAccent": "#6654F1",
+    "WaveFocus": "#B3A6FF",
+    "WaveAccentText": "#B3A6FF",
+    "WaveAccentSoft": "#332D56",
     "white": "#FFFFFF",
     "black": "#000000",
     "gray-160": "#F7F8F9",
@@ -155,7 +159,7 @@
     "text-disabled": "gray-60",
     "text-over-accent": "white",
     "text-over-accent-inverted": "black",
-    "text-link": "blue-100",
+    "text-link": "WaveAccentText",
     "text-error": "red-100",
     "text-warning": "yellow-100",
     "text-success": "green-100",
@@ -174,10 +178,10 @@
     "layer-2-border": "gray-50",
     "layer-2-border-inline": "gray-60",
 
-    "accent-brand-bg": "blue-80",
-    "accent-brand-border": "blue-80",
-    "accent-brand-bg-secondary": "blue-40",
-    "accent-brand-border-secondary": "blue-60",
+    "accent-brand-bg": "WaveAccent",
+    "accent-brand-border": "WaveAccent",
+    "accent-brand-bg-secondary": "WaveAccentSoft",
+    "accent-brand-border-secondary": "WaveFocus",
     "accent-error-bg": "red-80",
     "accent-error-border": "red-80",
     "accent-error-bg-secondary": "red-40",
@@ -271,9 +275,9 @@
     "selection-bg-inactive": "gray-40",
     "selection-bg-hovered": "transparent-white-10",
 
-    "tab-selected-bg-active": "blue-40",
+    "tab-selected-bg-active": "WaveAccentSoft",
     "tab-selected-bg-inactive": "gray-30",
-    "tab-selected-border-active": "blue-60",
+    "tab-selected-border-active": "WaveAccent",
     "tab-selected-border-inactive": "gray-50",
     "tab-bg-hovered": "core-bg-transparent-hovered",
     "tab-file-color-mask-bg": "#1E1F2280",
@@ -389,10 +393,10 @@
       "acceleratorForeground": "text-secondary",
       "shortcutForeground": "text-secondary",
 
-      "underlineColor": "control-brand-bg",
+      "underlineColor": "WaveAccent",
       "inactiveUnderlineColor": "control-bg-small",
 
-      "focusColor": "control-brand-border",
+      "focusColor": "WaveFocus",
 
       "separatorColor": "popup-border",
       "separatorForeground": "text-secondary",
@@ -435,7 +439,7 @@
       "hoverBorderColor": "transparent",
       "pressedBackground": "toolbar-bg-pressed",
       "pressedBorderColor": "transparent",
-      "focusedBorderColor": "control-brand-border",
+      "focusedBorderColor": "WaveFocus",
       "hoverSeparatorColor": "toolbar-border"
     },
 
@@ -506,12 +510,12 @@
       "minimumSize": "72,28",
       "minimumSize.compact": "72,24",
       "default": {
-        "foreground": "text-over-accent",
+        "foreground": "#FFFFFF",
         "loadingForeground": "text-muted",
-        "startBackground": "control-brand-bg",
-        "endBackground": "control-brand-bg",
-        "startBorderColor": "control-brand-bg",
-        "endBorderColor": "control-brand-bg",
+        "startBackground": "WaveAccent",
+        "endBackground": "WaveAccent",
+        "startBorderColor": "WaveAccent",
+        "endBorderColor": "WaveAccent",
         "focusedBorderColor": "dialog-bg",
         "shadowColor": "transparent"
       },
@@ -658,6 +662,7 @@
     },
 
     "Component": {
+      "focusColor": "WaveFocus",
       "arc": 8,
       "arc.compact": 6,
       "arrowAreaWidth": "28",
@@ -676,6 +681,7 @@
     },
 
     "EditorTabs": {
+      "underlineColor": "WaveAccent",
       "underlineArc": 4,
       "underlineHeight": 4,
       "unselectedAlpha": 0.75,
@@ -685,7 +691,7 @@
       "hoverInactiveBackground": "tab-bg-hovered",
       "inactiveColoredFileBackground": "tab-file-color-mask-bg",
       "underTabsBorderColor": "editor-border",
-      "underlinedBorderColor": "tab-selected-border-active",
+      "underlinedBorderColor": "WaveAccent",
       "underlinedTabBackground": "tab-selected-bg-active",
       "inactiveUnderlinedTabBorderColor": "tab-selected-border-inactive",
       "inactiveUnderlinedTabBackground": "tab-selected-bg-inactive",
@@ -726,12 +732,12 @@
     },
 
     "Link": {
-      "activeForeground": "text-link",
-      "hoverForeground": "text-link",
-      "pressedForeground": "text-link",
-      "visitedForeground": "text-link",
-      "secondaryForeground": "text-link",
-      "focusedBorderColor": "control-brand-border"
+      "activeForeground": "WaveAccentText",
+      "hoverForeground": "WaveAccentText",
+      "pressedForeground": "WaveAccentText",
+      "visitedForeground": "WaveAccentText",
+      "secondaryForeground": "WaveAccentText",
+      "focusedBorderColor": "WaveFocus"
     },
 
     "List": {
@@ -934,8 +940,11 @@
     },
 
     "ProgressBar": {
-      "progressColor": "control-brand-bg",
-      "indeterminateStartColor": "blue-110",
+      "indeterminateEndColor": "WaveAccent",
+      "progressCounterBackground": "WaveAccent",
+      "progressCounterForeground": "#FFFFFF",
+      "progressColor": "WaveAccent",
+      "indeterminateStartColor": "WaveAccentText",
       "indeterminateendcolor": "control-brand-bg",
       "passedcolor": "accent-success-bg",
       "passedendcolor": "green-110",
@@ -1043,6 +1052,7 @@
     },
 
     "TabbedPane": {
+      "underlineColor": "WaveAccent",
       "tabHeight": 40,
       "tabSelectionArc": 4,
       "tabContentMinWidth": 24,

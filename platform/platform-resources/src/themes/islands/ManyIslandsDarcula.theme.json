@@ -5,6 +5,10 @@
   "parentTheme": "ExperimentalDark",
   "editorScheme": "Darcula",
   "colors": {
+    "WaveAccent": "#6654F1",
+    "WaveFocus": "#B3A6FF",
+    "WaveAccentText": "#B3A6FF",
+    "WaveAccentSoft": "#332D56",
     "Gray3": "#393B40",
     "Gray2.5": "#323438",
     "Gray2.25": "#2E3033",
@@ -35,7 +39,7 @@
     "InputBackground": "BackgroundDark",
     "ComboboxBackground": "BackgroundLight",
     "ComponentBorder": "#5c5c5c",
-    "ComponentBorderFocus": "#366799",
+    "ComponentBorderFocus": "WaveFocus",
     "ComponentBorderDisabled": "#4a4a4a",
 
     "PopupBackground": "#333333",
@@ -55,6 +59,8 @@
 
   "ui": {
     "*": {
+      "underlineColor": "WaveAccent",
+      "focusColor": "WaveFocus",
       "foreground": "ForegroundDefault",
       "background": "PanelBackground",
       "borderColor": "BorderLight",
@@ -178,10 +184,11 @@
     },
 
     "EditorTabs": {
+      "underlineColor": "WaveAccent",
       "background": "#2B2B2B",
       "underTabsBorderColor": "BackgroundLight",
-      "underlinedBorderColor": "#385475",
-      "underlinedTabBackground": "#2B405A",
+      "underlinedBorderColor": "WaveAccent",
+      "underlinedTabBackground": "WaveAccentSoft",
       "underlinedTabInactiveForeground": "#BBBBBB",
       "inactiveUnderlinedTabBorderColor": "#454A4D",
       "inactiveUnderlinedTabBackground": "#35393B",
@@ -277,6 +284,7 @@
     },
 
     "ActionButton": {
+      "focusedBorderColor": "WaveFocus",
       "hoverBackground": "#FFFFFF12"
     },
 
@@ -314,19 +322,19 @@
       "arc": 8,
       "border": "com.intellij.ide.ui.laf.darcula.ui.DarculaButtonPainter",
       "defaultButtonFollowsFocus": false,
-      "default.endBackground": "#365880",
-      "default.endBorderColor": "#4c708c",
-      "default.focusColor": "#43688c",
-      "default.focusedBorderColor": "#537699",
-      "default.foreground": "#bbbbbb",
-      "default.startBackground": "#365880",
-      "default.startBorderColor": "#4c708c",
+      "default.endBackground": "WaveAccent",
+      "default.endBorderColor": "WaveAccent",
+      "default.focusColor": "WaveFocus",
+      "default.focusedBorderColor": "WaveFocus",
+      "default.foreground": "#FFFFFF",
+      "default.startBackground": "WaveAccent",
+      "default.startBorderColor": "WaveAccent",
       "minimumSize.compact": "72,24",
       "disabledBorderColor": "ComponentBorderDisabled",
       "disabledText": "#777777",
       "endBackground": "#4C5052",
       "endBorderColor": "#5e6060",
-      "focusedBorderColor": "#466d94",
+      "focusedBorderColor": "WaveFocus",
       "paintShadow": true,
       "shadowColor": "#00000020",
       "shadowWidth": 2,
@@ -354,9 +362,9 @@
       "borderColor": "ComponentBorder",
       "disabledBorderColor": "ComponentBorderDisabled",
       "errorFocusColor": "#8B3C3C",
-      "focusColor": "ComponentBorderFocus",
+      "focusColor": "WaveFocus",
       "focusWidth": 2,
-      "focusedBorderColor": "#466d9400",
+      "focusedBorderColor": "WaveFocus",
       "inactiveErrorFocusColor": "#725252",
       "inactiveWarningFocusColor": "#6E5324",
       "infoForeground": "#787878",
@@ -788,14 +796,16 @@
     },
 
     "Link": {
+      "focusedBorderColor": "WaveFocus",
+      "secondaryForeground": "WaveAccentText",
       "Tag.background": "#393B40",
       "Tag.foreground": "#A8ADBD",
       "background": "#3C3F41",
       "foreground": "#bbbbbb",
-      "activeForeground": "#589DF6",
-      "hoverForeground": "#589DF6",
-      "pressedForeground": "#BA6F25",
-      "visitedForeground": "#589DF6"
+      "activeForeground": "WaveAccentText",
+      "hoverForeground": "WaveAccentText",
+      "pressedForeground": "WaveAccentText",
+      "visitedForeground": "WaveAccentText"
     },
 
     "Hyperlink.linkColor": "#589df6",
@@ -878,8 +888,11 @@
     },
 
     "ProgressBar": {
-      "progressCounterBackground": "#365880",
-      "progressCounterForeground": "#000000"
+      "progressColor": "WaveAccent",
+      "indeterminateStartColor": "WaveAccentText",
+      "indeterminateEndColor": "WaveAccent",
+      "progressCounterBackground": "WaveAccent",
+      "progressCounterForeground": "#FFFFFF"
     },
 
     "SearchFieldWithExtension": {

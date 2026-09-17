@@ -6,6 +6,10 @@
   "editorScheme": "Dark",
   "parentTheme": "Darcula",
   "colors": {
+    "WaveAccent": "#6654F1",
+    "WaveFocus": "#B3A6FF",
+    "WaveAccentText": "#B3A6FF",
+    "WaveAccentSoft": "#332D56",
     "Gray1": "#1E1F22",
     "Gray2": "#2B2D30",
     "Gray3": "#393B40",
@@ -136,10 +140,10 @@
       "acceleratorForeground": "Gray7",
       "shortcutForeground": "Gray7",
 
-      "underlineColor": "Blue6",
+      "underlineColor": "WaveAccent",
       "inactiveUnderlineColor": "Gray6",
 
-      "focusColor": "Blue6",
+      "focusColor": "WaveFocus",
 
       "separatorColor": "Gray3",
       "separatorForeground": "Gray7",
@@ -152,7 +156,7 @@
       "hoverBorderColor": "#FFFFFF00",
       "pressedBackground": "#FFFFFF26",
       "pressedBorderColor": "#FFFFFF00",
-      "focusedBorderColor": "Blue6",
+      "focusedBorderColor": "WaveFocus",
       "hoverSeparatorColor": "Gray6"
     },
 
@@ -201,12 +205,12 @@
       "loadingForeground": "Gray8",
 
       "default": {
-        "foreground": "Gray14",
+        "foreground": "#FFFFFF",
         "loadingForeground": "Gray11",
-        "startBackground": "Blue6",
-        "endBackground": "Blue6",
-        "startBorderColor": "Blue6",
-        "endBorderColor": "Blue6",
+        "startBackground": "WaveAccent",
+        "endBackground": "WaveAccent",
+        "startBorderColor": "WaveAccent",
+        "endBorderColor": "WaveAccent",
         "focusedBorderColor": "Gray1",
         "shadowColor": "#00000000"
       },
@@ -308,6 +312,7 @@
     },
 
     "Component": {
+      "focusColor": "WaveFocus",
       "arc": 8,
       "arrowAreaWidth": "28",
       "borderColor": "Gray5",
@@ -324,6 +329,8 @@
     },
 
     "EditorTabs": {
+      "underlineColor": "WaveAccent",
+      "underlinedBorderColor": "WaveAccent",
       "underlineArc": 4,
       "underlineHeight": 4,
       "unselectedAlpha": 0.75,
@@ -366,12 +373,12 @@
     },
 
     "Link": {
-      "activeForeground": "Blue9",
-      "hoverForeground": "Blue9",
-      "pressedForeground": "Blue9",
-      "visitedForeground": "Blue9",
-      "secondaryForeground": "Blue9",
-      "focusedBorderColor": "Blue7"
+      "activeForeground": "WaveAccentText",
+      "hoverForeground": "WaveAccentText",
+      "pressedForeground": "WaveAccentText",
+      "visitedForeground": "WaveAccentText",
+      "secondaryForeground": "WaveAccentText",
+      "focusedBorderColor": "WaveFocus"
     },
 
     "List": {
@@ -553,16 +560,16 @@
     },
 
     "ProgressBar": {
-      "progressColor": "Blue7",
-      "indeterminateStartColor": "Blue9",
-      "indeterminateEndColor": "Blue5",
+      "progressColor": "WaveAccent",
+      "indeterminateStartColor": "WaveAccentText",
+      "indeterminateEndColor": "WaveAccent",
       "passedColor": "Green6",
       "passedEndColor": "Green9",
       "failedColor": "Red6",
       "failedEndColor": "Red9",
       "trackColor": "Gray4",
-      "progressCounterBackground": "Blue5",
-      "progressCounterForeground": "#000000"
+      "progressCounterBackground": "WaveAccent",
+      "progressCounterForeground": "#FFFFFF"
     },
 
     "RadioButton": {
@@ -635,6 +642,7 @@
     },
 
     "TabbedPane": {
+      "underlineColor": "WaveAccent",
       "tabHeight": 40,
       "tabSelectionArc": 4,
       "hoverColor": "Gray4",

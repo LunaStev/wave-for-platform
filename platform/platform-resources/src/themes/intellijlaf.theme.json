@@ -5,6 +5,10 @@
   "author": "JetBrains",
 
   "colors": {
+    "WaveAccent": "#6654F1",
+    "WaveFocus": "#6654F1",
+    "WaveAccentText": "#6654F1",
+    "WaveAccentSoft": "#EDEAFF",
     "black":  "#000000",
     "grey01": "#6e6e6e",
     "grey02": "#808080",
@@ -44,6 +48,8 @@
 
   "ui": {
     "*": {
+      "underlineColor": "WaveAccent",
+      "focusColor": "WaveFocus",
       "acceleratorForeground": "foreground",
       "acceleratorSelectionForeground": "selectionForeground",
 
@@ -78,7 +84,7 @@
     },
 
     "ActionButton": {
-      "focusedBorderColor": "#62b8de",
+      "focusedBorderColor": "WaveFocus",
       "hoverBackground": "grey12",
       "hoverBorderColor": "grey12",
       "hoverSeparatorColor": "grey06",
@@ -127,18 +133,18 @@
       "darcula.disabledText.shadow": "white",
 
       "default": {
-        "endBackground": "#4989CC",
-        "endBorderColor": "#346DAD",
+        "endBackground": "WaveAccent",
+        "endBorderColor": "WaveAccent",
         "focusedBorderColor": "#A9C9F5",
-        "foreground": "white",
+        "foreground": "#FFFFFF",
         "shadowColor": "#A6A6A600",
-        "startBackground": "#528CC7",
-        "startBorderColor": "#487EB8"
+        "startBackground": "WaveAccent",
+        "startBorderColor": "WaveAccent"
       },
       "disabledBorderColor": "border",
       "endBackground": "white",
       "endBorderColor": "componentBorder",
-      "focusedBorderColor": "#87afda",
+      "focusedBorderColor": "WaveFocus",
       "paintShadow": true,
       "shadowColor": "#A6A6A600",
       "shadowWidth": 1,
@@ -236,9 +242,9 @@
       "borderColor": "componentBorder",
       "disabledBorderColor": "border",
       "errorFocusColor": "#e53e4d",
-      "focusColor": "#97c3f3",
+      "focusColor": "WaveFocus",
       "focusWidth": 2,
-      "focusedBorderColor": "#87AFDA",
+      "focusedBorderColor": "WaveFocus",
       "inactiveErrorFocusColor": "#ebbcbc",
       "inactiveWarningFocusColor": "#ffd385",
       "infoForeground": "grey04",
@@ -309,6 +315,7 @@
     },
 
     "EditorTabs": {
+      "underlinedBorderColor": "WaveAccent",
       "background": "panel",
       "underlinedTabBackground": "white",
       "borderColor": "border",
@@ -316,7 +323,7 @@
       "inactiveColoredFileBackground": "#00000011",
       "inactiveMaskColor": "#26262633",
       "inactiveUnderlineColor": "#9ca7b8",
-      "underlineColor": "#4083c9",
+      "underlineColor": "WaveAccent",
       "underlinedTabForeground": "foreground"
     },
 
@@ -392,13 +399,14 @@
     },
 
     "Link": {
+      "focusedBorderColor": "WaveFocus",
       "background": "white",
       "foreground": "black",
-      "activeForeground": "linkForeground",
-      "hoverForeground": "linkForeground",
-      "pressedForeground": "linkForeground",
-      "visitedForeground": "linkForeground",
-      "secondaryForeground": "#77a8d9"
+      "activeForeground": "WaveAccentText",
+      "hoverForeground": "WaveAccentText",
+      "pressedForeground": "WaveAccentText",
+      "visitedForeground": "WaveAccentText",
+      "secondaryForeground": "WaveAccentText"
     },
 
     "List": {
@@ -650,14 +658,16 @@
     },
 
     "ProgressBar": {
+      "progressCounterBackground": "WaveAccent",
+      "progressCounterForeground": "#FFFFFF",
       "border": "com.intellij.ide.ui.laf.darcula.ui.DarculaProgressBarBorder",
       "failedColor": "#d64f4f",
       "failedEndColor": "#fb8f89",
-      "indeterminateEndColor": "#1E82E6",
-      "indeterminateStartColor": "#91C5F2",
+      "indeterminateEndColor": "WaveAccent",
+      "indeterminateStartColor": "WaveAccentText",
       "passedColor": "#34b171",
       "passedEndColor": "#7ee8a5",
-      "progressColor": "#1E82E6",
+      "progressColor": "WaveAccent",
       "trackColor": "grey08",
       "UI": "com.intellij.ide.ui.laf.darcula.ui.DarculaProgressBarUI"
     },
@@ -850,7 +860,7 @@
       },
       "tabSelectionHeight": 3,
       "tabsOverlapBorder": true,
-      "underlineColor": "#4083C9",
+      "underlineColor": "WaveAccent",
       "UI": "com.intellij.ide.ui.laf.darcula.ui.DarculaTabbedPaneUI"
     },
 

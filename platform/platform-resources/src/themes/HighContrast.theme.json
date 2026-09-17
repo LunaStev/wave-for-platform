@@ -5,6 +5,12 @@
   "parentTheme": "Darcula",
   "nameKey": "high.contrast.theme.name",
   "editorScheme": "High contrast",
+  "colors": {
+    "WaveAccent": "#1AEBFF",
+    "WaveFocus": "#1AEBFF",
+    "WaveAccentText": "#D2F53C",
+    "WaveAccentSoft": "#0F6780"
+  },
   "ui": {
     "*": {
       "background": "#000000",
@@ -356,6 +362,7 @@
     },
 
     "ProgressBar": {
+      "progressCounterForeground": "#000000",
       "trackColor": "#404040",
       "progressColor": "#FFFFFF",
       "indeterminateStartColor": "#FFFFFF",

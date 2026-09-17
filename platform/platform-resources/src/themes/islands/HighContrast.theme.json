@@ -6,6 +6,10 @@
   "editorScheme": "High contrast",
 
   "colors": {
+    "WaveAccent": "#1AEBFF",
+    "WaveFocus": "#1AEBFF",
+    "WaveAccentText": "#D2F53C",
+    "WaveAccentSoft": "#0F6780",
     "core-border": "#c4c4c4",
     "core-border-transparent": "#00000000",
     "tab-selected-bg-active": "#2121a6"
@@ -360,6 +364,7 @@
     },
 
     "ProgressBar": {
+      "progressCounterForeground": "#000000",
       "trackColor": "#404040",
       "progressColor": "#FFFFFF",
       "indeterminateStartColor": "#FFFFFF",

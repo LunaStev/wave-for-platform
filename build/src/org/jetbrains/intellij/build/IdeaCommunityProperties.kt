@@ -102,7 +102,9 @@ open class IdeaCommunityProperties(private val communityHomeDir: Path) : JetBrai
     }
 
     versionCheckerConfig = CE_CLASS_VERSIONS
-    baseDownloadUrl = "https://download.jetbrains.com/idea/"
+    // Distribution download URLs will be configured when WfP releases are published.
+    baseDownloadUrl = null
+    incompatibleBuildSteps += BuildOptions.REPAIR_UTILITY_BUNDLE_STEP
     buildDocAuthoringAssets = true
 
     @Suppress("SpellCheckingInspection")
@@ -111,7 +113,7 @@ open class IdeaCommunityProperties(private val communityHomeDir: Path) : JetBrai
   }
 
   override val baseFileName: String
-    get() = "idea"
+    get() = "wfp"
 
   override fun getProductContentDescriptor(): ProductModulesContentSpec = productModules {
     include(intellijCommunityBaseFragment())
@@ -140,12 +142,12 @@ open class IdeaCommunityProperties(private val communityHomeDir: Path) : JetBrai
   override fun createMacCustomizer(projectHome: Path): MacDistributionCustomizer = ideaCommunityMacCustomizer(communityHomeDir)
 
   override fun getSystemSelector(appInfo: ApplicationInfoProperties, buildNumber: String): String {
-    return "IdeaIC${appInfo.majorVersion}.${appInfo.minorVersionMainPart}"
+    return "WfP${appInfo.majorVersion}.${appInfo.minorVersionMainPart}"
   }
 
-  override fun getBaseArtifactName(appInfo: ApplicationInfoProperties, buildNumber: String): String = "ideaIC-$buildNumber"
+  override fun getBaseArtifactName(appInfo: ApplicationInfoProperties, buildNumber: String): String = "wfp-$buildNumber"
 
-  override fun getOutputDirectoryName(appInfo: ApplicationInfoProperties): String = "idea-ce"
+  override fun getOutputDirectoryName(appInfo: ApplicationInfoProperties): String = "wave-for-platform"
 }
 
 /**
@@ -179,11 +181,11 @@ inline fun ideaCommunityWindowsCustomizer(
 ): WindowsDistributionCustomizer = windowsCustomizer(projectHome) {
   fileAssociations = listOf("java", "kt", "kts")
 
-  fullName { "IntelliJ IDEA Open Source" }
-  installDirNameHandler { "IntelliJ IDEA OSS" }
+  fullName { "Wave for Platform" }
+  installDirNameHandler { "Wave for Platform" }
 
-  uninstallFeedbackUrl { appInfo ->
-    "https://www.jetbrains.com/idea/uninstall/?edition=IC-${appInfo.majorVersion}.${appInfo.minorVersion}"
+  uninstallFeedbackUrl { _ ->
+    "https://github.com/wavefnd/wave-for-platform/issues"
   }
 
   configure()
@@ -193,12 +195,12 @@ inline fun ideaCommunityMacCustomizer(
   projectHome: Path,
   configure: MacCustomizerBuilder.() -> Unit = {}
 ): MacDistributionCustomizer = macCustomizer(projectHome) {
-  urlSchemes = listOf("idea")
+  urlSchemes = listOf("wfp")
   associateIpr = true
   fileAssociations = FileAssociation.from("java", "kt", "kts")
-  bundleIdentifier = "com.jetbrains.intellij.ce"
+  bundleIdentifier = "org.wavefnd.wfp"
 
-  rootDirectoryName { _, _ -> "IntelliJ IDEA OSS.app" }
+  rootDirectoryName { _, _ -> "Wave for Platform.app" }
 
   executableFilePatterns { base, _, _, _ ->
     val kotlinExecutables = KotlinBinaries.kotlinCompilerExecutables
@@ -213,7 +215,7 @@ inline fun ideaCommunityLinuxCustomizer(
   configure: LinuxCustomizerBuilder.() -> Unit = {}
 ): LinuxDistributionCustomizer = linuxCustomizer(projectHome) {
 
-  rootDirectoryName { _, _ -> "idea-oss" }
+  rootDirectoryName { _, _ -> "wave-for-platform" }
 
   executableFilePatterns { base, _, _, _, _ ->
     base.plus(KotlinBinaries.kotlinCompilerExecutables).filterNot { it == "plugins/**/*.sh" }

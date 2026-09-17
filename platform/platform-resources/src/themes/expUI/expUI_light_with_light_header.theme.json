@@ -1,4 +1,10 @@
 {
+  "colors": {
+    "WaveAccent": "#6654F1",
+    "WaveFocus": "#6654F1",
+    "WaveAccentText": "#6654F1",
+    "WaveAccentSoft": "#EDEAFF"
+  },
   "name": "Light with Light Header",
   "dark": false,
   "author": "JetBrains",
@@ -289,7 +295,7 @@
     "ManagedIdeBadgeBackgroundHover": "Gray12",
 
     "ProgressBar": {
-      "progressCounterBackground": "#5288f2",
+      "progressCounterBackground": "WaveAccent",
       "progressCounterForeground": "#FFFFFF"
     }
   }
