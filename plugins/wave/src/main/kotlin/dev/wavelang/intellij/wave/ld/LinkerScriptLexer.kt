@@ -192,7 +192,7 @@ class LinkerScriptLexer : LexerBase() {
         emit(LinkerScriptTokens.SEMICOLON, position + 1)
         true
       }
-      '=', '+', '-', '*', '/', '%', '&', '|', '^', '~', '<', '>', '!', '?', '@' -> {
+      '.', '=', '+', '-', '*', '/', '%', '&', '|', '^', '~', '<', '>', '!', '?', '@' -> {
         emit(LinkerScriptTokens.OPERATOR, position + 1)
         true
       }
