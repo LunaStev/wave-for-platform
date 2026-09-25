@@ -128,10 +128,14 @@ public final class JpsProjectLoader {
     else {
       Path dotIdea = projectPath.resolve(PathMacroUtil.DIRECTORY_STORE_NAME);
       Path directory;
-      if (Files.isDirectory(dotIdea)) {
+      if (Files.isDirectory(projectPath.resolve(PathMacroUtil.WFP_DIRECTORY_STORE_NAME))) {
+        directory = projectPath.resolve(PathMacroUtil.WFP_DIRECTORY_STORE_NAME);
+      }
+      else if (Files.isDirectory(dotIdea)) {
         directory = dotIdea;
       }
-      else if (Files.isDirectory(projectPath) && projectPath.endsWith(PathMacroUtil.DIRECTORY_STORE_NAME)) {
+      else if (Files.isDirectory(projectPath) &&
+               (projectPath.endsWith(PathMacroUtil.DIRECTORY_STORE_NAME) || projectPath.endsWith(PathMacroUtil.WFP_DIRECTORY_STORE_NAME))) {
         directory = projectPath;
       }
       else {

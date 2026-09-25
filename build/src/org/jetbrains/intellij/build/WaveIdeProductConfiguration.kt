@@ -6,7 +6,7 @@ import org.jetbrains.intellij.build.productLayout.ProductModulesContentSpec
 import org.jetbrains.intellij.build.productLayout.productModules
 
 internal val WAVE_BUNDLED_PLUGINS: PersistentList<String> = (
-  IDEA_BUNDLED_PLUGINS +
+  IDEA_BUNDLED_PLUGINS.filterNot { it == "intellij.configurationScript" } +
   listOf("intellij.wave")
 ).toPersistentList()
 

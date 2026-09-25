@@ -73,7 +73,7 @@ class ClassPathBuilder(private val paths: PathsProvider, private val modulesToSc
     JpsJavaExtensionService.getInstance().getProjectExtension(model.project)!!.outputUrl =
       "file://${FileUtil.toSystemIndependentName(paths.outputRootFolder.path)}"
 
-    val startupModules = listOf("intellij.platform.boot", "intellij.configurationScript")
+    val startupModules = listOf("intellij.platform.boot")
       .associateWith { JpsJavaClasspathKind.PRODUCTION_RUNTIME }
 
     return buildClasspath(modulesToScopes + startupModules, logClasspath, mapper)

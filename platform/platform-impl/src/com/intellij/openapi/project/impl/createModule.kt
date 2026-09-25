@@ -61,7 +61,7 @@ internal fun doCreateFakeModuleForDirectoryProjectConfigurators(
     }
   }
   if (imlPath == null) {
-    imlPath = projectVirtualFile.getPath() + "/.idea/" + moduleName + ModuleFileType.DOT_DEFAULT_EXTENSION
+    imlPath = projectVirtualFile.getPath() + "/" + Project.DIRECTORY_STORE_FOLDER + "/" + moduleName + ModuleFileType.DOT_DEFAULT_EXTENSION
   }
   val moduleTypeManager = ModuleTypeManager.getInstance()
 

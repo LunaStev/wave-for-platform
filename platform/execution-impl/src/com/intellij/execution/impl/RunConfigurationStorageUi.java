@@ -234,7 +234,7 @@ public final class RunConfigurationStorageUi {
     if (getDotIdeaStoragePath(project).equals(path)) return null; // that's ok
 
     if (StringUtil.isEmpty(path)) return ExecutionBundle.message("run.configuration.storage.folder.path.not.specified");
-    if (path.endsWith("/.idea") || path.contains("/.idea/")) {
+    if (path.endsWith("/" + Project.DIRECTORY_STORE_FOLDER) || path.contains("/" + Project.DIRECTORY_STORE_FOLDER + "/")) {
       return ExecutionBundle.message("run.configuration.storage.folder.dot.idea.forbidden", File.separator);
     }
 
@@ -497,8 +497,8 @@ public final class RunConfigurationStorageUi {
           if (file.getPath().equals(myDotIdeaStoragePath)) return true;
           return file.isDirectory() &&
                  super.isFileSelectable(file) &&
-                 !file.getPath().endsWith("/.idea") &&
-                 !file.getPath().contains("/.idea/") &&
+                 !file.getPath().endsWith("/" + Project.DIRECTORY_STORE_FOLDER) &&
+                 !file.getPath().contains("/" + Project.DIRECTORY_STORE_FOLDER + "/") &&
                  ReadAction.computeBlocking(() -> ProjectFileIndex.getInstance(project).isInContent(file));
         }
       };

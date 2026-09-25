@@ -472,12 +472,6 @@
             key="configuration.migration.group.name"
     />
     <notificationGroup
-            id="Kotlin EAP"
-            displayType="STICKY_BALLOON"
-            key="kotlin.eap.notification.group.name"
-            bundle="messages.KotlinPluginUpdaterBundle"
-    />
-    <notificationGroup
             id="Update Kotlin code style"
             displayType="STICKY_BALLOON"
             key="configuration.kotlin.code.style.group.name"

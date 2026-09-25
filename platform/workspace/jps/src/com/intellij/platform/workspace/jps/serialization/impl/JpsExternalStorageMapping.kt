@@ -6,6 +6,7 @@ import com.intellij.platform.workspace.jps.JpsProjectConfigLocation
 import com.intellij.platform.workspace.jps.JpsProjectFileEntitySource
 import com.intellij.platform.workspace.storage.url.VirtualFileUrl
 import com.intellij.util.PathUtilRt
+import org.jetbrains.jps.model.serialization.PathMacroUtil
 import org.jetbrains.jps.util.JpsPathUtil
 
 interface JpsExternalStorageMapping {
@@ -20,7 +21,8 @@ class JpsExternalStorageMappingImpl(override val externalStorageRoot: VirtualFil
       val directoryPath = JpsPathUtil.urlToPath(internalSource.directory.url)
       val directoryName = PathUtilRt.getFileName(directoryPath)
       val parentPath = PathUtilRt.getParentPath(directoryPath)
-      if (PathUtilRt.getFileName(parentPath) == ".idea" && (directoryName == "libraries" || directoryName == "artifacts")) {
+      if (PathUtilRt.getFileName(parentPath) in setOf(PathMacroUtil.DIRECTORY_STORE_NAME, PathMacroUtil.WFP_DIRECTORY_STORE_NAME)
+          && (directoryName == "libraries" || directoryName == "artifacts")) {
         JpsProjectFileEntitySource.ExactFile(externalStorageRoot.append("project/$directoryName.xml"), projectLocation)
       }
       else {

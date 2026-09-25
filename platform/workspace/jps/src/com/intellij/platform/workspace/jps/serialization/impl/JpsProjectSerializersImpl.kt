@@ -1034,7 +1034,7 @@ internal fun Element.getChildTagStrict(name: String): Element {
 fun isExternalModuleFile(filePath: String): Boolean {
   val parentPath = PathUtilRt.getParentPath(filePath)
   return filePath.endsWith(".xml") && PathUtilRt.getFileName(parentPath) == "modules"
-         && PathUtilRt.getFileName(PathUtilRt.getParentPath(parentPath)) != ".idea"
+         && PathUtilRt.getFileName(PathUtilRt.getParentPath(parentPath)) !in setOf(".idea", ".wfp")
 }
 
 internal fun getInternalFileSource(source: EntitySource): JpsFileEntitySource? {

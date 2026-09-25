@@ -8,6 +8,7 @@ import com.intellij.platform.workspace.storage.url.VirtualFileUrl
 import com.intellij.platform.workspace.storage.url.VirtualFileUrlManager
 import org.jetbrains.jps.model.serialization.PathMacroUtil
 import org.jetbrains.jps.util.JpsPathUtil
+import java.nio.file.Files
 import java.nio.file.Path
 
 internal fun <T, K> sortByOrderEntity(orderOfItems: List<K>?, elementsByKey: MutableMap<K, MutableList<T>>, sort: List<T>.() -> List<T> = { this }): ArrayList<T> {
@@ -30,6 +31,12 @@ internal fun toConfigLocation(file: Path, virtualFileManager: VirtualFileUrlMana
   }
   else {
     val projectDir = file.toVirtualFileUrl(virtualFileManager)
-    return JpsProjectConfigLocation.DirectoryBased(projectDir, projectDir.append(PathMacroUtil.DIRECTORY_STORE_NAME))
+    val storeName = if (Files.isDirectory(file.resolve(PathMacroUtil.WFP_DIRECTORY_STORE_NAME))) {
+      PathMacroUtil.WFP_DIRECTORY_STORE_NAME
+    }
+    else {
+      PathMacroUtil.DIRECTORY_STORE_NAME
+    }
+    return JpsProjectConfigLocation.DirectoryBased(projectDir, projectDir.append(storeName))
   }
 }

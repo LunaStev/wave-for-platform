@@ -28,6 +28,7 @@ public final class PathMacroUtil {
   public static final String MODULE_WORKING_DIR = "$" + MODULE_WORKING_DIR_NAME + "$";
 
   @ApiStatus.Internal public static final @NonNls String DIRECTORY_STORE_NAME = ".idea";
+  @ApiStatus.Internal public static final @NonNls String WFP_DIRECTORY_STORE_NAME = ".wfp";
   @ApiStatus.Internal public static final @NonNls String APPLICATION_HOME_DIR = "APPLICATION_HOME_DIR";
   @ApiStatus.Internal public static final @NonNls String APPLICATION_CONFIG_DIR = "APPLICATION_CONFIG_DIR";
   @ApiStatus.Internal public static final @NonNls String APPLICATION_PLUGINS_DIR = "APPLICATION_PLUGINS_DIR";
@@ -49,7 +50,9 @@ public final class PathMacroUtil {
     // rather than the .idea directory itself is considered the module root
     // (so that a Ruby IDE project doesn't break if its directory is moved together with the .idea directory)
     String moduleDirParent = PathUtilRt.getParentPath(moduleDir);
-    if (!Strings.isEmpty(moduleDirParent) && PathUtilRt.getFileName(moduleDir).equals(DIRECTORY_STORE_NAME)) {
+    if (!Strings.isEmpty(moduleDirParent) &&
+        (PathUtilRt.getFileName(moduleDir).equals(DIRECTORY_STORE_NAME) ||
+         PathUtilRt.getFileName(moduleDir).equals(WFP_DIRECTORY_STORE_NAME))) {
       moduleDir = moduleDirParent;
     }
     moduleDir = FileUtilRt.toSystemIndependentName(moduleDir);

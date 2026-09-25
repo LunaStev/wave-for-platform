@@ -3,6 +3,7 @@ package com.intellij.find
 
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.diagnostic.runAndLogException
+import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.Key
 import com.intellij.openapi.util.NlsSafe
 import com.intellij.openapi.util.UserDataHolder
@@ -510,7 +511,7 @@ open class FindModel : UserDataHolder, Cloneable {
         }
         if (directoryName != null) {
           val path = FileUtil.toSystemIndependentName(directoryName!!)
-          if (path.endsWith("/.idea") || path.contains("/.idea/")) {
+          if (path.endsWith("/${Project.DIRECTORY_STORE_FOLDER}") || path.contains("/${Project.DIRECTORY_STORE_FOLDER}/")) {
             return true
           }
         }

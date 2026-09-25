@@ -2,6 +2,7 @@
 package com.intellij.formatting.commandLine
 
 import com.intellij.openapi.diagnostic.Logger
+import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.LocalFileSystem
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.codeStyle.CodeStyleSettings
@@ -61,7 +62,7 @@ abstract class FileSetProcessor(
       .maxDepth(if (isRecursive) Int.MAX_VALUE else 1)
       .onEnter { dir ->
         if (outerProjectSettings == null && innerProjectSettings == null) {
-          val dotIdea = dir.resolve(".idea")
+          val dotIdea = dir.resolve(Project.DIRECTORY_STORE_FOLDER)
           innerProjectSettings = findCodeStyleSettings(dotIdea)
             ?.also {
               currentProject = dir
@@ -99,7 +100,7 @@ abstract class FileSetProcessor(
 // Finds nearest enclosing project contains this file
 private tailrec fun File.getOuterProject(): File? {
   val parent: File = absoluteFile.parentFile ?: return null
-  val dotIdea = parent.resolve(".idea")
+  val dotIdea = parent.resolve(Project.DIRECTORY_STORE_FOLDER)
   if (dotIdea.isDirectory) return dotIdea
   return parent.getOuterProject()
 }

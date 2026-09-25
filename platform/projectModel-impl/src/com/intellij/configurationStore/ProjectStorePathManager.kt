@@ -13,6 +13,9 @@ import java.nio.file.Path
  */
 @ApiStatus.Internal
 interface ProjectStorePathManager {
+  /** Prepare an existing project's settings before conversion or component loading. */
+  fun prepareProjectStore(projectRoot: Path) {}
+
   companion object {
     fun getInstance(): ProjectStorePathManager = service()
   }
