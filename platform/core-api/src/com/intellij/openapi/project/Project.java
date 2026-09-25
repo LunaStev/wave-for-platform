@@ -25,7 +25,7 @@ import org.jetbrains.annotations.SystemIndependent;
  */
 @ApiStatus.NonExtendable
 public interface Project extends ComponentManager, AreaInstance {
-  String DIRECTORY_STORE_FOLDER = ".idea";
+  String DIRECTORY_STORE_FOLDER = ".wfp";
 
   /**
    * Returns a name ot the project. For a directory-based project it's an arbitrary string specified by user at project creation

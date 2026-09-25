@@ -51,7 +51,7 @@ private fun isFileWithRunConfigs(file: VirtualFile): Boolean {
   if (!file.isInLocalFileSystem || !file.nameSequence.endsWith(".run.xml")) return false
   var parent = file.parent
   while (parent != null) {
-    if (StringUtil.equals(parent.nameSequence, ".idea")) return false
+    if (StringUtil.equals(parent.nameSequence, Project.DIRECTORY_STORE_FOLDER) || StringUtil.equals(parent.nameSequence, ".idea")) return false
     parent = parent.parent
   }
   return true

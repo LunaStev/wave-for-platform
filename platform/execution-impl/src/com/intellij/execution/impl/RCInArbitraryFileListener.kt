@@ -1,6 +1,7 @@
 // Copyright 2000-2023 JetBrains s.r.o. and contributors. Use of this source code is governed by the Apache 2.0 license.
 package com.intellij.execution.impl
 
+import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.getOpenedProjects
 import com.intellij.openapi.vfs.AsyncFileListener
 import com.intellij.openapi.vfs.LocalFileSystem
@@ -13,7 +14,8 @@ import com.intellij.openapi.vfs.newvfs.events.VFileMoveEvent
 import com.intellij.openapi.vfs.newvfs.events.VFilePropertyChangeEvent
 import com.intellij.util.PathUtil
 
-private fun isFileWithRunConfigs(path: String) = !path.contains("/.idea/") && PathUtil.getFileName(path).endsWith(".run.xml")
+private fun isFileWithRunConfigs(path: String) =
+  !path.contains("/${Project.DIRECTORY_STORE_FOLDER}/") && !path.contains("/.idea/") && PathUtil.getFileName(path).endsWith(".run.xml")
 
 internal class RCInArbitraryFileListener : AsyncFileListener {
   override fun prepareChange(events: List<VFileEvent>): @org.jetbrains.annotations.Nullable AsyncFileListener.ChangeApplier? {

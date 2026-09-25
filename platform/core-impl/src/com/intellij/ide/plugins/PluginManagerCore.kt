@@ -17,7 +17,6 @@ import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.diagnostic.debug
 import com.intellij.openapi.extensions.PluginDescriptor
 import com.intellij.openapi.extensions.PluginId
-import com.intellij.openapi.project.Project
 import com.intellij.openapi.util.BuildNumber
 import com.intellij.openapi.util.NlsSafe
 import com.intellij.util.PlatformUtils
@@ -164,7 +163,7 @@ object PluginManagerCore {
     var result = isRunningFromSources
     if (result == null) {
       // MPS is always loading platform classes from jars even though there is a project directory present
-      result = !PlatformUtils.isMPS() && Files.isDirectory(PathManager.getHomeDir().resolve(Project.DIRECTORY_STORE_FOLDER))
+      result = !PlatformUtils.isMPS() && Files.isDirectory(PathManager.getHomeDir().resolve(".idea"))
       isRunningFromSources = result
     }
     return result

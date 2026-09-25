@@ -187,7 +187,7 @@ internal class ProjectIconUI(private val projectPath: Path) {
 
   fun pathToIcon(): Path {
     val file = projectPath
-    return RecentProjectIconHelper.getDotIdeaPath(file)?.resolve("icon.svg") ?: file.resolve(".idea/icon.svg")
+    return RecentProjectIconHelper.getDotIdeaPath(file)?.resolve("icon.svg") ?: file.resolve(Project.DIRECTORY_STORE_FOLDER).resolve("icon.svg")
   }
 }
 

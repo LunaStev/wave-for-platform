@@ -10,6 +10,9 @@
   <depends>com.intellij.modules.lsp</depends>
 
   <extensions defaultExtensionNs="com.intellij">
+    <projectConfigurable groupId="language" id="wfp.toolchains"
+                         bundle="messages.WaveBundle" key="toolchains.title"
+                         instance="dev.wavelang.intellij.wave.toolchain.ToolchainConfigurable"/>
     <fileType name="Wave" language="Wave" implementationClass="dev.wavelang.intellij.wave.WaveFileType" extensions="wave"/>
     <fileType name="Wave Makefile" language="WaveMakefile" implementationClass="dev.wavelang.intellij.wave.make.MakefileFileType"
               extensions="mk;mak" fileNames="Makefile;GNUmakefile"/>

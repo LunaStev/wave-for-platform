@@ -112,6 +112,26 @@ class ProjectStoreTest {
   }
 
   @Test
+  fun `legacy settings are imported and subsequent saves and reopens use WfP`() = runBlocking {
+    lateinit var projectRoot: java.nio.file.Path
+    loadAndUseProjectInLoadComponentStateMode(tempDirManager, {
+      it.writeChild(".idea/misc.xml", iprFileContent)
+      projectRoot = it.toNioPath()
+      projectRoot
+    }) { project ->
+      test(project)
+      assertThat(project.stateStore.storageManager.expandMacro(StoragePathMacros.PROJECT_FILE))
+        .isEqualTo(projectRoot.resolve(".wfp/misc.xml"))
+      assertThat(projectRoot.resolve(".idea/misc.xml").readText()).isEqualTo(iprFileContent)
+    }
+    loadAndUseProjectInLoadComponentStateMode(tempDirManager, { projectRoot }) { project ->
+      val component = TestComponent()
+      project.stateStore.initComponent(component, null, PluginManagerCore.CORE_ID)
+      assertThat(component.state).isEqualTo(TestState("foo"))
+    }
+  }
+
+  @Test
   fun saveProjectName() = runBlocking {
     loadAndUseProjectInLoadComponentStateMode(tempDirManager, {
       // test BOM
@@ -252,7 +272,7 @@ class ProjectStoreTest {
     val newProject = projectManager.openProjectAsync(newProjectPath, OpenProjectTask { isNewProject = true })!!
     newProject.useProjectAsync {
       newProject.stateStore.save(forceSavingAllSettings = true)
-      val miscXml = newProjectPath.resolve(".idea/misc.xml").readText()
+      val miscXml = newProjectPath.resolve("${Project.DIRECTORY_STORE_FOLDER}/misc.xml").readText()
       assertThat(miscXml).contains("AATestComponent")
       assertThat(miscXml).contains("""<option name="AAValue" value="foo" />""")
     }

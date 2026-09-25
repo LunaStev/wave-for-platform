@@ -82,7 +82,7 @@ abstract class WelcomeScreenOpenFileNotificationProvider : EditorNotificationPro
 
   // suppress notification when we are inside technical folders
   private val technicalFolderNames = setOf("out", "bin", "target", "build", "pkg", "vendor", "node_modules", "tmp", "dist",
-                                           "coverage", ".git", ".cache", ".venv", ".gradle", ".idea")
+                                           "coverage", ".git", ".cache", ".venv", ".gradle", ".idea", Project.DIRECTORY_STORE_FOLDER)
 
   // avoid creating a project in these paths
   protected open val restrictedPaths: Set<Path> by lazy {

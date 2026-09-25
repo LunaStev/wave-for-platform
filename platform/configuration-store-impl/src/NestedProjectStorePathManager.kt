@@ -37,6 +37,13 @@ private val DEPRECATED_PROJECT_FILE_STORAGE_ANNOTATION = FileStorageAnnotation(S
  * For cases when the project configuration store resides in the project root directory - the default
  */
 internal class NestedProjectStorePathManager : ProjectStorePathManager {
+  override fun prepareProjectStore(projectRoot: Path) {
+    val descriptor = getStoreDescriptor(projectRoot)
+    if (descriptor is DotIdeaProjectStoreDescriptor) {
+      migrateLegacyProjectStore(descriptor.projectIdentityFile)
+    }
+  }
+
   override fun getStoreDescriptor(projectRoot: Path): ProjectStoreDescriptor {
     val suitableDescriptors = ArrayList<ProjectStoreDescriptor>()
     for (descriptor in EP_NAME.filterableLazySequence()) {
@@ -89,7 +96,10 @@ internal class NestedProjectStorePathManager : ProjectStorePathManager {
   }
 
   override fun getStoreDirectory(projectRoot: VirtualFile): VirtualFile? {
-    return if (projectRoot.isDirectory) projectRoot.findChild(Project.DIRECTORY_STORE_FOLDER) else null
+    return if (projectRoot.isDirectory) {
+      projectRoot.findChild(Project.DIRECTORY_STORE_FOLDER) ?: projectRoot.findChild(".idea")
+    }
+    else null
   }
 }
 
@@ -110,7 +120,7 @@ private class DotIdeaProjectStoreDescriptor(
     get() = true
 
   override fun testStoreDirectoryExistsForProjectRoot(): Boolean {
-    return Files.isDirectory(dotIdea)
+    return Files.isDirectory(dotIdea) || Files.isDirectory(projectIdentityFile.resolve(".idea"))
   }
 
   override fun getModuleStorageSpecs(
@@ -275,7 +285,7 @@ internal fun doGetJpsBridgeAwareStorageSpec(filePath: String, project: Project):
           }
         }
         if (StreamProviderFactory.EP_NAME.hasAnyExtensions(project)) {
-          error("$filePath is not under .idea directory and not under external system cache")
+          error("$filePath is not under ${Project.DIRECTORY_STORE_FOLDER} directory and not under external system cache")
         }
       }
     }

@@ -1058,6 +1058,9 @@ open class ProjectManagerImpl : ProjectManagerEx(), Disposable {
     runConversionBeforeOpen: Boolean,
     preloadServices: Boolean,
   ): Project {
+    withContext(Dispatchers.IO) {
+      serviceAsync<ProjectStorePathManager>().prepareProjectStore(projectIdentityFile)
+    }
     val conversionResult: ConversionResult? = if (runConversionBeforeOpen) {
       runConversion(projectIdentityFile)
     }

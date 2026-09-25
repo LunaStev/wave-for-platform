@@ -10,7 +10,9 @@ final class IntellijProjectRootFinder extends ProjectRootFinder {
   @Override
   protected boolean isProjectDir(@NotNull VirtualFile file) {
     return containsChild(file,
-                         child -> child.isDirectory() && PathMacroUtil.DIRECTORY_STORE_NAME.equals(child.getName()));
+                         child -> child.isDirectory() &&
+                                  (PathMacroUtil.WFP_DIRECTORY_STORE_NAME.equals(child.getName()) ||
+                                   PathMacroUtil.DIRECTORY_STORE_NAME.equals(child.getName())));
   }
 
   @Override

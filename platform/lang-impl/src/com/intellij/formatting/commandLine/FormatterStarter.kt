@@ -174,7 +174,7 @@ private fun exit(code: Int) {
 }
 
 private fun createProjectDir(projectUID: String) = Files.createTempDirectory("${PlatformUtils.getPlatformPrefix()}.format.${projectUID}.tmp.")
-  .resolve(PathMacroUtil.DIRECTORY_STORE_NAME)
+  .resolve(PathMacroUtil.WFP_DIRECTORY_STORE_NAME)
   .createDirectories()
 
 private fun createProject(projectUID: String) =

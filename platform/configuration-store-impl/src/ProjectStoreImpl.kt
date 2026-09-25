@@ -111,7 +111,9 @@ open class ProjectStoreImpl(final override val project: Project) : ComponentStor
     val isUnitTestMode = ApplicationManager.getApplication().isUnitTestMode
     val macros = ArrayList<Macro>(5)
     val iprFile: Path?
-    val storeDescriptor = ProjectStorePathManager.getInstance().getStoreDescriptor(file)
+    val pathManager = ProjectStorePathManager.getInstance()
+    pathManager.prepareProjectStore(file)
+    val storeDescriptor = pathManager.getStoreDescriptor(file)
     this.storeDescriptor = storeDescriptor
     val machineWorkspacePath = getMachineWorkspacePath(storeDescriptor)
 
