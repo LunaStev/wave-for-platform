@@ -44,3 +44,7 @@ discussion right in the commit message, or create a YouTrack ticket and summariz
 Please read the [README.md](README.md) in order to understand how to build or
 run the IDE on your machine.
 
+## Debugging Workflows
+
+For information on debugging the compiler, generated Wave programs, or using compiler dump flags, please see the [Compiler-Development Debugging Workflows](DEBUGGING.md) guide.
+
