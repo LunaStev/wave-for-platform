@@ -30,6 +30,7 @@ data class RustToolchain(
   val rustc: String = "",
   val rustAnalyzer: String = "",
   val rustfmt: String = "",
+  val languageServiceEnabled: Boolean = true,
 )
 
 data class EcosystemProfile(

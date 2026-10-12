@@ -1,20 +1,13 @@
 package dev.wavelang.intellij.wave.toolchain
 
-import com.intellij.execution.process.CapturingProcessAdapter
-import com.intellij.execution.process.CapturingProcessHandler
 import com.intellij.execution.process.ProcessOutput
 import com.intellij.openapi.progress.ProgressIndicator
 import com.intellij.openapi.progress.ProgressManager
 import com.intellij.openapi.progress.runBlockingMaybeCancellable
-import com.intellij.openapi.util.Key
 import com.intellij.platform.eel.provider.LocalEelDescriptor
-import com.intellij.platform.eel.provider.asEelPath
 import com.intellij.platform.eel.provider.getEelDescriptor
-import com.intellij.platform.eel.provider.localEel
-import com.intellij.platform.eel.spawnProcess
 import com.intellij.util.EnvironmentUtil
 import dev.wavelang.intellij.wave.WaveBundle
-import kotlinx.coroutines.withTimeout
 import java.nio.file.Files
 import java.nio.file.Path
 
@@ -29,44 +22,23 @@ internal fun interface ToolProbe {
   fun run(command: ToolCommand, indicator: ProgressIndicator): ProcessOutput
 }
 
-/** Small, explicit version probes. The shared build/run lifecycle belongs to a separate integration. */
+/** Explicit short probes use the same bounded execution and cancellation contract as compiler adapters. */
 internal object LocalToolProbe : ToolProbe {
   override fun run(command: ToolCommand, indicator: ProgressIndicator): ProcessOutput = runBlockingMaybeCancellable {
     indicator.checkCanceled()
-    val processScope = this
-    val process = withTimeout(5_000) {
-      localEel.exec.spawnProcess(command.executable.asEelPath())
-        .args(command.arguments)
-        .workingDirectory(command.workingDirectory.asEelPath())
-        .env(command.environment)
-        .scope(processScope)
-        .eelIt()
-        .convertToJavaProcess()
-    }
-    val handler = object : CapturingProcessHandler(process, Charsets.UTF_8, command.executable.toString()) {
-      override fun createProcessAdapter(processOutput: ProcessOutput): CapturingProcessAdapter {
-        return object : CapturingProcessAdapter(processOutput) {
-          private var remaining = 16 * 1024
-
-          @Synchronized
-          override fun addToOutput(text: String, outputType: Key<*>) {
-            val retained = text.take(remaining)
-            remaining -= retained.length
-            super.addToOutput(retained, outputType)
-          }
-        }
-      }
-    }
-    try {
-      handler.runProcessWithProgressIndicator(indicator, 5_000, true)
-    }
-    finally {
-      if (!handler.isProcessTerminated) handler.destroyProcess()
+    val result = ToolProcessExecutor.execute(command, ToolExecutionOptions(5_000, 16 * 1024), indicator)
+    if (result.status == ToolStatus.CANCELLED) indicator.checkCanceled()
+    ProcessOutput().apply {
+      appendStdout(result.stdout)
+      appendStderr(result.stderr)
+      setExitCode(result.exitCode ?: -1)
+      if (result.status == ToolStatus.TIMED_OUT) setTimeout()
+      if (result.status == ToolStatus.CANCELLED) setCancelled()
     }
   }
 }
 
-/** Local IDE-host tools only. No installation, build, or project-open activity is performed here. */
+/** Local IDE-host tools only. Resolves installed executables without installing or building them. */
 internal class ToolchainResolver(
   private val projectRoot: Path,
   private val environment: Map<String, String> = EnvironmentUtil.getEnvironmentMap(),
@@ -106,10 +78,17 @@ internal class ToolchainResolver(
     return null
   }
 
-  fun rustCommand(tool: CompilerTool, settings: RustToolchain, arguments: List<String>, indicator: ProgressIndicator): ToolCommand {
+  fun rustCommand(
+    tool: CompilerTool,
+    settings: RustToolchain,
+    arguments: List<String>,
+    indicator: ProgressIndicator,
+    workingDirectory: Path = projectRoot,
+  ): ToolCommand {
     require(tool.rust)
     indicator.checkCanceled()
-    val directory = path(projectRoot.toString())
+    val directory = path(workingDirectory.toString())
+    require(Files.isDirectory(directory)) { WaveBundle.message("toolchains.invalid.directory", directory) }
     val override = when (tool) {
       CompilerTool.CARGO -> settings.cargo
       CompilerTool.RUSTC -> settings.rustc

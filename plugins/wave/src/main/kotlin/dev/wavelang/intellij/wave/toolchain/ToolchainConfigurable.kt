@@ -20,6 +20,7 @@ import java.awt.event.FocusEvent
 import java.nio.file.Path
 import java.util.UUID
 import javax.swing.JButton
+import javax.swing.JCheckBox
 import javax.swing.JComboBox
 import javax.swing.JComponent
 import javax.swing.JPanel
@@ -42,7 +43,13 @@ class ToolchainConfigurable(private val project: Project) : Configurable {
     if (state.profiles.any { it.name.isBlank() } || state.profiles.map { it.name }.distinct().size != state.profiles.size) {
       throw ConfigurationException(WaveBundle.message("toolchains.profile.unique"))
     }
+    val rustChanged = state.rust != settings.state.rust
     settings.update(state)
+    if (rustChanged) {
+      project.service<dev.wavelang.intellij.wave.cargo.CargoWorkspaceService>().invalidate()
+      if (!project.isDefault) com.intellij.platform.lsp.api.LspClientManager.getInstance(project)
+        .stopAndRestartClientsIfNeeded(dev.wavelang.intellij.wave.rust.RustLspIntegrationProvider::class.java)
+    }
   }
 
   override fun reset() {
@@ -60,6 +67,7 @@ class ToolchainConfigurable(private val project: Project) : Configurable {
     private val form = JPanel(GridBagLayout())
     private var row = 0
     private val rustFields = listOf("toolchain", "cargo", "rustc", "rustAnalyzer", "rustfmt").associateWith { JBTextField(36) }
+    private val rustLanguageService = JCheckBox(WaveBundle.message("rust.lsp.enabled"))
     private val profileFields = listOf("name", "wavec", "waveRoot", "whale", "whaleRoot", "vex", "vexRoot", "workingDirectory", "target")
       .associateWith { JBTextField(36) }
     private val profiles = ArrayList<EcosystemProfile>()
@@ -77,6 +85,8 @@ class ToolchainConfigurable(private val project: Project) : Configurable {
       addRow(null, JBLabel(WaveBundle.message("toolchains.local.only")))
       addRow(null, JBLabel(WaveBundle.message("toolchains.rust.hint")))
       for ((key, field) in rustFields) addRow(WaveBundle.message("toolchains.rust.$key"), field)
+      addRow(null, rustLanguageService)
+      addRow(null, JBLabel(WaveBundle.message("rust.lsp.hint")))
       val profileControls = JPanel().apply {
         add(selector)
         add(JButton(WaveBundle.message("toolchains.add")).apply {
@@ -149,6 +159,7 @@ class ToolchainConfigurable(private val project: Project) : Configurable {
       val rust = state.rust
       val values = listOf(rust.toolchain, rust.cargo, rust.rustc, rust.rustAnalyzer, rust.rustfmt)
       rustFields.values.zip(values).forEach { (field, value) -> field.text = value }
+      rustLanguageService.isSelected = rust.languageServiceEnabled
       profiles.clear()
       profiles.addAll(state.profiles.ifEmpty { listOf(EcosystemProfile()) })
       refreshSelector(profiles.indexOfFirst { it.id == state.activeProfileId }.coerceAtLeast(0))
@@ -185,7 +196,8 @@ class ToolchainConfigurable(private val project: Project) : Configurable {
       saveProfile()
       fun value(key: String) = rustFields.getValue(key).text
       return ToolchainState(
-        RustToolchain(value("toolchain"), value("cargo"), value("rustc"), value("rustAnalyzer"), value("rustfmt")),
+        RustToolchain(value("toolchain"), value("cargo"), value("rustc"), value("rustAnalyzer"), value("rustfmt"),
+                      rustLanguageService.isSelected),
         profiles.toList(), profiles[selectedIndex].id,
       )
     }

@@ -49,15 +49,15 @@ silently switch to another toolchain.
 If rustup is absent, discovery uses PATH. A named toolchain without rustup
 requires explicit executable paths. Relative or empty PATH entries are
 ignored. [`RUSTUP_AUTO_INSTALL=0`](https://rust-lang.github.io/rustup/environment-variables.html)
-is supplied to child processes. WfP never runs
+is supplied to child processes. Tool discovery never runs
 `rustup install`, `rustup component add`, Cargo builds, or downloads.
 
 **Check Tools** runs Rust version probes in the background, with cancellation,
 a five-second execution limit per probe, and bounded captured output. It
 reports missing tools, failed execution, and unexpected version responses.
 It checks the values currently entered without saving them; Apply/OK saves.
-This prepares the settings needed by rust-analyzer/Cargo integration; it does
-not yet add Rust editing or Cargo run configurations.
+The same selections are used by Rust language services, Cargo run configurations
+and explicit rustfmt formatting. See [Rust compiler development](wfp-rust-development.md).
 
 ### Wave, Whale and Vex profiles
 

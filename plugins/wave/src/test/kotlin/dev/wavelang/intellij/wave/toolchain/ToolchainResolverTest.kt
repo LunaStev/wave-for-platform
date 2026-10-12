@@ -3,6 +3,7 @@ package dev.wavelang.intellij.wave.toolchain
 import com.intellij.execution.process.ProcessOutput
 import com.intellij.openapi.progress.EmptyProgressIndicator
 import com.intellij.util.xmlb.XmlSerializer
+import com.intellij.testFramework.junit5.TestApplication
 import dev.wavelang.intellij.wave.WaveBundle
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Assumptions.assumeTrue
@@ -12,6 +13,7 @@ import java.nio.file.Files
 import java.nio.file.Path
 import java.nio.file.attribute.PosixFilePermissions
 
+@TestApplication
 class ToolchainResolverTest {
   @TempDir
   lateinit var root: Path
@@ -39,6 +41,17 @@ class ToolchainResolverTest {
     val command = resolver.rustCommand(CompilerTool.CARGO, RustToolchain(cargo = selected.toString()), listOf("--version"), indicator)
     assertEquals(selected, command.executable)
     assertEquals(listOf("--version"), command.arguments)
+  }
+
+  @Test
+  fun `relative executable overrides stay project relative while command context changes`() {
+    val selected = tool("tools/cargo")
+    val workspace = Files.createDirectories(root.resolve("nested workspace"))
+    val resolver = ToolchainResolver(root, emptyMap())
+    val command = resolver.rustCommand(CompilerTool.CARGO, RustToolchain(cargo = "tools/cargo"), listOf("metadata"),
+                                     indicator, workspace)
+    assertEquals(selected, command.executable)
+    assertEquals(workspace, command.workingDirectory)
   }
 
   @Test

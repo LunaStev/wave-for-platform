@@ -4,6 +4,7 @@
   <version>0.3.0</version>
   <vendor url="https://github.com/wavefnd">Wave Foundation</vendor>
   <description>Support for Wave source files and compiler development files.</description>
+  <resource-bundle>messages.WaveBundle</resource-bundle>
 
   <depends>com.intellij.modules.platform</depends>
   <depends>com.intellij.modules.lang</depends>
@@ -28,5 +29,21 @@
     <lang.syntaxHighlighterFactory language="WaveLinkerScript" implementationClass="dev.wavelang.intellij.wave.ld.LinkerScriptSyntaxHighlighterFactory"/>
     <lang.syntaxHighlighterFactory language="WhaleIR" implementationClass="dev.wavelang.intellij.wave.ir.WhaleIrSyntaxHighlighterFactory"/>
     <platform.lsp.serverSupportProvider implementation="dev.wavelang.intellij.wave.lsp.WaveLspServerSupportProvider"/>
+    <platform.lsp.integrationProvider implementation="dev.wavelang.intellij.wave.rust.RustLspIntegrationProvider"/>
+    <configurationType implementation="dev.wavelang.intellij.wave.cargo.CargoConfigurationType"/>
+    <directoryIndexExcludePolicy implementation="dev.wavelang.intellij.wave.cargo.CargoExcludePolicy"/>
+    <notificationGroup id="WfP Rust" displayType="BALLOON" bundle="messages.WaveBundle" key="rust.notification.group"/>
   </extensions>
+  <actions>
+    <action id="Wfp.Cargo.Refresh" class="dev.wavelang.intellij.wave.cargo.CargoRefreshAction">
+      <add-to-group group-id="ToolsMenu" anchor="last"/>
+    </action>
+    <action id="Wfp.Cargo.Targets" class="dev.wavelang.intellij.wave.cargo.CargoTargetsAction">
+      <add-to-group group-id="ToolsMenu" anchor="last"/>
+    </action>
+    <action id="Wfp.Rust.Format" class="dev.wavelang.intellij.wave.rust.RustFormatAction">
+      <add-to-group group-id="ToolsMenu" anchor="last"/>
+      <add-to-group group-id="EditorPopupMenu" anchor="last"/>
+    </action>
+  </actions>
 </idea-plugin>
